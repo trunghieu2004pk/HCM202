@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Con Thuyền Chung</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=IM+Fell+English:ital@0;1&family=MedievalSharp&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parch: #f4e8c1;
+  --parch2: #e8d49a;
+  --parch3: #d4b870;
+  --ink: #2c1810;
+  --ink2: #5a3520;
+  --ink3: #8b5030;
+  --red: #8b1a1a;
+  --red2: #cc2222;
+  --gold: #c9922a;
+  --gold2: #e8b84b;
+  --ocean: #1a3a5c;
+  --ocean2: #0d2540;
+  --ocean3: #2d5a8c;
+  --ocean4: #3a7ab8;
+  --green: #2d6e3e;
+  --green2: #4a9e5e;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'IM Fell English', serif;
+  background: var(--ocean2);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══════════ START OVERLAY ═══════════ */
+.start-overlay {
+  position: fixed; inset: 0; z-index: 999;
+  background: linear-gradient(160deg, #0d1f35 0%, #1a3a5c 50%, #0d2540 100%);
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s;
+}
+.start-card {
+  background: var(--parch);
+  border: 3px solid var(--parch3);
+  border-radius: 4px;
+  padding: 32px 28px;
+  max-width: 420px; width: 92%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(201,146,42,0.3), inset 0 0 40px rgba(212,184,112,0.2);
+  position: relative;
+}
+.start-card::before {
+  content:'';
+  position:absolute; inset:6px;
+  border: 1px solid var(--parch3);
+  border-radius: 2px;
+  pointer-events:none;
+}
+.start-card .ship-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+.start-card h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem; font-weight: 900;
+  color: var(--ink); margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 2px;
+}
+.start-card p { color: var(--ink2); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5; }
+.room-options { display:flex; flex-direction:column; gap:10px; }
+.room-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem; font-weight: 700;
+  padding: 12px 24px;
+  background: var(--red);
+  color: var(--parch);
+  border: 2px solid #5a0a0a;
+  border-radius: 3px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.room-btn:hover { background: var(--red2); transform: translateY(-1px); }
+.room-btn.secondary { background: var(--ocean); border-color: var(--ocean2); }
+.room-btn.secondary:hover { background: var(--ocean3); }
+.room-form { margin-top: 16px; }
+.room-form h3 { font-family:'Cinzel',serif; color:var(--ink); margin-bottom:12px; }
+.room-form input {
+  width: 100%; padding: 10px 14px;
+  border: 2px solid var(--parch3);
+  background: rgba(255,255,255,0.5);
+  border-radius: 3px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem; text-align: center;
+  letter-spacing: 4px; color: var(--ink);
+  margin-bottom: 12px;
+}
+.start-btn {
+  font-family:'Cinzel',serif; font-weight:700;
+  width:100%; padding:12px;
+  background: var(--red); color: var(--parch);
+  border: 2px solid #5a0a0a; border-radius:3px;
+  cursor:pointer; font-size:1rem; letter-spacing:1px;
+  margin-bottom:8px; transition:all 0.2s;
+}
+.start-btn:hover { background: var(--red2); }
+.back-btn {
+  background:none; border:none; color:var(--ink2);
+  cursor:pointer; font-size:0.85rem; font-family:'IM Fell English',serif;
+}
+.room-info { margin-top:16px; }
+.room-info h3 { font-family:'Cinzel',serif; color:var(--ink); margin-bottom:10px; }
+.room-code {
+  background: var(--ocean); color: var(--parch2);
+  font-family:'Cinzel',serif; font-size:1.1rem;
+  padding:8px 16px; border-radius:3px; margin-bottom:10px;
+  letter-spacing:3px;
+}
+.player-count { color:var(--ink2); margin-bottom:12px; }
+.copy-btn {
+  padding:8px 14px; border:1px solid var(--parch3);
+  background:rgba(0,0,0,0.05); border-radius:3px;
+  cursor:pointer; font-size:0.8rem; font-family:'IM Fell English',serif;
+}
+.hidden { display:none !important; }
+
+/* ═══════════ GAME WRAPPER ═══════════ */
+.game-wrapper {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 12px 8px 32px;
+}
+
+.header {
+  text-align:center;
+  padding: 16px 0 10px;
+  color: var(--parch);
+}
+.header h1 {
+  font-family:'Cinzel',serif;
+  font-size: 1.5rem; font-weight:900;
+  letter-spacing:3px; text-transform:uppercase;
+  text-shadow: 0 0 20px rgba(201,146,42,0.5);
+}
+.header p { font-size:0.85rem; color:var(--parch2); margin-top:4px; opacity:0.8; }
+
+/* ═══════════ TREASURE MAP ═══════════ */
+.map-section {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(30,60,100,0.8) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(20,50,90,0.8) 0%, transparent 60%),
+    linear-gradient(180deg, #0a1e35 0%, #1a3a5c 40%, #0d2540 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 2px solid var(--parch3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* Parchment texture overlay for map feel */
+.map-parchment-overlay {
+  position:absolute; inset:0;
+  background: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:1;
+  opacity:0.3;
+}
+
+/* Stars */
+.star { position:absolute; background:#fff; border-radius:50%; animation: twinkle 3s infinite; }
+@keyframes twinkle { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+/* Moon */
+.moon {
+  position:absolute; top:10px; right:20px;
+  width:28px; height:28px;
+  background: radial-gradient(circle at 35% 35%, #fef9c3, #fde68a);
+  border-radius:50%;
+  box-shadow: 0 0 12px rgba(254,233,138,0.6);
+}
+
+/* Compass */
+.compass {
+  position:absolute; bottom:8px; right:12px;
+  font-size:1.8rem; opacity:0.6; z-index:5;
+  animation: spin-slow 20s linear infinite;
+}
+@keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+/* Wave layers */
+.wave-layer {
+  position:absolute; bottom:0; left:0; right:0;
+  z-index:2;
+}
+
+/* Islands */
+.island-start, .island-end {
+  position:absolute; bottom:20px;
+  display:flex; flex-direction:column; align-items:center;
+  z-index:4;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+.island-start { left:12px; }
+.island-end { right:12px; }
+.island-base {
+  width:44px; height:18px;
+  background: radial-gradient(ellipse, #8b6914 0%, #5a4010 100%);
+  border-radius:50%;
+  border: 1px solid #a07828;
+  position:relative;
+}
+.palm, .flag { font-size:1.2rem; line-height:1; }
+
+/* Ship */
+.ship-container {
+  position:absolute; bottom:22px; z-index:6;
+  transition: left 1.2s cubic-bezier(0.4,0,0.2,1);
+  transform: translateX(-50%);
+}
+.ship-container.hit { animation: hitShake 0.5s ease; }
+@keyframes hitShake {
+  0%,100%{transform:translateX(-50%)}
+  20%{transform:translateX(calc(-50% - 6px)) rotate(-3deg)}
+  40%{transform:translateX(calc(-50% + 6px)) rotate(3deg)}
+  60%{transform:translateX(calc(-50% - 4px))}
+  80%{transform:translateX(calc(-50% + 4px))}
+}
+
+/* Wake */
+.wake {
+  position:absolute; bottom:28px; left:0;
+  height:4px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), rgba(255,255,255,0.3));
+  transition: width 1.2s;
+  z-index:3;
+  border-radius:0 2px 2px 0;
+}
+
+/* PATH DOTS - the treasure map path */
+.path-track {
+  position:absolute; bottom:30px; left:6%; right:6%;
+  height:8px; z-index:3;
+  display:flex; align-items:center; gap:0;
+}
+.path-dot {
+  flex:1; height:4px; margin:0 1px;
+  background: rgba(201,146,42,0.25);
+  border-radius:2px;
+  border: 1px solid rgba(201,146,42,0.3);
+  transition: all 0.4s;
+  position:relative;
+}
+.path-dot.milestone {
+  height:12px; width:12px !important;
+  flex:none;
+  border-radius:50%;
+  background: rgba(201,146,42,0.5);
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 6px rgba(201,146,42,0.5);
+}
+.path-dot.milestone::after {
+  content: attr(data-year);
+  position:absolute; bottom:14px; left:50%;
+  transform:translateX(-50%);
+  font-size:0.5rem; color:var(--gold2);
+  font-family:'Cinzel',serif;
+  white-space:nowrap;
+  opacity:0.8;
+}
+.path-dot.visited {
+  background: rgba(201,146,42,0.6);
+  border-color: var(--gold);
+}
+.path-dot.milestone.visited {
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(201,146,42,0.8);
+}
+.path-dot.current-dot {
+  background: var(--gold2);
+  box-shadow: 0 0 8px var(--gold2);
+  animation: pulse-dot 1s ease infinite;
+}
+@keyframes pulse-dot { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+
+/* ═══════════ MILESTONE BANNER ═══════════ */
+.milestone-banner {
+  background: linear-gradient(135deg, var(--ocean2), var(--ocean));
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+.milestone-banner.active { display: block; }
+.milestone-banner::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at center, rgba(201,146,42,0.1) 0%, transparent 70%);
+}
+.milestone-year {
+  font-family:'Cinzel',serif;
+  font-size:2rem; font-weight:900;
+  color: var(--gold2);
+  text-shadow: 0 0 20px rgba(201,146,42,0.7);
+  letter-spacing:3px;
+}
+.milestone-title {
+  font-family:'Cinzel',serif;
+  font-size:0.95rem; color: var(--parch);
+  letter-spacing:2px; text-transform:uppercase;
+  margin-top:4px;
+}
+.storm-warning {
+  margin-top:8px;
+  padding: 6px 12px;
+  background: rgba(139,26,26,0.4);
+  border: 1px solid var(--red);
+  border-radius:3px;
+  color: #ffaaaa;
+  font-size:0.8rem;
+}
+
+/* ═══════════ GAME CARD ═══════════ */
+.game-card {
+  background: var(--parch);
+  border: 3px solid var(--parch3);
+  border-radius: 6px;
+  padding: 18px 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 0 40px rgba(212,184,112,0.1);
+  position:relative;
+}
+.game-card::before {
+  content:'';
+  position:absolute; inset:5px;
+  border: 1px solid rgba(212,184,112,0.4);
+  border-radius:3px;
+  pointer-events:none;
+}
+
+/* Stats Row */
+.stats-row {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:10px; gap:8px; flex-wrap:wrap;
+}
+.stat-badge {
+  font-family:'Cinzel',serif;
+  font-size:0.75rem;
+  background: var(--ocean2);
+  color: var(--parch2);
+  padding:4px 10px; border-radius:20px;
+  border:1px solid var(--ocean3);
+}
+.purity-badge {
+  font-family:'Cinzel',serif;
+  font-size:0.75rem;
+  padding:4px 10px; border-radius:20px;
+  border:1px solid;
+  transition: all 0.5s;
+}
+.hp-group { display:flex; align-items:center; gap:6px; }
+.hp-label { font-family:'Cinzel',serif; font-size:0.65rem; color:var(--ink2); white-space:nowrap; }
+.hp-track {
+  width:90px; height:10px;
+  background: rgba(0,0,0,0.1);
+  border-radius:5px; overflow:hidden;
+  border:1px solid rgba(0,0,0,0.15);
+}
+.hp-fill {
+  height:100%;
+  background: linear-gradient(90deg, var(--red), var(--red2));
+  border-radius:5px;
+  transition: width 0.8s ease;
+}
+.hp-num { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--red); font-weight:700; }
+
+/* Purity Track */
+.purity-row {
+  display:flex; align-items:center; gap:6px;
+  margin-bottom:10px; padding:8px 10px;
+  background: rgba(45,110,62,0.08);
+  border:1px solid rgba(45,110,62,0.3);
+  border-radius:4px;
+}
+.purity-label { font-family:'Cinzel',serif; font-size:0.65rem; color:var(--green); white-space:nowrap; }
+.purity-track {
+  flex:1; height:8px;
+  background: rgba(0,0,0,0.1);
+  border-radius:4px; overflow:hidden;
+  border:1px solid rgba(0,0,0,0.1);
+}
+.purity-fill {
+  height:100%;
+  background: linear-gradient(90deg, #2d6e3e, #4a9e5e);
+  border-radius:4px;
+  transition: width 0.8s ease;
+}
+.purity-num { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--green); font-weight:700; white-space:nowrap; }
+
+/* Obstacle Banner */
+.obstacle-banner {
+  background: linear-gradient(90deg, rgba(139,26,26,0.1), rgba(139,26,26,0.05));
+  border-left: 3px solid var(--red);
+  border-radius: 0 4px 4px 0;
+  padding: 8px 12px;
+  margin-bottom:12px;
+  font-size:0.8rem; color:var(--ink2);
+  display:flex; align-items:center; gap:6px;
+}
+.obs-icon { font-size:1rem; }
+.obs-text strong { color:var(--red); }
+
+/* Question */
+.q-label {
+  display:block;
+  font-family:'Cinzel',serif;
+  font-size:0.65rem; letter-spacing:2px;
+  color:var(--ink3); text-transform:uppercase;
+  margin-bottom:6px;
+}
+.q-text {
+  font-size:1rem; line-height:1.5;
+  color:var(--ink);
+  margin-bottom:14px;
+  font-style:italic;
+}
+
+/* Corrupt question style */
+.q-text.corrupt-q {
+  background: rgba(139,26,26,0.05);
+  border-left: 3px solid var(--red);
+  padding: 10px 12px;
+  border-radius: 0 4px 4px 0;
+  font-style:normal;
+}
+
+/* Random player highlight */
+.random-player-box {
+  display:none;
+  background: linear-gradient(135deg, rgba(201,146,42,0.15), rgba(201,146,42,0.05));
+  border: 1px solid var(--gold);
+  border-radius:4px;
+  padding:8px 12px;
+  margin-bottom:10px;
+  text-align:center;
+  font-size:0.85rem; color:var(--ink2);
+}
+.random-player-box.visible { display:block; }
+.random-player-name {
+  font-family:'Cinzel',serif;
+  font-weight:700; color:var(--gold);
+  font-size:1rem;
+}
+
+/* Timer */
+.timer-ring-wrapper { position:relative; display:flex; justify-content:center; margin:10px 0; }
+.timer-ring { position:relative; width:52px; height:52px; }
+.timer-ring svg .bg { fill:none; stroke:rgba(0,0,0,0.1); stroke-width:4; }
+.timer-ring svg .fg {
+  fill:none; stroke:var(--red); stroke-width:4;
+  stroke-linecap:round;
+  transform:rotate(-90deg); transform-origin:50% 50%;
+  stroke-dasharray:132; stroke-dashoffset:0;
+  transition:stroke-dashoffset 1s linear, stroke 0.5s;
+}
+.timer-num {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cinzel',serif; font-size:1rem; font-weight:700;
+  color:var(--ink);
+}
+
+/* Live votes */
+.live-votes {
+  text-align:center; font-size:0.8rem; color:var(--ink2);
+  padding:6px 12px;
+  background:rgba(0,0,0,0.04);
+  border-radius:20px;
+  margin:8px auto;
+  display:none; width:fit-content;
+}
+.live-votes.visible { display:block; }
+
+/* Options Grid */
+.options-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:8px; margin-bottom:12px;
+}
+.opt-btn {
+  background: rgba(244,232,193,0.6);
+  border: 1.5px solid var(--parch3);
+  border-radius: 4px;
+  padding: 10px 12px;
+  text-align:left;
+  font-family:'IM Fell English',serif;
+  font-size:0.85rem; color:var(--ink);
+  cursor:pointer;
+  transition:all 0.2s;
+  display:flex; align-items:flex-start; gap:8px;
+  line-height:1.4;
+}
+.opt-btn:hover:not(:disabled) {
+  background: rgba(244,232,193,0.9);
+  border-color:var(--gold);
+  transform:translateY(-1px);
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+.opt-btn.selected {
+  background: rgba(26,58,92,0.1);
+  border-color: var(--ocean3);
+  box-shadow: 0 0 0 2px rgba(26,58,92,0.2);
+}
+.opt-btn.correct {
+  background: rgba(45,110,62,0.15) !important;
+  border-color: var(--green2) !important;
+  color: var(--green) !important;
+}
+.opt-btn.wrong {
+  background: rgba(139,26,26,0.1) !important;
+  border-color: var(--red) !important;
+  color: var(--red) !important;
+}
+.opt-btn:disabled { cursor:default; }
+.opt-letter {
+  font-family:'Cinzel',serif; font-weight:700;
+  font-size:0.75rem; color:var(--gold);
+  min-width:16px;
+  margin-top:1px;
+}
+
+/* Effect labels on corrupt questions */
+.opt-effect {
+  display:block;
+  font-size:0.7rem; margin-top:4px; opacity:0.7;
+  font-style:italic;
+}
+
+/* Results */
+.results-section {
+  display:none; margin-bottom:12px;
+}
+.results-section.visible { display:block; }
+.result-bar-wrap { margin-bottom:8px; }
+.result-label-row {
+  display:flex; justify-content:space-between;
+  font-size:0.75rem; color:var(--ink2); margin-bottom:3px;
+}
+.result-track {
+  height:12px; background:rgba(0,0,0,0.08);
+  border-radius:6px; overflow:hidden;
+}
+.result-fill-bar {
+  height:100%;
+  background: var(--ocean3);
+  border-radius:6px;
+  transition:width 0.8s ease;
+}
+.result-fill-bar.correct-bar { background: var(--green); }
+
+/* Explanation */
+.explanation-box {
+  display:none;
+  background: rgba(44,24,16,0.05);
+  border-left:3px solid var(--gold);
+  padding:10px 12px;
+  border-radius:0 4px 4px 0;
+  font-size:0.8rem; color:var(--ink2);
+  margin-bottom:12px;
+  line-height:1.5;
+}
+.explanation-box.visible { display:block; }
+
+/* Next btn */
+.next-btn {
+  display:none;
+  width:100%;
+  padding:12px 20px;
+  background: var(--red);
+  color: var(--parch);
+  border: 2px solid #5a0a0a;
+  border-radius:4px;
+  font-family:'Cinzel',serif;
+  font-size:0.95rem; font-weight:700;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:all 0.2s;
+  text-transform:uppercase;
+}
+.next-btn.visible { display:block; }
+.next-btn:hover { background:var(--red2); transform:translateY(-1px); }
+.next-btn.waiting-btn {
+  background: rgba(44,24,16,0.1);
+  border-color: var(--parch3);
+  color: var(--ink2);
+  cursor: default;
+}
+.next-btn.waiting-btn:hover { transform:none; }
+
+/* Score flash */
+.score-flash {
+  position:fixed; top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  font-size:2rem; font-family:'Cinzel',serif;
+  color:var(--parch);
+  text-shadow:0 2px 12px rgba(0,0,0,0.5);
+  z-index:200; pointer-events:none;
+  transition:none;
+  font-weight:900;
+}
+.score-flash.pop {
+  animation:popAnim 0.9s ease forwards;
+}
+@keyframes popAnim {
+  0%{transform:translate(-50%,-50%) scale(0);opacity:0}
+  30%{transform:translate(-50%,-50%) scale(1.3);opacity:1}
+  70%{transform:translate(-50%,-60%) scale(1);opacity:1}
+  100%{transform:translate(-50%,-70%) scale(0.8);opacity:0}
+}
+
+/* ═══════════ STORM OVERLAY ═══════════ */
+.storm-overlay {
+  position:fixed; inset:0; z-index:500;
+  background:rgba(0,0,0,0.85);
+  display:flex; align-items:center; justify-content:center;
+  display:none;
+}
+.storm-overlay.active { display:flex; }
+.storm-card {
+  background: linear-gradient(135deg, #1a0a0a, #2d1010);
+  border: 2px solid var(--red);
+  border-radius:8px;
+  padding:32px; text-align:center;
+  max-width:380px; width:90%;
+  box-shadow: 0 0 40px rgba(139,26,26,0.5);
+}
+.storm-card h2 {
+  font-family:'Cinzel',serif;
+  font-size:2rem; color:var(--red2);
+  text-shadow:0 0 20px rgba(204,34,34,0.7);
+  margin-bottom:10px;
+}
+.storm-card p { color:#ffcccc; font-size:0.95rem; line-height:1.5; margin-bottom:20px; }
+.storm-damage {
+  font-family:'Cinzel',serif;
+  font-size:1.3rem; color:var(--red2);
+  font-weight:700;
+  background:rgba(139,26,26,0.2);
+  border:1px solid var(--red);
+  border-radius:4px;
+  padding:8px 16px;
+  display:inline-block;
+  margin-bottom:16px;
+}
+.storm-continue {
+  background:var(--red); color:var(--parch);
+  border:2px solid #5a0a0a; border-radius:4px;
+  padding:10px 24px;
+  font-family:'Cinzel',serif; font-weight:700;
+  cursor:pointer; font-size:0.9rem;
+  letter-spacing:1px;
+}
+
+/* ═══════════ ENDING SCREEN ═══════════ */
+.ending-screen {
+  background: var(--parch);
+  border: 3px solid var(--parch3);
+  border-radius: 6px;
+  padding: 24px 20px;
+  text-align:center;
+  position:relative;
+}
+.ending-screen::before {
+  content:'';
+  position:absolute; inset:6px;
+  border:1px solid rgba(212,184,112,0.4);
+  border-radius:3px;
+  pointer-events:none;
+}
+.ending-icon { font-size:4rem; margin-bottom:16px; display:block; }
+.ending-title {
+  font-family:'Cinzel',serif;
+  font-size:1.6rem; font-weight:900;
+  color:var(--ink); letter-spacing:2px;
+  margin-bottom:10px; text-transform:uppercase;
+}
+.ending-subtitle { color:var(--ink2); font-style:italic; margin-bottom:20px; font-size:0.9rem; }
+.ending-stats-grid {
+  display:grid; grid-template-columns:1fr 1fr 1fr;
+  gap:10px; margin-bottom:20px;
+}
+.ending-stat {
+  background:rgba(44,24,16,0.06);
+  border:1px solid var(--parch3);
+  border-radius:4px; padding:10px 8px;
+}
+.ending-stat-label { font-size:0.65rem; color:var(--ink2); font-family:'Cinzel',serif; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+.ending-stat-value { font-family:'Cinzel',serif; font-size:1.1rem; font-weight:700; color:var(--ink); }
+.ending-stat-sub { font-size:0.65rem; color:var(--ink3); margin-top:2px; }
+.ending-details {
+  text-align:left;
+  background:rgba(44,24,16,0.04);
+  border:1px solid var(--parch3);
+  border-radius:4px; padding:12px;
+  margin-bottom:16px; font-size:0.8rem; color:var(--ink2);
+  line-height:1.8;
+}
+.ending-details h3 {
+  font-family:'Cinzel',serif; font-size:0.75rem;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--ink3); margin-bottom:8px;
+}
+.ending-quote {
+  font-style:italic; color:var(--ink);
+  border-top:1px solid var(--parch3);
+  padding-top:14px; margin-bottom:16px;
+  line-height:1.6;
+}
+.ending-quote .author {
+  font-family:'Cinzel',serif; font-size:0.75rem;
+  color:var(--gold); margin-top:6px;
+  text-transform:uppercase; letter-spacing:2px;
+}
+.ending-btns { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.ending-btn {
+  font-family:'Cinzel',serif; font-weight:700;
+  padding:10px 20px;
+  background:var(--red); color:var(--parch);
+  border:2px solid #5a0a0a; border-radius:3px;
+  cursor:pointer; font-size:0.85rem; letter-spacing:1px;
+  transition:all 0.2s;
+}
+.ending-btn:hover { background:var(--red2); }
+.ending-btn.secondary {
+  background:var(--ocean); border-color:var(--ocean2);
+}
+.ending-btn.secondary:hover { background:var(--ocean3); }
+
+/* ═══════════ HOST CONTROL ═══════════ */
+#hostEndVoteBtn {
+  font-family:'Cinzel',serif; font-weight:700;
+  padding:8px 16px; font-size:0.8rem;
+  letter-spacing:1px; border-radius:3px;
+  border:1px solid #5a0a0a; cursor:pointer;
+  margin-bottom:10px;
+  width:100%; display:none;
+  background:var(--red); color:var(--parch);
+}
+
+/* Player count badge */
+#playerCountBadge { display:none; }
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media(max-width:480px){
+  .options-grid { grid-template-columns:1fr; }
+  .ending-stats-grid { grid-template-columns:1fr 1fr; }
+  .map-section { height:180px; }
+  .milestone-year { font-size:1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="score-flash" id="scoreFlash">⚓</div>
+<div class="storm-overlay" id="stormOverlay">
+  <div class="storm-card">
+    <h2 id="stormTitle">🌊 BÃO TỐ!</h2>
+    <p id="stormDesc">Cơn bão ập đến!</p>
+    <div class="storm-damage" id="stormDamage">-20 HP</div>
+    <br>
+    <button class="storm-continue" onclick="dismissStorm()">⚓ Tiếp tục</button>
+  </div>
+</div>
+
+<!-- Start overlay -->
+<div class="start-overlay" id="startOverlay">
+  <div class="start-card">
+    <span class="ship-icon">🚢</span>
+    <h2>Con Thuyền Chung</h2>
+    <p>Hành trình từ 1930 đến 2026 — Cùng nhau điều hướng qua 20 mốc lịch sử!</p>
+    
+    <div class="name-input-group" style="margin-bottom: 20px;">
+      <input type="text" id="playerNameInput" placeholder="Nhập tên thuyền viên của bạn..." maxlength="20" style="width: 100%; padding: 12px; border: 2px solid var(--parch3); border-radius: 4px; background: rgba(255,255,255,0.7); font-family: 'MedievalSharp', cursive; font-size: 1.1rem; text-align: center; color: var(--ink);">
+    </div>
+
+    <div class="room-options">
+      <button class="room-btn" onclick="showRoomCreation()">🏠 Tạo Phòng Mới</button>
+      <button class="room-btn secondary" onclick="showRoomJoin()">🔗 Tham Gia Phòng</button>
+      <button class="room-btn secondary" onclick="startSinglePlayer()" style="background:rgba(45,110,62,0.8);border-color:#1a5e2e">🎮 Chơi Một Mình</button>
+    </div>
+    <div id="createRoomForm" class="room-form hidden">
+      <h3>Tạo Phòng Mới</h3>
+      <button class="start-btn" onclick="createRoom()">🎯 Tạo Phòng & Bắt Đầu</button>
+      <button class="back-btn" onclick="showMainMenu()">← Quay lại</button>
+    </div>
+    <div id="joinRoomForm" class="room-form hidden">
+      <h3>Tham Gia Phòng</h3>
+      <input type="text" id="roomCodeInput" placeholder="Nhập mã phòng" maxlength="6">
+      <button class="start-btn" onclick="joinRoom()">🚀 Tham Gia Ngay</button>
+      <button class="back-btn" onclick="showMainMenu()">← Quay lại</button>
+    </div>
+    <div id="roomInfo" class="room-info hidden">
+      <h3>Đang chờ trong phòng</h3>
+      <div class="room-code">Mã phòng: <span id="roomCodeDisplay">ABCDEF</span></div>
+      <div class="player-count">👥 Số lượng: <span id="playerCount">1</span></div>
+      <div id="playerList" style="margin: 15px 0; text-align: left; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 4px; max-height: 150px; overflow-y: auto;">
+        <div style="font-weight: bold; border-bottom: 1px solid var(--parch3); margin-bottom: 5px; font-size: 0.9rem;">Danh sách thuyền viên:</div>
+        <div id="playerListContent" style="font-size: 0.9rem;"></div>
+      </div>
+      <button class="start-btn" onclick="startMultiplayerGame()">⚓ Bắt Đầu Chơi</button>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
+        <button class="copy-btn" onclick="copyRoomCode()">📋 Sao chép mã</button>
+        <button class="copy-btn" style="background:rgba(139,26,26,0.2);border-color:var(--red)" onclick="leaveRoom()">🚪 Rời phòng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="game-wrapper">
+  <div class="header">
+    <h1>⚓ Con Thuyền Chung</h1>
+    <p>Hành trình 1930 – 2026 • Cùng nhau vượt sóng gió</p>
+  </div>
+
+  <!-- Treasure Map -->
+  <div class="map-section" id="mapSection">
+    <div class="map-parchment-overlay"></div>
+    <div class="moon"></div>
+    <div class="compass">🧭</div>
+    <div id="starsContainer"></div>
+    <div class="wave-layer">
+      <svg viewBox="0 0 900 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 20 C100 5, 200 35, 300 20 S500 5, 600 20 S800 35, 900 20 L900 40 L0 40Z" fill="rgba(255,255,255,0.06)"/>
+      </svg>
+    </div>
+    <div class="path-track" id="pathTrack"></div>
+    <div class="wake" id="wake"></div>
+    <div class="ship-container" id="shipContainer">
+      <svg width="52" height="52" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hullGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#8B4513"/>
+            <stop offset="100%" stop-color="#5C2E00"/>
+          </linearGradient>
+          <linearGradient id="sailGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f5e8c0"/>
+            <stop offset="100%" stop-color="#d4b870"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="28" cy="46" rx="18" ry="3" fill="rgba(0,0,0,0.3)"/>
+        <path d="M10 36 Q14 44 28 46 Q42 44 46 36 L42 34 L14 34Z" fill="url(#hullGrad)" stroke="#3a1500" stroke-width="0.5"/>
+        <path d="M13 37 Q28 42 43 37" fill="none" stroke="#c9922a" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="14" y="31" width="28" height="5" rx="1" fill="#7a3a0a" stroke="#3a1500" stroke-width="0.5"/>
+        <rect x="27" y="10" width="2" height="22" rx="1" fill="#5C2E00" stroke="#3a1500" stroke-width="0.3"/>
+        <path d="M29 11 L29 28 L44 24 Q42 18, 38 14Z" fill="url(#sailGrad)" stroke="#c9922a" stroke-width="0.5"/>
+        <path d="M27 14 L27 27 L14 24 Q15 20, 19 16Z" fill="url(#sailGrad)" stroke="#c9922a" stroke-width="0.5" opacity="0.9"/>
+        <path d="M28 10 L36 7 L33 12Z" fill="#8b1a1a" stroke="#5a0a0a" stroke-width="0.3"/>
+        <circle cx="22" cy="36" r="2" fill="#c9922a" stroke="#a07020" stroke-width="0.5"/>
+        <circle cx="34" cy="36" r="2" fill="#c9922a" stroke="#a07020" stroke-width="0.5"/>
+      </svg>
+    </div>
+    <div class="island island-start" style="position:absolute;bottom:12px;left:8px;display:flex;flex-direction:column;align-items:center;z-index:4">
+      <div style="font-size:1.2rem">🌴</div>
+      <div style="width:40px;height:16px;background:radial-gradient(ellipse,#8b6914,#5a4010);border-radius:50%;border:1px solid #a07828;position:relative">
+        <span style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:0.8em">🔥</span>
+      </div>
+    </div>
+    <div class="island island-end" style="position:absolute;bottom:12px;right:8px;display:flex;flex-direction:column;align-items:center;z-index:4">
+      <div style="font-size:1rem">🏴‍☠️</div>
+      <div style="font-size:1.2rem">🌴</div>
+      <div style="width:44px;height:16px;background:radial-gradient(ellipse,#8b6914,#5a4010);border-radius:50%;border:1px solid #a07828;position:relative">
+        <span style="position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);font-size:0.75em">💎</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Milestone Banner -->
+  <div class="milestone-banner" id="milestoneBanner">
+    <div class="milestone-year" id="milestoneYear">1930</div>
+    <div class="milestone-title" id="milestoneTitle">Thành lập Đảng</div>
+    <div class="storm-warning" id="stormWarningText"></div>
+  </div>
+
+  <!-- Game Card -->
+  <div class="game-card" id="gameCard">
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+        <div class="stat-badge">⚓ Mốc <span id="roundNum">1</span>/20</div>
+        <div class="stat-badge" id="playerCountBadge">👥 <span id="gamePlayerCount">0</span></div>
+      </div>
+      <div class="hp-group">
+        <span class="hp-label">❤️ NIỀM TIN</span>
+        <div class="hp-track"><div class="hp-fill" id="hpFill" style="width:100%"></div></div>
+        <span class="hp-num" id="hpNum">100</span>
+      </div>
+    </div>
+
+    <!-- Purity Row -->
+    <div class="purity-row">
+      <span class="purity-label">🧼 ĐỘ TRONG SẠCH</span>
+      <div class="purity-track"><div class="purity-fill" id="purityFill" style="width:100%"></div></div>
+      <span class="purity-num" id="purityNum">100%</span>
+    </div>
+
+    <!-- Obstacle Banner -->
+    <div class="obstacle-banner" id="obstacleBanner">
+      <span class="obs-icon">⚠️</span>
+      <span class="obs-text">Phía trước: <strong id="obstacleText">Đang tải...</strong></span>
+    </div>
+
+    <!-- Corrupt player highlight -->
+    <div class="random-player-box" id="randomPlayerBox">
+       <span class="random-player-name" id="randomPlayerName"></span>
+    </div>
+
+    <!-- Question -->
+    <span class="q-label" id="qLabel">📜 Câu hỏi hàng hải</span>
+    <div class="q-text" id="qText">Đang tải câu hỏi...</div>
+
+    <!-- Timer -->
+    <div class="timer-ring-wrapper">
+      <div class="timer-ring">
+        <svg width="52" height="52" viewBox="0 0 52 52">
+          <circle class="bg" cx="26" cy="26" r="21"/>
+          <circle class="fg" id="timerCircle" cx="26" cy="26" r="21"/>
+        </svg>
+        <div class="timer-num" id="timerNum">20</div>
+      </div>
+    </div>
+
+    <div class="live-votes" id="liveVotes">🗳️ Đang chờ phiếu bầu...</div>
+
+    <button id="hostEndVoteBtn" onclick="showResults()">⏹️ Kết thúc bình chọn</button>
+
+    <div class="options-grid" id="optionsGrid"></div>
+    <div class="results-section" id="resultsSection"></div>
+    <div class="explanation-box" id="explanationBox"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Câu tiếp theo ⚓</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// GAME DATA
+// ═══════════════════════════════════════════════
+
+// Corrupt questions (shuffled into theory questions)
+const CORRUPT_QUESTIONS = [
+  {
+    q: "💰 Nhà thầu X đề nghị 'hoa hồng' 500 triệu để thắng thầu dự án quốc gia.",
+    type: "corrupt",
+    obstacle: "💰 Cám dỗ hối lộ",
+    opts: [
+      { text: "Nhận tiền, thông thầu", effect: { hp:-20, purity:-5, money:500 } },
+      { text: "Từ chối, báo cáo cấp trên", effect: { hp:+15, purity:+2, money:0 } },
+      { text: "Nhận một nửa, làm lòng vòng", effect: { hp:-10, purity:-3, money:250 } }
+    ],
+    correct: 1,
+    explain: "Từ chối và báo cáo là hành động đúng đắn, giữ vững đạo đức cách mạng."
+  },
+  {
+    q: "👨‍👧‍👦 Có cơ hội bổ nhiệm người thân vào vị trí quan trọng trong bộ máy nhà nước.",
+    type: "corrupt",
+    obstacle: "👨‍👧‍👦 Bổ nhiệm người thân",
+    opts: [
+      { text: "Bổ nhiệm dù không đủ năng lực", effect: { hp:-25, purity:-8, money:100 } },
+      { text: "Chọn người xứng đáng nhất", effect: { hp:+20, purity:+5, money:0 } },
+      { text: "Bổ nhiệm nhưng giám sát chặt", effect: { hp:-5, purity:-2, money:50 } }
+    ],
+    correct: 1,
+    explain: "Đúng người đúng việc — không để tình cảm cá nhân ảnh hưởng đến công việc chung."
+  },
+  {
+    q: "🏗️ Phát hiện nhà thầu dùng vật liệu kém chất lượng. Họ đề nghị chia tiền để im lặng.",
+    type: "corrupt",
+    obstacle: "🏗️ Cắt xén công trình",
+    opts: [
+      { text: "Nhận tiền, làm ngơ", effect: { hp:-30, purity:-10, money:300 } },
+      { text: "Tố cáo, yêu cầu làm lại", effect: { hp:+25, purity:+8, money:0 } },
+      { text: "Yêu cầu sửa nhưng vẫn nhận tiền", effect: { hp:-15, purity:-5, money:150 } }
+    ],
+    correct: 1,
+    explain: "Công trình kém chất lượng gây hại cho nhân dân — phải tố cáo và yêu cầu làm lại."
+  },
+  {
+    q: "📊 Phát hiện sơ hở trong hệ thống kế toán — có thể rút tiền công quỹ mà khó bị phát hiện.",
+    type: "corrupt",
+    obstacle: "📊 Biển thủ công quỹ",
+    opts: [
+      { text: "Lợi dụng, rút 1 tỷ", effect: { hp:-40, purity:-15, money:1000 } },
+      { text: "Báo cáo, đề xuất sửa lỗ hổng", effect: { hp:+30, purity:+10, money:0 } },
+      { text: "Làm ngơ, không báo", effect: { hp:-15, purity:-5, money:0 } }
+    ],
+    correct: 1,
+    explain: "Bảo vệ tài sản công là trách nhiệm của mỗi cán bộ — phải báo cáo kịp thời."
+  },
+  {
+    q: "🏢 Biết trước quy hoạch đất đai, có cơ hội mua đất giá rẻ rồi bán lại sau khi công bố.",
+    type: "corrupt",
+    obstacle: "🏢 Đất vàng - Thâu tóm",
+    opts: [
+      { text: "Đầu tư, kiếm lời nhanh", effect: { hp:-35, purity:-12, money:800 } },
+      { text: "Báo cáo, không tham gia", effect: { hp:+25, purity:+8, money:0 } },
+      { text: "Mua ít, không ai biết", effect: { hp:-15, purity:-5, money:300 } }
+    ],
+    correct: 1,
+    explain: "Lợi dụng thông tin nội bộ để trục lợi là tham nhũng — phải từ chối và báo cáo."
+  },
+  {
+    q: "🎓 Bạn thân nhờ dùng quan hệ xin việc cho con vào cơ quan nhà nước, bỏ qua thi tuyển.",
+    type: "corrupt",
+    obstacle: "🎓 Xin việc, vượt quy trình",
+    opts: [
+      { text: "Dùng quan hệ, bỏ qua thi tuyển", effect: { hp:-20, purity:-6, money:100 } },
+      { text: "Hướng dẫn thi tuyển công bằng", effect: { hp:+15, purity:+3, money:0 } },
+      { text: "Nhận tiền rồi lo", effect: { hp:-25, purity:-8, money:200 } }
+    ],
+    correct: 1,
+    explain: "Mọi người đều phải đi qua thi tuyển công bằng — không ai được dùng quan hệ để ngoại lệ."
+  },
+  {
+    q: "📰 Công ty tư nhân đề nghị 'tài trợ' để đăng bài quảng bá hình ảnh cá nhân lên báo đài.",
+    type: "corrupt",
+    obstacle: "📰 PR cá nhân bằng tiền",
+    opts: [
+      { text: "Nhận tiền, PR hình ảnh", effect: { hp:-15, purity:-4, money:150 } },
+      { text: "Từ chối vì xung đột lợi ích", effect: { hp:+10, purity:+2, money:0 } },
+      { text: "Nhận nhưng giấu, trả dần", effect: { hp:-10, purity:-3, money:150 } }
+    ],
+    correct: 1,
+    explain: "Cán bộ không được nhận bất kỳ lợi ích nào từ tổ chức có quyền lợi liên quan đến công việc."
+  },
+  {
+    q: "🚢 Đầu nậu đề nghị 'bôi trơn' 500 triệu để thông quan hàng lậu qua cảng kiểm soát.",
+    type: "corrupt",
+    obstacle: "🚢 Hải quan - Nhập lậu",
+    opts: [
+      { text: "Nhận tiền, làm ngơ", effect: { hp:-45, purity:-18, money:500 } },
+      { text: "Bắt giữ, báo cấp trên", effect: { hp:+35, purity:+12, money:0 } },
+      { text: "Cảnh cáo rồi thả", effect: { hp:-20, purity:-7, money:100 } }
+    ],
+    correct: 1,
+    explain: "Hàng lậu gây hại cho nền kinh tế và an toàn xã hội — phải kiên quyết ngăn chặn."
+  },
+  {
+    q: "🎫 Doanh nghiệp 'mượn' danh nghĩa tổ chức sự kiện văn hóa để rửa tiền.",
+    type: "corrupt",
+    obstacle: "🎫 Rửa tiền qua sự kiện",
+    opts: [
+      { text: "Tham gia, nhận % hoa hồng", effect: { hp:-20, purity:-7, money:200 } },
+      { text: "Từ chối, báo công an", effect: { hp:+20, purity:+5, money:0 } },
+      { text: "Làm ngơ vì sợ ảnh hưởng", effect: { hp:-10, purity:-3, money:0 } }
+    ],
+    correct: 1,
+    explain: "Rửa tiền là tội phạm nghiêm trọng — phải từ chối và tố giác ngay lập tức."
+  },
+  {
+    q: "🌏 Công ty nước ngoài đề nghị mua bí mật thương mại và thông tin quy hoạch quốc gia.",
+    type: "corrupt",
+    obstacle: "🌏 Gián điệp kinh tế",
+    opts: [
+      { text: "Bán thông tin, nhận 1 tỷ", effect: { hp:-60, purity:-25, money:1000 } },
+      { text: "Từ chối, bảo vệ bí mật quốc gia", effect: { hp:+40, purity:+15, money:0 } },
+      { text: "Báo an ninh, phối hợp bắt gián điệp", effect: { hp:+50, purity:+20, money:0 } }
+    ],
+    correct: 2,
+    explain: "Bảo vệ bí mật quốc gia là nhiệm vụ thiêng liêng — phải báo cơ quan an ninh ngay."
+  }
+];
+
+// Theory questions (from script.js)
+const THEORY_QUESTIONS = [
+  {
+    q: "Con thuyền muốn đi đúng hướng lâu dài cần dựa vào điều gì?",
+    opts: [{text:"Quyền lực áp đặt"},{text:"Nhân dân"},{text:"Một cá nhân giỏi"},{text:"May mắn"}],
+    correct: 1, explain: "Đảng gắn bó với nhân dân — đó là sức mạnh trường tồn.", obstacle: "🌊 Sóng to gió lớn"
+  },
+  {
+    q: "Khi thuyền chưa vững, điều quan trọng nhất là gì?",
+    opts: [{text:"Người lái phải vững"},{text:"Tốc độ nhanh"},{text:"Ít người biết"},{text:"Tránh tranh luận"}],
+    correct: 0, explain: "Ẩn dụ 'người cầm lái' — người lãnh đạo phải kiên định và vững vàng.", obstacle: "🌪️ Lốc xoáy đầu mùa"
+  },
+  {
+    q: "Con thuyền được hình thành từ yếu tố nào là đúng nhất?",
+    opts: [{text:"Một cá nhân lãnh đạo"},{text:"Sức mạnh quân sự"},{text:"Kết hợp lý luận + phong trào"},{text:"Tiền bạc"}],
+    correct: 2, explain: "Mác–Lênin + phong trào công nhân + phong trào yêu nước.", obstacle: "⚓ Khởi đầu nan"
+  },
+  {
+    q: "Khi nói 'Đảng là đạo đức', điều gì là cốt lõi?",
+    opts: [{text:"Quyền lực"},{text:"Lợi ích riêng"},{text:"Phục vụ nhân dân"},{text:"Thành tích"}],
+    correct: 2, explain: "Phục vụ nhân dân là cốt lõi của đạo đức cách mạng.", obstacle: "📜 Đạo đức biển khơi"
+  },
+  {
+    q: "Nếu thuyền viên bị cám dỗ bởi giàu sang thì cần?",
+    opts: [{text:"Chấp nhận"},{text:"Thỏa hiệp"},{text:"Giữ vững bản lĩnh"},{text:"Bỏ qua"}],
+    correct: 2, explain: "'Giàu sang không thể quyến rũ, nghèo khó không thể chuyển lay'.", obstacle: "💎 Đảo kim cương"
+  },
+  {
+    q: "Khi tổ chức muốn hoạt động đúng hướng, cần tuân theo?",
+    opts: [{text:"Ý kiến cá nhân"},{text:"Ngẫu nhiên"},{text:"Chủ nghĩa Mác – Lênin"},{text:"Số đông nhất thời"}],
+    correct: 2, explain: "Kim chỉ nam là chủ nghĩa Mác – Lênin và tư tưởng Hồ Chí Minh.", obstacle: "🧭 La bàn lý luận"
+  },
+  {
+    q: "Khi có nhiều ý kiến khác nhau, cách đúng là?",
+    opts: [{text:"Theo người mạnh nhất"},{text:"Không cần bàn"},{text:"Thảo luận rồi thống nhất"},{text:"Mỗi người làm một kiểu"}],
+    correct: 2, explain: "Tập trung dân chủ — thảo luận dân chủ, hành động thống nhất.", obstacle: "🗣️ Bão táp tranh luận"
+  },
+  {
+    q: "Khi thuyền trưởng muốn quyết định một mình, nên?",
+    opts: [{text:"Đồng ý ngay"},{text:"Phản đối hoàn toàn"},{text:"Lãnh đạo tập thể"},{text:"Bỏ mặc"}],
+    correct: 2, explain: "Lãnh đạo tập thể, cá nhân phụ trách — nguyên tắc tối cao của Đảng.", obstacle: "🧊 Tảng băng độc tài"
+  },
+  {
+    q: "Khi có sai lầm trong nội bộ, cần làm gì?",
+    opts: [{text:"Che giấu"},{text:"Đổ lỗi"},{text:"Tự phê bình và sửa"},{text:"Im lặng"}],
+    correct: 2, explain: "Tự phê bình và sửa chữa sai lầm là vũ khí sắc bén của Đảng.", obstacle: "🕳️ Thuyền bị rò rỉ"
+  },
+  {
+    q: "Kỷ luật trên thuyền cần như thế nào?",
+    opts: [{text:"Lỏng lẻo"},{text:"Chỉ phạt người yếu"},{text:"Nghiêm minh và tự giác"},{text:"Không cần"}],
+    correct: 2, explain: "Kỷ luật nghiêm minh và tự giác là nền tảng sức mạnh tổ chức.", obstacle: "⚔️ Thủy thủ nổi loạn"
+  },
+  {
+    q: "Mối quan hệ đúng giữa thuyền và người dân là?",
+    opts: [{text:"Cai trị"},{text:"Tách biệt"},{text:"Phục vụ"},{text:"Tránh tiếp xúc"}],
+    correct: 2, explain: "Đảng là 'đầy tớ của nhân dân' — phải phục vụ, không phải cai trị.", obstacle: "🚧 Bãi cạn quan liêu"
+  },
+  {
+    q: "Nếu thuyền không mang lại lợi ích cho dân thì?",
+    opts: [{text:"Không sao"},{text:"Vẫn chấp nhận"},{text:"Mất ý nghĩa"},{text:"Tăng tuyên truyền"}],
+    correct: 2, explain: "Mất lòng dân là mất tất cả — con thuyền mất ý nghĩa tồn tại.", obstacle: "🌊 Biển cạn lòng tin"
+  },
+  {
+    q: "Sức mạnh lớn nhất của thuyền đến từ?",
+    opts: [{text:"Vũ lực"},{text:"Tiền"},{text:"Lòng tin của dân"},{text:"Số lượng người"}],
+    correct: 2, explain: "Lòng tin của nhân dân là sức mạnh vô địch.", obstacle: "💨 Gió ngược chiều"
+  },
+  {
+    q: "Một thuyền viên muốn đặc quyền riêng, đó là biểu hiện của?",
+    opts: [{text:"Đoàn kết"},{text:"Chủ nghĩa cá nhân"},{text:"Kỷ luật"},{text:"Văn minh"}],
+    correct: 1, explain: "Chủ nghĩa cá nhân là kẻ thù số một của tinh thần tập thể.", obstacle: "🐙 Bạch tuộc ích kỷ"
+  },
+  {
+    q: "'Giặc nội xâm' trên thuyền là gì?",
+    opts: [{text:"Sóng biển"},{text:"Kẻ thù bên ngoài"},{text:"Tham ô, lãng phí, quan liêu"},{text:"Thời tiết"}],
+    correct: 2, explain: "Bác Hồ dạy: tham ô, lãng phí, quan liêu là giặc nội xâm nguy hiểm nhất.", obstacle: "🐀 Chuột gặm mạn thuyền"
+  },
+  {
+    q: "Để thuyền mạnh, cần làm gì với nội bộ?",
+    opts: [{text:"Giữ nguyên"},{text:"Tự chỉnh đốn"},{text:"Bỏ qua sai sót"},{text:"Che giấu"}],
+    correct: 1, explain: "Tự chỉnh đốn nội bộ là điều kiện tiên quyết để giữ vững sức chiến đấu.", obstacle: "🦠 Dịch bệnh nội bộ"
+  },
+  {
+    q: "Vai trò của cán bộ trên thuyền là?",
+    opts: [{text:"Không quan trọng"},{text:"Trang trí"},{text:"Gốc của mọi công việc"},{text:"Chỉ nghe lệnh"}],
+    correct: 2, explain: "Cán bộ là cái gốc của mọi công việc — muôn việc thành công hay thất bại đều do cán bộ.", obstacle: "🌊 Thủy triều cuồn cuộn"
+  },
+  {
+    q: "Khi sử dụng cán bộ, điều đúng là?",
+    opts: [{text:"Theo cảm tính"},{text:"Theo quan hệ"},{text:"Đúng người đúng việc"},{text:"Ngẫu nhiên"}],
+    correct: 2, explain: "Đúng người đúng việc — không để tình cảm hay quan hệ chi phối.", obstacle: "⚓ Chọn mặt gửi vàng"
+  },
+  {
+    q: "Sau khi đạt thành công, thuyền nên?",
+    opts: [{text:"Tự mãn"},{text:"Dừng lại"},{text:"Tiếp tục rèn luyện"},{text:"Bỏ nguyên tắc"}],
+    correct: 2, explain: "Thắng lợi không phải điểm dừng — phải tiếp tục rèn luyện và hoàn thiện.", obstacle: "🏝️ Rạn san hô tự mãn"
+  },
+  {
+    q: "Để thuyền tồn tại lâu dài, điều quan trọng nhất là?",
+    opts: [{text:"Quyền lực"},{text:"Tiền bạc"},{text:"Trong sạch, vững mạnh, gắn bó nhân dân"},{text:"Tốc độ"}],
+    correct: 2, explain: "Trong sạch, vững mạnh và gắn bó máu thịt với nhân dân là bài học sống còn.", obstacle: "🏁 Đích đến huy hoàng"
+  }
+];
+
+// Milestone questions (at positions: 5,8,11,13,15,17,19)
+const MILESTONE_DATA = [
+  { year:1930, title:"Thành lập Đảng", storm:"🌊 Vượt sóng đầu mùa", stormHp:5, stormCond:"purity<80",
+    q:"Con thuyền cách mạng vừa ra khơi. Chọn hướng đi nào?",
+    opts:[{text:"Đi nhanh, vượt trước",effect:{hp:-10,purity:-5}},{text:"Đi chậm chắc, xây móng vững",effect:{hp:+15,purity:+10}},{text:"Chờ xem hướng gió",effect:{hp:0,purity:0}},{text:"Hợp tác với thế lực bên ngoài",effect:{hp:-25,purity:-15}}],
+    correct:1, explain:"Bác Hồ dạy: 'Phải xây dựng Đảng vững mạnh từ gốc — đi chắc còn hơn đi nhanh'", obstacle:"📍 Mốc 1930" },
+  { year:1945, title:"Cách mạng Tháng Tám", storm:"⚡ Thử thách chính quyền non trẻ", stormHp:10, stormCond:"purity<70",
+    q:"Giành chính quyền rồi, việc đầu tiên cần làm?",
+    opts:[{text:"Tập trung củng cố quyền lực",effect:{hp:-5,purity:-5}},{text:"Lo cho dân ăn no, mặc ấm",effect:{hp:+20,purity:+10}},{text:"Mở rộng quan hệ quốc tế",effect:{hp:0,purity:0}},{text:"Trừng trị tất cả kẻ thù cũ",effect:{hp:-10,purity:-5}}],
+    correct:1, explain:"'Nước độc lập mà dân không được hưởng hạnh phúc thì độc lập chẳng có nghĩa lý gì' — Hồ Chí Minh", obstacle:"📍 Mốc 1945" },
+  { year:1954, title:"Điện Biên Phủ", storm:"🌪️ Cơn lốc cám dỗ", stormHp:15, stormCond:"purity<60",
+    q:"Pháp muốn viện trợ đổi lấy căn cứ quân sự. Xử lý thế nào?",
+    opts:[{text:"Nhận viện trợ, phát triển nhanh",effect:{hp:-20,purity:-15}},{text:"Từ chối, tự lực cánh sinh",effect:{hp:+15,purity:+10}},{text:"Đàm phán thêm điều khoản",effect:{hp:-5,purity:-5}},{text:"Lấy rồi tính sau",effect:{hp:-15,purity:-10}}],
+    correct:1, explain:"Độc lập dân tộc là trên hết — không đánh đổi chủ quyền lấy bất cứ thứ gì.", obstacle:"📍 Mốc 1954" },
+  { year:1969, title:"Bác Hồ đi xa", storm:"💔 Mất người dẫn đường", stormHp:20, stormCond:"always",
+    q:"Di chúc của Bác nhấn mạnh điều gì trước tiên?",
+    opts:[{text:"Phát triển kinh tế",effect:{hp:0,purity:0}},{text:"Xây dựng Đảng trong sạch, vững mạnh",effect:{hp:+25,purity:+15}},{text:"Mở rộng chiến tranh",effect:{hp:-20,purity:-10}},{text:"Để lại quyền lực cho tập thể",effect:{hp:+10,purity:+5}}],
+    correct:1, explain:"Bác căn dặn: 'Đảng phải giữ gìn sự đoàn kết như giữ gìn con ngươi của mắt mình'", obstacle:"📍 Mốc 1969" },
+  { year:1975, title:"Thống nhất đất nước", storm:"🌊 Sóng xây dựng hòa bình", stormHp:25, stormCond:"purity<50",
+    q:"Sau chiến tranh, ưu tiên số một là gì?",
+    opts:[{text:"Khôi phục sản xuất, ổn định đời sống",effect:{hp:+20,purity:+10}},{text:"Củng cố bộ máy chính quyền",effect:{hp:+5,purity:0}},{text:"Chạy theo thành tích, số lượng",effect:{hp:-15,purity:-10}},{text:"Mở cửa toàn diện bằng mọi giá",effect:{hp:-25,purity:-20}}],
+    correct:0, explain:"'Dân đói, dân khổ thì Đảng có lỗi. Phải lo cho dân trước' — ưu tiên đời sống nhân dân.", obstacle:"📍 Mốc 1975" },
+  { year:1986, title:"Công cuộc Đổi mới", storm:"🌪️ Bão Đổi mới", stormHp:15, stormCond:"purityReset50",
+    q:"Mở cửa kinh tế nhưng có nguy cơ tham nhũng tràn lan. Chọn hướng nào?",
+    opts:[{text:"Mở cửa bằng mọi giá",effect:{hp:-20,purity:-15}},{text:"Vừa mở cửa, vừa siết chặt kỷ luật",effect:{hp:+15,purity:+10}},{text:"Đóng cửa, giữ an toàn",effect:{hp:-10,purity:0}},{text:"Cho phép tham nhũng để kích thích kinh tế",effect:{hp:-30,purity:-25}}],
+    correct:1, explain:"Đổi mới nhưng không đánh đổi đạo đức và kỷ cương — đây là bài học cốt lõi của Đổi mới.", obstacle:"📍 Mốc 1986" },
+  { year:2026, title:"Kỷ niệm 96 năm – Về đích", storm:"🏁 Kiểm tra cuối hành trình", stormHp:0, stormCond:"final",
+    q:"Nhìn lại hành trình 96 năm, bài học quan trọng nhất là?",
+    opts:[{text:"Phát triển kinh tế là trên hết",effect:{hp:0,purity:-5}},{text:"Lấy dân làm gốc, Đảng phải trong sạch",effect:{hp:+30,purity:+20}},{text:"Công nghệ là chìa khóa",effect:{hp:0,purity:0}},{text:"Quan hệ quốc tế quyết định",effect:{hp:-10,purity:-5}}],
+    correct:1, explain:"'Mất lòng dân là mất tất cả. Đảng phải trong sạch, vững mạnh và gắn bó với nhân dân.' — Hồ Chí Minh", obstacle:"📍 Mốc 2026" }
+];
+
+// Build the 20-question sequence
+let GAME_SEQ = [];
+
+function buildGameSequence() {
+  const seq = [];
+  let ti = 0;
+  
+  // Positions of milestones: 5,8,11,13,15,17,19
+  const milestonePos = [5,8,11,13,15,17,19];
+  
+  for(let i=0;i<20;i++){
+    if(milestonePos.includes(i)){
+      const mIdx = milestonePos.indexOf(i);
+      seq.push({...MILESTONE_DATA[mIdx], isMilestone:true, milestoneIdx:mIdx});
+    } else {
+      // Use theory questions in order
+      seq.push({...THEORY_QUESTIONS[ti++ % THEORY_QUESTIONS.length]});
+    }
+  }
+  return seq;
+}
+
+// Global state for game sequence sync
+function setGameSequence(seq) {
+  GAME_SEQ = seq;
+}
+
+// Initial sequence for single player (will be overwritten in multi)
+GAME_SEQ = buildGameSequence();
+
+// ═══════════════════════════════════════════════
+// GAME STATE
+// ═══════════════════════════════════════════════
+let currentQ = 0;
+let hp = 100;
+let purity = 100;
+let money = 0; // in hundred thousands VND
+let corruptCount = 0;
+let stormsSurvived = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let timer = null, timerVal = 20;
+let answered = false;
+let votes = {}, userChoice = -1;
+let myCorruptOffer = null; // Dữ liệu câu hỏi tham nhũng nếu người chơi bị tha hóa vòng này
+const totalTime = 20;
+let pendingStorm = null;
+
+// Multiplayer state
+let currentRoom = null;
+let isHost = false;
+let playerCount = 1;
+let currentPlayers = {}; // To store all players data including names
+let currentRoomData = null; // To store full room state for syncing names/phases
+let myPlayerName = ''; // Tên người chơi hiện tại
+
+// Stars
+function buildStars(){
+  const c = document.getElementById('starsContainer');
+  for(let i=0;i<30;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.cssText=`left:${Math.random()*95}%;top:${Math.random()*50}%;width:${Math.random()*2+1}px;height:${Math.random()*2+1}px;animation-delay:${Math.random()*3}s`;
+    c.appendChild(s);
+  }
+}
+
+// ═══════════════════════════════════════════════
+// MAP / PATH
+// ═══════════════════════════════════════════════
+const MILESTONE_POS = [5,8,11,13,15,17,19];
+
+function buildDots(){
+  const track = document.getElementById('pathTrack');
+  track.innerHTML = '';
+  for(let i=0;i<20;i++){
+    const d = document.createElement('div');
+    d.className = 'path-dot';
+    d.id = 'dot'+i;
+    if(MILESTONE_POS.includes(i)){
+      d.classList.add('milestone');
+      const mIdx = MILESTONE_POS.indexOf(i);
+      d.setAttribute('data-year', MILESTONE_DATA[mIdx].year);
+    }
+    track.appendChild(d);
+  }
+}
+
+function updateShip(){
+  const pct = Math.min(currentQ/19, 1);
+  const ship = document.getElementById('shipContainer');
+  const wake = document.getElementById('wake');
+  const minL = 8, maxL = 82;
+  const leftPct = minL + pct*(maxL-minL);
+  ship.style.left = leftPct+'%';
+  wake.style.width = leftPct+'%';
+  for(let i=0;i<currentQ;i++){
+    const d = document.getElementById('dot'+i);
+    if(d) d.classList.add('visited');
+  }
+  const cur = document.getElementById('dot'+currentQ);
+  if(cur) cur.classList.add('current-dot');
+}
+
+// ═══════════════════════════════════════════════
+// MILESTONE BANNER & STORM
+// ═══════════════════════════════════════════════
+function showMilestoneBanner(qData){
+  const banner = document.getElementById('milestoneBanner');
+  document.getElementById('milestoneYear').textContent = qData.year;
+  document.getElementById('milestoneTitle').textContent = qData.title;
+  
+  const swt = document.getElementById('stormWarningText');
+  if(qData.stormCond === 'always'){
+    swt.textContent = `${qData.storm}: -${qData.stormHp} HP (luôn xảy ra)`;
+    swt.style.display='block';
+  } else if(qData.stormCond === 'purityReset50'){
+    swt.textContent = `${qData.storm}: -${qData.stormHp} HP + Reset Purity về 50% nếu thấp hơn`;
+    swt.style.display='block';
+  } else if(qData.stormCond === 'final'){
+    swt.textContent = `🏁 Kiểm tra cuối: HP > 40 mới thắng hoàn toàn!`;
+    swt.style.display='block';
+  } else if(qData.stormCond && qData.stormCond.startsWith('purity<')){
+    const thresh = parseInt(qData.stormCond.replace('purity<',''));
+    swt.textContent = `${qData.storm}: -${qData.stormHp} HP nếu Purity < ${thresh}%`;
+    swt.style.display='block';
+  } else {
+    swt.style.display='none';
+  }
+  
+  banner.classList.add('active');
+}
+
+function hideMilestoneBanner(){
+  document.getElementById('milestoneBanner').classList.remove('active');
+}
+
+function applyStormEffect(qData){
+  let damage = 0;
+  let stormDesc = '';
+  
+  if(qData.stormCond === 'always'){
+    damage = qData.stormHp;
+    stormDesc = `${qData.storm} — Cơn bão ập đến không tránh khỏi!`;
+  } else if(qData.stormCond === 'purityReset50'){
+    damage = qData.stormHp;
+    if(purity < 50){ purity = 50; }
+    stormDesc = `${qData.storm} — Đổi mới thử thách toàn bộ nội bộ! Purity reset về 50%`;
+  } else if(qData.stormCond && qData.stormCond.startsWith('purity<')){
+    const thresh = parseInt(qData.stormCond.replace('purity<',''));
+    if(purity < thresh){
+      damage = qData.stormHp;
+      stormDesc = `${qData.storm} — Purity ${purity}% < ${thresh}%: thuyền chưa đủ vững!`;
+    }
+  }
+  
+  if(damage > 0){
+    return { damage, stormDesc };
+  }
+  return null;
+}
+
+let awaitingStormDismiss = false;
+function showStormOverlay(damage, desc){
+  document.getElementById('stormTitle').textContent = '🌊 BÃO TỐ!';
+  document.getElementById('stormDesc').textContent = desc;
+  document.getElementById('stormDamage').textContent = `-${damage} HP`;
+  document.getElementById('stormOverlay').classList.add('active');
+  hp = Math.max(0, hp - damage);
+  awaitingStormDismiss = true;
+}
+
+function dismissStorm(){
+  document.getElementById('stormOverlay').classList.remove('active');
+  awaitingStormDismiss = false;
+  updateHPBar();
+  if(pendingStorm){
+    pendingStorm = null;
+  }
+}
+
+function updateHPBar(){
+  document.getElementById('hpFill').style.width = hp+'%';
+  document.getElementById('hpNum').textContent = hp;
+  document.getElementById('purityFill').style.width = purity+'%';
+  document.getElementById('purityNum').textContent = Math.round(purity)+'%';
+}
+
+// ═══════════════════════════════════════════════
+// LOAD QUESTION
+// ═══════════════════════════════════════════════
+let lastLoadedQ = -1;
+
+function loadQuestion(){
+  // 🔥 CHẶN LOAD TRÙNG (FIX TIMER ĐỨNG)
+  if(currentQ === lastLoadedQ) return;
+  lastLoadedQ = currentQ;
+
+  console.log("LOAD QUESTION:", currentQ);
+
+  // CLEAR UI FIRST
+  answered = false; 
+  votes = {}; 
+  userChoice = -1;
+  myCorruptOffer = null; 
+  lastCorruptionEffects = null;
+  
+  // Clear elements
+  document.getElementById('resultsSection').innerHTML = '';
+  document.getElementById('resultsSection').classList.remove('visible');
+  document.getElementById('explanationBox').innerHTML = '';
+  document.getElementById('explanationBox').classList.remove('visible');
+  document.getElementById('nextBtn').classList.remove('visible');
+  document.getElementById('liveVotes').classList.remove('visible');
+  document.getElementById('randomPlayerBox').classList.remove('visible');
+  document.getElementById('obstacleBanner').classList.remove('hidden');
+  
+  if(GAME_SEQ.length === 0) return;
+  
+  let qd = GAME_SEQ[currentQ];
+  if(!qd) return;
+
+  // Special rounds
+  const corruptPos = [12, 14, 16, 18];
+  const isGlobalCorruptRound = corruptPos.includes(currentQ);
+  
+  let chosenName = (currentRoomData && currentRoomData.chosenPlayerName)
+    ? currentRoomData.chosenPlayerName
+    : 'Thuyền viên';
+
+  let chosenId = (currentRoomData && currentRoomData.chosenPlayerId)
+    ? currentRoomData.chosenPlayerId
+    : '';
+
+  const myData = JSON.parse(sessionStorage.getItem('hcm_room') || '{}');
+  const myId = myData.playerId || '';
+  const isMeChosen = (chosenId === myId);
+
+  // ==== HANDLE DISPLAY ====
+  if(isGlobalCorruptRound) {
+    if(isMeChosen) {
+      const cqIdx = Math.abs((currentQ * 7) % CORRUPT_QUESTIONS.length);
+      myCorruptOffer = { ...CORRUPT_QUESTIONS[cqIdx], isCorrupt: true };
+      qd = myCorruptOffer;
+
+      document.getElementById('qLabel').textContent = '🚨 TÌNH HUỐNG THAM NHŨNG';
+      document.getElementById('randomPlayerBox').innerHTML =
+        `🎲 <strong>BẠN</strong> đang bị cám dỗ!`;
+      document.getElementById('randomPlayerBox').classList.add('visible');
+
+    } else {
+      document.getElementById('qLabel').textContent = '📜 Câu hỏi hàng hải';
+      document.getElementById('randomPlayerBox').innerHTML =
+        `<span class="random-player-name">${chosenName}</span>`;
+      document.getElementById('randomPlayerBox').classList.add('visible');
+    }
+  } else {
+    document.getElementById('qLabel').textContent =
+      qd.isMilestone ? `📍 Câu hỏi mốc ${qd.year}` : '📜 Câu hỏi hàng hải';
+    document.getElementById('randomPlayerBox').classList.remove('visible');
+  }
+
+  // ==== BASIC INFO ====
+  document.getElementById('roundNum').textContent = currentQ + 1;
+
+  // ==== MILESTONE ====
+  if(qd.isMilestone){
+    showMilestoneBanner(qd);
+    const storm = applyStormEffect(qd);
+    if(storm) setTimeout(() => showStormOverlay(storm.damage, storm.desc), 300);
+    stormsSurvived++;
+  } else {
+    hideMilestoneBanner();
+  }
+
+  // ==== QUESTION TEXT ====
+  const qTextEl = document.getElementById('qText');
+  qTextEl.textContent = qd.q;
+  qTextEl.className = qd.isCorrupt ? 'q-text corrupt-q' : 'q-text';
+
+  document.getElementById('obstacleText').textContent = qd.obstacle || '';
+  document.getElementById('shipContainer').classList.remove('hit');
+
+  // ==== OPTIONS ====
+  const grid = document.getElementById('optionsGrid');
+  grid.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  
+  qd.opts.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.innerHTML = `
+      <span class="opt-letter">${letters[i]}</span>
+      <span>${o.text}</span>
+    `;
+    btn.onclick = () => vote(i, btn);
+    grid.appendChild(btn);
+  });
+
+  // ==== UI STATE ====
+  document.getElementById('liveVotes').className = 'live-votes visible';
+  document.getElementById('liveVotes').textContent = '🗳️ Hãy bình chọn đáp án!';
+  
+  if(currentRoom && isHost)
+    document.getElementById('hostEndVoteBtn').style.display = 'block';
+  else
+    document.getElementById('hostEndVoteBtn').style.display = 'none';
+  
+  const nb = document.getElementById('nextBtn');
+  nb.textContent = 'Câu tiếp theo ⚓';
+  nb.onclick = () => nextQuestion();
+  nb.style.opacity = '1';
+  nb.style.cursor = 'pointer';
+  nb.classList.remove('waiting-btn');
+
+  // 🔥 QUAN TRỌNG NHẤT
+  startTimer();
+}
+
+function getRandomPlayer(seed){
+  const players = Object.entries(currentPlayers || {}).map(([id, data]) => ({
+    id: id,
+    name: data.name
+  })).sort((a,b) => (a.id || '').localeCompare(b.id || ''));
+  
+  if(players.length > 0) {
+    const idx = (seed !== undefined) ? (Math.abs(seed) % players.length) : Math.floor(Math.random()*players.length);
+    return players[idx];
+  }
+  return null;
+}
+
+// ═══════════════════════════════════════════════
+// VOTE
+// ═══════════════════════════════════════════════
+function vote(idx, btn){
+  if(answered) return;
+  document.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  userChoice = idx;
+  document.getElementById('liveVotes').textContent = '🗳️ Bạn đã bình chọn — Đang chờ hết giờ...';
+  
+  if(currentRoom){
+    // Firebase vote - Send detailed vote info
+    const voteData = {
+      optionIdx: idx,
+      isCorrupt: myCorruptOffer ? true : false,
+      corruptIdx: myCorruptOffer ? myCorruptOffer.corruptIdx : -1
+    };
+    try { firebaseManager.submitVote(currentQ, voteData); } catch(e){}
+  }
+}
+
+function startTimer(){
+  clearInterval(timer); timerVal = totalTime; 
+  const circle = document.getElementById('timerCircle');
+  const numEl = document.getElementById('timerNum');
+  const circ = 2*Math.PI*21;
+  circle.style.strokeDasharray = circ;
+  circle.style.strokeDashoffset = 0;
+  circle.style.stroke = '#8b1a1a';
+  
+  timer = setInterval(() => {
+    timerVal--;
+    numEl.textContent = timerVal;
+    const offset = circ*(1 - timerVal/totalTime);
+    circle.style.strokeDashoffset = offset;
+    if(timerVal<=5) circle.style.stroke = '#cc2222';
+    if(timerVal<=0){ 
+      clearInterval(timer); 
+      if(!currentRoom || isHost) showResults();
+    }
+  }, 1000);
+}
+
+// ═══════════════════════════════════════════════
+// SHOW RESULTS
+// ═══════════════════════════════════════════════
+async function showResults(){
+  if(answered) return;
+  answered = true;
+  clearInterval(timer);
+  document.getElementById('hostEndVoteBtn').style.display = 'none';
+  
+  const qd = GAME_SEQ[currentQ];
+  
+  // Simulate votes for single player or calculate
+  if(!currentRoom){
+    votes = {};
+    if(userChoice !== -1) votes[userChoice] = 1;
+    if(!qd.isCorrupt){ // only simulate for theory/milestone
+      for(let i=0;i<5;i++){
+        const r = Math.floor(Math.random()*qd.opts.length);
+        votes[r] = (votes[r]||0)+1;
+      }
+      votes[qd.correct] = (votes[qd.correct]||0) + Math.floor(Math.random()*2);
+    }
+    renderResultsUI();
+  } else {
+    if(isHost){
+      // Host: Fetch all votes from Firebase
+      try {
+        const votesSnap = await firebaseManager.db.ref(`rooms/${currentRoom}/votes/${currentQ}`).once('value');
+        const votesData = votesSnap.val() || {};
+        
+        // Count votes for majority direction (only non-corrupt votes)
+        // AND collect all individual effects
+        votes = {};
+        let corruptionEffects = { hp: 0, purity: 0, money: 0 };
+        
+        Object.values(votesData).forEach(v => {
+          if(!v.isCorrupt) {
+            const idx = Number(v.optionIdx);
+            if(!isNaN(idx)) votes[idx] = (votes[idx]||0) + 1;
+          } else {
+            // Individual corruption effect
+            const cQ = CORRUPT_QUESTIONS[v.corruptIdx];
+            if(cQ && cQ.opts[v.optionIdx]) {
+              const e = cQ.opts[v.optionIdx].effect || {};
+              if(e.hp) corruptionEffects.hp += e.hp;
+              if(e.purity) corruptionEffects.purity += e.purity;
+              if(e.money) corruptionEffects.money += e.money;
+            }
+          }
+        });
+
+        // Determine majority direction from non-corrupt votes
+        const sortedVotes = Object.entries(votes).sort((a,b)=>b[1]-a[1]);
+        const maxVotes = sortedVotes.length>0 ? sortedVotes[0][1] : 0;
+        const leaders = sortedVotes.filter(v=>v[1]===maxVotes).map(v=>parseInt(v[0]));
+        let majorityAns = -1;
+        if(leaders.length>0 && maxVotes>0){
+          if(leaders.includes(qd.correct)) majorityAns = qd.correct;
+          else majorityAns = leaders[0];
+        }
+
+        // Apply majority effects + corruption effects
+        let newHp = hp;
+        let newPurity = purity;
+        
+        if(qd.isCorrupt || qd.isMilestone){
+          if(majorityAns !== -1){
+            const e = qd.opts[majorityAns].effect || {};
+            if(e.hp) newHp += e.hp;
+            if(e.purity) newPurity += e.purity;
+          }
+        } else {
+          if(majorityAns !== -1 && majorityAns !== qd.correct) newHp -= 15;
+          else if(majorityAns === -1) newHp -= 15;
+        }
+
+        // Add corruption effects from individuals
+        newHp += corruptionEffects.hp;
+        newPurity += corruptionEffects.purity;
+        newHp = Math.max(0, Math.min(100, newHp));
+        newPurity = Math.max(0, Math.min(100, newPurity));
+        
+        lastCorruptionEffects = corruptionEffects;
+
+        // Update Firebase with results
+        await firebaseManager.db.ref(`rooms/${currentRoom}`).update({
+          gamePhase: 'results',
+          finalVotes: votes,
+          corruptionEffects: corruptionEffects,
+          hp: newHp,
+          purity: newPurity
+        });
+      } catch(e){ console.error('Error ending vote:', e); }
+    }
+    renderResultsUI();
+  }
+}
+
+function renderResultsUI(){
+  // qd_local is what the player answered (might be corruption)
+  // qd_global is what the boat is doing (the theory question)
+  const qd_local = myCorruptOffer || GAME_SEQ[currentQ];
+  const qd_global = GAME_SEQ[currentQ];
+  
+  if(!qd_local || !qd_global) return;
+  
+  // Ensure votes is an object for calculation
+  let votesObj = {};
+  if(Array.isArray(votes)){
+    votes.forEach((v,i)=>{ if(v!==undefined) votesObj[i]=Number(v); });
+  } else {
+    votesObj = votes || {};
+  }
+
+  const realTotal = Object.values(votesObj).reduce((a,b)=>a+b,0);
+  
+  // Majority calculation for the GLOBAL question
+  const sortedVotes = Object.entries(votesObj).sort((a,b)=>b[1]-a[1]);
+  const maxVotes = sortedVotes.length>0 ? sortedVotes[0][1] : 0;
+  const leaders = sortedVotes.filter(v=>v[1]===maxVotes).map(v=>parseInt(v[0]));
+  
+  let majorityAns = -1;
+  if(leaders.length>0 && maxVotes>0){
+    if(leaders.includes(qd_global.correct)) majorityAns = qd_global.correct;
+    else majorityAns = leaders[0];
+  }
+  
+  // For single player: use userChoice as majority if not corrupted
+  if(!currentRoom) majorityAns = (userChoice !== -1 && !myCorruptOffer) ? userChoice : -1;
+  
+  const correct = majorityAns === qd_global.correct;
+  
+  // Apply effects (Single player only)
+  if(!currentRoom){
+    if(myCorruptOffer && userChoice !== -1){
+      const e = myCorruptOffer.opts[userChoice].effect || {};
+      hp = Math.max(0, Math.min(100, hp + (e.hp||0)));
+      purity = Math.max(0, Math.min(100, purity + (e.purity||0)));
+      money += (e.money||0);
+      corruptCount++;
+      if(userChoice === qd_local.correct) correctCount++; else wrongCount++;
+    } else if(qd_global.isMilestone){
+      if(majorityAns !== -1){
+        const chosenOpt = qd_global.opts[majorityAns];
+        if(chosenOpt && chosenOpt.effect){
+          const e = chosenOpt.effect;
+          hp = Math.max(0, Math.min(100, hp + (e.hp||0)));
+          purity = Math.max(0, Math.min(100, purity + (e.purity||0)));
+          if(majorityAns === qd_global.correct) correctCount++; else wrongCount++;
+        }
+      } else {
+        wrongCount++;
+      }
+    } else {
+      if(majorityAns !== -1 && !correct){ hp = Math.max(0, hp-15); wrongCount++; }
+      else if(correct){ correctCount++; }
+      if(majorityAns === -1) wrongCount++;
+    }
+  } else {
+    // Multiplayer counters
+    if(myCorruptOffer){
+      if(userChoice !== -1){
+        const e = myCorruptOffer.opts[userChoice].effect || {};
+        if(e.money) money += e.money;
+        if(userChoice === qd_local.correct) correctCount++; else wrongCount++;
+      }
+    } else {
+      if(majorityAns !== -1){
+        if(majorityAns === qd_global.correct) correctCount++; else wrongCount++;
+      } else {
+        wrongCount++;
+      }
+    }
+  }
+  
+  // Mark options (UI should show what the player answered)
+  const btns = document.querySelectorAll('.opt-btn');
+  btns.forEach((b,i) => {
+    b.disabled = true;
+    b.classList.remove('selected'); // REMOVE BLUE HIGHLIGHT
+    if(i===qd_local.correct) b.classList.add('correct');
+    // If I answered this and it was wrong
+    if(userChoice === i && i !== qd_local.correct) b.classList.add('wrong');
+  });
+  
+  // Flash + ship
+  if(majorityAns === -1 && !myCorruptOffer){
+    flashScore('🌊 LÊNH ĐÊNH...');
+  } else if(correct || (myCorruptOffer && userChoice === qd_local.correct)){
+    flashScore('🌟 VƯỢT QUA!');
+  } else {
+    flashScore('💥 VA CHẠM!');
+    document.getElementById('shipContainer').classList.add('hit');
+    setTimeout(() => { const el=document.getElementById('shipContainer'); if(el) el.classList.remove('hit'); }, 1500);
+  }
+  
+  updateHPBar();
+  
+  // Results bars (Show GLOBAL boat results)
+  const rs = document.getElementById('resultsSection');
+  rs.className = 'results-section visible';
+  const letters = ['A','B','C','D'];
+  rs.innerHTML = '<div style="font-family:Cinzel,serif;font-size:0.75rem;color:var(--ink2);letter-spacing:1px;margin-bottom:8px">📊 KẾT QUẢ BÌNH CHỌN CHUNG</div>';
+  
+  qd_global.opts.forEach((o,i) => {
+    const v = votesObj[i]||0;
+    const pct = realTotal>0 ? Math.round((v/realTotal)*100) : 0;
+    const isC = i===qd_global.correct;
+    rs.innerHTML += `<div class="result-bar-wrap">
+      <div class="result-label-row">
+        <span class="result-label-name">${letters[i]}: ${o.text}</span>
+        <span class="result-label-pct">${pct}%</span>
+      </div>
+      <div class="result-track">
+        <div class="result-fill-bar${isC?' correct-bar':''}" style="width:0%" data-w="${pct}%"></div>
+      </div>
+    </div>`;
+  });
+  
+  setTimeout(() => {
+    rs.querySelectorAll('.result-fill-bar').forEach(bar => { bar.style.width = bar.dataset.w; });
+  }, 100);
+  
+  // Explanation
+  const eb = document.getElementById('explanationBox');
+  eb.className = 'explanation-box visible';
+  
+  let statusMsg = '';
+  if(myCorruptOffer){
+    const myCorrect = userChoice === qd_local.correct;
+    statusMsg = myCorrect ? `✅ Bạn đã vượt qua cám dỗ cá nhân!` : `❌ Bạn đã sa ngã trước cám dỗ!`;
+  } else {
+    if(majorityAns===-1) statusMsg='🌊 Không ai bình chọn — thuyền lênh đênh!';
+    else if(correct) statusMsg = `🌟 Đã khéo léo vượt qua <strong>${qd_global.obstacle||'thử thách'}</strong>!`;
+    else statusMsg = `💥 Thuyền đã va vào <strong>${qd_global.obstacle||'thử thách'}</strong>!`;
+  }
+  
+  // Show stat changes
+  let effectMsg = '';
+  const parts=[];
+  
+  if(!currentRoom){
+    // Single player: use majority answer effects
+    if(myCorruptOffer && userChoice !== -1){
+      const e = myCorruptOffer.opts[userChoice].effect||{};
+      if(e.hp>0) parts.push(`<span style="color:var(--green)">❤️+${e.hp} HP</span>`);
+      else if(e.hp<0) parts.push(`<span style="color:var(--red)">❤️${e.hp} HP</span>`);
+      if(e.purity>0) parts.push(`<span style="color:var(--green)">🧼+${e.purity}%</span>`);
+      else if(e.purity<0) parts.push(`<span style="color:var(--red)">🧼${e.purity}%</span>`);
+      if(e.money>0) parts.push(`<span style="color:var(--red)">💰+${e.money} triệu</span>`);
+    } else if(qd_global.isMilestone && majorityAns !== -1){
+      const e = qd_global.opts[majorityAns].effect||{};
+      if(e.hp>0) parts.push(`<span style="color:var(--green)">❤️+${e.hp} HP</span>`);
+      else if(e.hp<0) parts.push(`<span style="color:var(--red)">❤️${e.hp} HP</span>`);
+      if(e.purity>0) parts.push(`<span style="color:var(--green)">🧼+${e.purity}%</span>`);
+      else if(e.purity<0) parts.push(`<span style="color:var(--red)">🧼${e.purity}%</span>`);
+    }
+  } else {
+    // Multiplayer effects
+    if(majorityAns !== -1){
+      const e = qd_global.opts[majorityAns].effect || {};
+      if(e.hp>0) parts.push(`<span style="color:var(--green)">❤️+${e.hp} HP</span>`);
+      else if(e.hp<0) parts.push(`<span style="color:var(--red)">❤️${e.hp} HP</span>`);
+      if(e.purity>0) parts.push(`<span style="color:var(--green)">🧼+${e.purity}%</span>`);
+      else if(e.purity<0) parts.push(`<span style="color:var(--red)">🧼${e.purity}%</span>`);
+    }
+    if(lastCorruptionEffects){
+      const le = lastCorruptionEffects;
+      if(le.hp<0) parts.push(`<span style="color:var(--red)">⚠️ Tha hóa: ❤️${le.hp} HP</span>`);
+      if(le.purity<0) parts.push(`<span style="color:var(--red)">⚠️ Tha hóa: 🧼${le.purity}%</span>`);
+    }
+  }
+  
+  if(parts.length) effectMsg = `<div style="margin-top:6px;font-size:0.75rem">${parts.join(' • ')}</div>`;
+  
+  eb.innerHTML = `<div>${statusMsg}</div>${effectMsg}<div style="margin-top:8px"><strong>Giải thích:</strong> ${qd_local.explain}</div>`;
+  
+  if(!currentRoom || isHost){
+    document.getElementById('nextBtn').className = 'next-btn visible';
+  } else {
+    const nb = document.getElementById('nextBtn');
+    nb.textContent='⏳ Đang chờ Thuyền trưởng...';
+    nb.onclick=null; nb.className='next-btn visible waiting-btn';
+    nb.style.opacity='0.7'; nb.style.cursor='default';
+  }
+  document.getElementById('liveVotes').className='live-votes';
+  updateShip();
+  
+  // Check game over
+  if(hp<=0){ setTimeout(endGame, 1200); }
+  if(purity<=0){ setTimeout(()=>endGamePurity(), 1200); }
+}
+
+// ═══════════════════════════════════════════════
+// NEXT QUESTION
+// ═══════════════════════════════════════════════
+function nextQuestion(){
+  if(currentRoom && !isHost) return;
+  
+  const nextQ = currentQ+1;
+  if(nextQ>=20 || hp<=0 || purity<=0){ endGame(); return; }
+  
+  if(currentRoom){
+    try {
+      const updateData = {
+        currentQuestion:nextQ, gamePhase:'voting', finalVotes:null, chosenPlayerName:null
+      };
+      // If next question is a global corruption question, pick a player
+      const corruptPos = [12,14,16,18];
+      if(corruptPos.includes(nextQ)){
+        const cp = getRandomPlayer(nextQ);
+        if(cp){
+          updateData.chosenPlayerId = cp.id;
+          updateData.chosenPlayerName = cp.name;
+        }
+      }
+      firebaseManager.db.ref(`rooms/${currentRoom}`).update(updateData);
+    } catch(e){}
+  } else {
+    currentQ = nextQ;
+    loadQuestion();
+  }
+}
+
+// ═══════════════════════════════════════════════
+// ENDING
+// ═══════════════════════════════════════════════
+function getEndingData(hp, purity, money){
+  const quotes = {
+    perfect: '"Lấy dân làm gốc, Đảng ta là đạo đức, là văn minh." — Hồ Chí Minh',
+    good: '"Một Đảng mà giấu giếm khuyết điểm là một Đảng hỏng." — Hồ Chí Minh',
+    warning: '"Cán bộ là cái gốc của mọi công việc. Hư cán bộ là hư cả gốc." — Hồ Chí Minh',
+    crisis: '"Tham ô, lãng phí, quan liêu là giặc nội xâm." — Hồ Chí Minh',
+    fail: '"Mất lòng dân là mất tất cả." — Hồ Chí Minh'
+  };
+  
+  if(hp>=80 && purity>=80 && money<=10){
+    return { icon:'🌟', title:'Vững Mạnh Toàn Diện', sub:'Con thuyền đến đích trong sạch, dân tin tưởng!', quote:quotes.perfect, color:'var(--green)' };
+  } else if(hp>=80 && purity<80){
+    return { icon:'⚓', title:'Ổn Định, Nhưng Cảnh Báo', sub:'Dân tin nhưng nội bộ có dấu hiệu đáng lo ngại.', quote:quotes.good, color:'var(--ocean3)' };
+  } else if(hp>=50 && purity>=70){
+    return { icon:'⚓', title:'Ổn Định', sub:'Con thuyền đến đích, cần tiếp tục chỉnh đốn.', quote:quotes.good, color:'var(--ocean3)' };
+  } else if(hp>=50 && purity<70){
+    return { icon:'🌊', title:'Chao Đảo', sub:'Mất dần niềm tin nhân dân vì nội bộ thiếu trong sạch.', quote:quotes.warning, color:'var(--gold)' };
+  } else if(hp>=20 && purity>=50){
+    return { icon:'🌊', title:'Chao Đảo', sub:'Nhiều sai lầm nghiêm trọng về nguyên tắc.', quote:quotes.warning, color:'var(--gold)' };
+  } else if(hp>=20 && purity<50){
+    return { icon:'⛈️', title:'Suy Yếu Nghiêm Trọng', sub:'Nội bộ tham nhũng nặng — nguy cơ mất lòng dân toàn diện.', quote:quotes.crisis, color:'var(--red)' };
+  } else if(hp>=1){
+    return { icon:'⛈️', title:'Suy Yếu — Gần Chìm', sub:'Thuyền còn chút hơi thở — phải cải cách triệt để.', quote:quotes.crisis, color:'var(--red)' };
+  } else {
+    return { icon:'💀', title:'Chìm Thuyền', sub:'Mất hoàn toàn lòng tin nhân dân!', quote:quotes.fail, color:'var(--red)' };
+  }
+}
+
+function endGamePurity(){
+  hp = 0;
+  endGame();
+}
+
+function endGame(){
+  clearInterval(timer);
+  const ending = getEndingData(hp, purity, money);
+  const moneyStr = money > 0 ? `${money} triệu` : '0';
+  
+  const card = document.getElementById('gameCard');
+  card.innerHTML = `
+    <div class="ending-screen">
+      <div style="font-size:0.9rem;color:var(--ink3);margin-bottom:10px;font-weight:bold;letter-spacing:1px">⚓ THUYỀN VIÊN: ${myPlayerName.toUpperCase()}</div>
+      <span class="ending-icon">${ending.icon}</span>
+      <div class="ending-title" style="color:${ending.color}">${ending.title}</div>
+      <div class="ending-subtitle">${ending.sub}</div>
+      
+      <div class="ending-stats-grid">
+        <div class="ending-stat">
+          <div class="ending-stat-label">❤️ Niềm tin</div>
+          <div class="ending-stat-value">${hp}/100</div>
+          <div class="ending-stat-sub">${hp>=80?'✅ Cao':hp>=50?'🟡 Trung bình':'🔴 Thấp'}</div>
+        </div>
+        <div class="ending-stat">
+          <div class="ending-stat-label">🧼 Trong sạch</div>
+          <div class="ending-stat-value">${Math.round(purity)}%</div>
+          <div class="ending-stat-sub">${purity>=70?'✅ Ổn':purity>=50?'⚠️ Cảnh báo':'🔴 Nguy hiểm'}</div>
+        </div>
+        <div class="ending-stat">
+          <div class="ending-stat-label">💰 Tham nhũng</div>
+          <div class="ending-stat-value">${moneyStr}</div>
+          <div class="ending-stat-sub">${money<=10?'🟢 Trong sạch':money<=50?'🟡 Đáng lo':'🔴 Nghiêm trọng'}</div>
+        </div>
+      </div>
+      
+      <div class="ending-details">
+        <h3>📊 Hành trình 1930 – 2026</h3>
+        ✅ Câu đúng: ${correctCount}/${currentQ+1}<br>
+        ❌ Câu sai: ${wrongCount}/${currentQ+1}<br>
+        💰 Số lần tham nhũng: ${corruptCount}<br>
+        🌊 Số mốc đã qua: ${stormsSurvived}/7<br>
+        ⚓ Mốc đã đến: ${currentQ+1}/20
+      </div>
+      
+      <div class="ending-quote">
+        <p>${ending.quote}</p>
+      </div>
+      
+      <div class="ending-btns">
+        <button class="ending-btn" onclick="restartGame()">⚓ Hành Trình Mới</button>
+      </div>
+    </div>
+  `;
+  
+  hideMilestoneBanner();
+  updateShip();
+}
+
+function flashScore(text){
+  const el = document.getElementById('scoreFlash');
+  el.textContent = text;
+  el.className = 'score-flash pop';
+  setTimeout(() => el.className = 'score-flash', 900);
+}
+
+function restartGame(){
+  sessionStorage.removeItem('hcm_room');
+  location.reload();
+}
+
+// ═══════════════════════════════════════════════
+// START GAME
+// ═══════════════════════════════════════════════
+function startSinglePlayer(){
+  const playerName = document.getElementById('playerNameInput').value.trim() || 'Người chơi';
+  myPlayerName = playerName;
+  currentRoom = null; isHost = false;
+  const overlay = document.getElementById('startOverlay');
+  overlay.style.opacity = '0';
+  setTimeout(() => overlay.style.display='none', 600);
+  buildStars();
+  buildDots();
+  updateShip();
+  loadQuestion();
+}
+
+function startMultiplayerGame(){
+  if(isHost){
+    try {
+      firebaseManager.db.ref(`rooms/${currentRoom}`).update({
+        status:'playing', gamePhase:'voting', currentQuestion:currentQ, hp:hp, purity:purity
+      });
+    } catch(e){}
+  }
+  const overlay = document.getElementById('startOverlay');
+  overlay.style.opacity = '0';
+  setTimeout(()=>overlay.style.display='none', 600);
+  buildStars();
+  buildDots();
+  updateShip();
+  
+  if(answered) renderResultsUI();
+  else loadQuestion();
+}
+
+// ═══════════════════════════════════════════════
+// ROOM MANAGEMENT (Firebase stubs — same as before)
+// ═══════════════════════════════════════════════
+function showRoomCreation(){ document.querySelector('.room-options').classList.add('hidden'); document.getElementById('createRoomForm').classList.remove('hidden'); }
+function showRoomJoin(){ document.querySelector('.room-options').classList.add('hidden'); document.getElementById('joinRoomForm').classList.remove('hidden'); }
+function showMainMenu(){ document.getElementById('createRoomForm').classList.add('hidden'); document.getElementById('joinRoomForm').classList.add('hidden'); document.getElementById('roomInfo').classList.add('hidden'); document.querySelector('.room-options').classList.remove('hidden'); }
+
+async function createRoom(){
+  const playerName = document.getElementById('playerNameInput').value.trim();
+  if(!playerName){ alert('Vui lòng nhập tên thuyền viên!'); return; }
+  myPlayerName = playerName;
+  try {
+    const roomId = await firebaseManager.createRoom(playerName);
+    currentRoom = roomId; isHost = true;
+    
+    // Generate and save sequence for the room
+    const seq = buildGameSequence();
+    setGameSequence(seq);
+    await firebaseManager.db.ref(`rooms/${roomId}`).update({ sequence: seq });
+
+    sessionStorage.setItem('hcm_room', JSON.stringify({
+      roomId, 
+      isHost:true, 
+      playerName:playerName,
+      playerId: firebaseManager.playerId
+    }));
+    document.getElementById('createRoomForm').classList.add('hidden');
+    document.getElementById('roomInfo').classList.remove('hidden');
+    document.getElementById('roomCodeDisplay').textContent = roomId;
+    setupRoomListeners();
+  } catch(e){ alert('Lỗi: '+e.message); showMainMenu(); }
+}
+
+async function joinRoom(){
+  const playerName = document.getElementById('playerNameInput').value.trim();
+  if(!playerName){ alert('Vui lòng nhập tên thuyền viên!'); return; }
+  myPlayerName = playerName;
+  const roomCode = document.getElementById('roomCodeInput').value.trim().toUpperCase();
+  if(!roomCode || roomCode.length!==6){ alert('Nhập mã phòng 6 ký tự!'); return; }
+  try {
+    await firebaseManager.joinRoom(roomCode, playerName);
+    currentRoom = roomCode; isHost = false;
+    sessionStorage.setItem('hcm_room', JSON.stringify({
+      roomId:roomCode, 
+      isHost:false, 
+      playerName:playerName,
+      playerId: firebaseManager.playerId
+    }));
+    document.getElementById('joinRoomForm').classList.add('hidden');
+    document.getElementById('roomInfo').classList.remove('hidden');
+    document.getElementById('roomCodeDisplay').textContent = roomCode;
+    setupRoomListeners();
+  } catch(e){ alert('Không thể tham gia: '+e.message); }
+}
+
+function leaveRoom(){ if(confirm('Rời phòng?')){ sessionStorage.removeItem('hcm_room'); location.reload(); } }
+function copyRoomCode(){ navigator.clipboard.writeText(document.getElementById('roomCodeDisplay').textContent).then(()=>alert('Đã sao chép!')).catch(()=>{}); }
+
+function setupRoomListeners(){
+  try {
+    firebaseManager.db.ref(`rooms/${currentRoom}/players`).on('value', snap=>{
+      const players = snap.val() || {};
+      currentPlayers = players; // Store player data globally
+      const count = Object.keys(players).length;
+      playerCount = count;
+      document.getElementById('playerCount').textContent = count;
+      const gc = document.getElementById('gamePlayerCount');
+      if(gc) gc.textContent = count;
+      
+      // Update player list display
+      const listEl = document.getElementById('playerListContent');
+      if(listEl) {
+        listEl.innerHTML = '';
+        Object.values(players).forEach(p => {
+          const div = document.createElement('div');
+          div.textContent = `🚢 ${p.name || 'Thuyền viên'}`;
+          div.style.padding = '2px 0';
+          listEl.appendChild(div);
+        });
+      }
+    });
+    firebaseManager.db.ref(`rooms/${currentRoom}`).on('value', snap=>{
+      const rd = snap.val(); if(!rd) return;
+      currentRoomData = rd; // Store room data globally
+      
+      // Sync sequence if not set
+      if(rd.sequence && (!GAME_SEQ || GAME_SEQ.length === 0 || isHost === false)){
+        setGameSequence(rd.sequence);
+      }
+
+      if(!isHost && rd.status==='playing' && document.getElementById('startOverlay').style.display!=='none') startMultiplayerGame();
+      if(rd.status==='playing' && rd.currentQuestion!==undefined && currentQ!==rd.currentQuestion){
+        try{ firebaseManager.offVotesUpdate(currentQ); }catch(e){}
+        currentQ = rd.currentQuestion; loadQuestion();
+      }
+      if(rd.hp!==undefined){ hp=rd.hp; }
+      if(rd.purity!==undefined){ purity=rd.purity; }
+      updateHPBar();
+      if(!isHost && rd.gamePhase==='results' && !answered && rd.currentQuestion===currentQ){
+        if(rd.finalVotes){ votes={}; Object.entries(rd.finalVotes).forEach(([k,v])=>{ const idx=Number(k); if(!isNaN(idx)) votes[idx]=Number(v); }); }
+        if(rd.corruptionEffects){ lastCorruptionEffects = rd.corruptionEffects; }
+        showResults();
+      }
+    });
+  } catch(e){ console.log('Firebase not available'); }
+}
+
+let lastCorruptionEffects = null; // To store corruption effects for display in results screen
+</script>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
+<script src="firebase-config.js"></script>
+<script>
+window.addEventListener('load', async ()=>{
+  const savedRoom = sessionStorage.getItem('hcm_room');
+  if(savedRoom){
+    try {
+      const rd = JSON.parse(savedRoom);
+      const snap = await firebaseManager.db.ref('rooms/'+rd.roomId).once('value');
+      if(snap.exists()){
+        currentRoom = rd.roomId; isHost = rd.isHost;
+        myPlayerName = rd.playerName || '';
+        document.querySelector('.room-options').classList.add('hidden');
+        document.getElementById('roomInfo').classList.remove('hidden');
+        document.getElementById('roomCodeDisplay').textContent = currentRoom;
+        setupRoomListeners();
+        const ri = snap.val();
+        if(ri.status==='playing'){ 
+          if(ri.currentQuestion!==undefined) currentQ=ri.currentQuestion; 
+          if(ri.hp!==undefined) hp=ri.hp; 
+          if(ri.purity!==undefined) purity=ri.purity; 
+          // Tìm đoạn này trong code của bạn:
+if(ri.gamePhase === 'results') {
+    // THAY THẾ TOÀN BỘ NỘI DUNG BÊN TRONG BẰNG CODE DƯỚI ĐÂY:
+
+    const gameCard = document.getElementById('gameCard');
+    
+    // 1. Định nghĩa danh sách các kết cục (Web)
+    const endings = [
+        {
+            id: 'thuy-thu',
+            icon: '⚓',
+            title: 'Hải Trình Trung Kiên',
+            content: 'Bạn đã cùng đồng đội vượt qua 20 mốc lịch sử. Niềm tin và sự trong sạch là la bàn giúp bạn cập bến an toàn.'
+        },
+        {
+            id: 'thuyen-truong',
+            icon: '🧭',
+            title: 'Vị Thuyền Trưởng Tài Ba',
+            content: 'Dưới sự dẫn dắt của bạn, con thuyền không chỉ là phương tiện mà là biểu tượng của ý chí quật cường qua các thời đại.'
+        },
+        {
+            id: 'ke-an-danh',
+            icon: '🕯️',
+            title: 'Người Gác Đêm Thầm Lặng',
+            content: 'Những lựa chọn đúng đắn của bạn trong bóng tối đã giữ cho ngọn lửa niềm tin không bao giờ tắt trên boong tàu.'
+        }
+    ];
+
+    // 2. Logic Ngẫu nhiên & Bảo mật: Chỉ tính toán 1 lần và lưu lại
+    let myPersonalEndingId = sessionStorage.getItem('final_ending_id');
+    
+    if (!myPersonalEndingId) {
+        // Dùng tên hoặc ID để tạo tính ngẫu nhiên nhưng cố định cho người đó
+        const seed = myPlayerName.length + (new Date().getSeconds() % 10);
+        const randomIndex = seed % endings.length;
+        myPersonalEndingId = endings[randomIndex].id;
+        sessionStorage.setItem('final_ending_id', myPersonalEndingId);
+    }
+
+    // 3. Tìm dữ liệu kết thúc tương ứng
+    const myEnding = endings.find(e => e.id === myPersonalEndingId);
+
+    // 4. Cập nhật giao diện (Xóa trắng gameCard và vẽ lại duy nhất 1 kết quả)
+    gameCard.innerHTML = `
+        <div class="ending-screen">
+            <span class="ending-icon">${myEnding.icon}</span>
+            <h2 class="ending-title">${myEnding.title}</h2>
+            <div class="ending-subtitle">Hành trình 1930 - 2026 hoàn tất</div>
+            
+            <div class="ending-details">
+                <h3>Kịch bản dành riêng cho bạn:</h3>
+                <p>${myEnding.content}</p>
+                <p style="margin-top:10px; border-top:1px solid #ccc; pt-2">
+                    <strong>Thống kê cuối:</strong> Niềm tin ${ri.hp || 0} | Trong sạch ${ri.purity || 0}%
+                </p>
+            </div>
+
+            <div class="ending-quote">
+                "Lịch sử không chỉ là những con số, mà là những lựa chọn."
+                <div class="author">— Bản sắc Con Thuyền Chung</div>
+            </div>
+
+            <div class="ending-btns">
+                <button class="ending-btn" onclick="location.reload()">Chơi ván mới</button>
+            </div>
+        </div>
+    `;
+    
+    // Ẩn banner mốc thời gian khi hiện kết quả
+    document.getElementById('milestoneBanner').classList.remove('active');
+}
+          startMultiplayerGame(); 
+        }
+      } else { sessionStorage.removeItem('hcm_room'); }
+    } catch(e){ sessionStorage.removeItem('hcm_room'); }
+  }
+});
+</script>
+</body>
+</html>
