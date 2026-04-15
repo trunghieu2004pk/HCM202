@@ -34,7 +34,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ═══════════ START OVERLAY ═══════════ */
 .start-overlay {
   position: fixed; inset: 0; z-index: 999;
   background: linear-gradient(160deg, #0d1f35 0%, #1a3a5c 50%, #0d2540 100%);
@@ -123,7 +122,6 @@ body {
 }
 .hidden { display:none !important; }
 
-/* ═══════════ GAME WRAPPER ═══════════ */
 .game-wrapper {
   max-width: 820px;
   margin: 0 auto;
@@ -143,7 +141,6 @@ body {
 }
 .header p { font-size:0.85rem; color:var(--parch2); margin-top:4px; opacity:0.8; }
 
-/* ═══════════ TREASURE MAP ═══════════ */
 .map-section {
   position: relative;
   width: 100%;
@@ -159,21 +156,17 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
-/* Parchment texture overlay for map feel */
 .map-parchment-overlay {
   position:absolute; inset:0;
-  background: 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events:none;
   z-index:1;
   opacity:0.3;
 }
 
-/* Stars */
 .star { position:absolute; background:#fff; border-radius:50%; animation: twinkle 3s infinite; }
 @keyframes twinkle { 0%,100%{opacity:0.3} 50%{opacity:1} }
 
-/* Moon */
 .moon {
   position:absolute; top:10px; right:20px;
   width:28px; height:28px;
@@ -182,7 +175,6 @@ body {
   box-shadow: 0 0 12px rgba(254,233,138,0.6);
 }
 
-/* Compass */
 .compass {
   position:absolute; bottom:8px; right:12px;
   font-size:1.8rem; opacity:0.6; z-index:5;
@@ -190,31 +182,11 @@ body {
 }
 @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
-/* Wave layers */
 .wave-layer {
   position:absolute; bottom:0; left:0; right:0;
   z-index:2;
 }
 
-/* Islands */
-.island-start, .island-end {
-  position:absolute; bottom:20px;
-  display:flex; flex-direction:column; align-items:center;
-  z-index:4;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-}
-.island-start { left:12px; }
-.island-end { right:12px; }
-.island-base {
-  width:44px; height:18px;
-  background: radial-gradient(ellipse, #8b6914 0%, #5a4010 100%);
-  border-radius:50%;
-  border: 1px solid #a07828;
-  position:relative;
-}
-.palm, .flag { font-size:1.2rem; line-height:1; }
-
-/* Ship */
 .ship-container {
   position:absolute; bottom:22px; z-index:6;
   transition: left 1.2s cubic-bezier(0.4,0,0.2,1);
@@ -229,7 +201,6 @@ body {
   80%{transform:translateX(calc(-50% + 4px))}
 }
 
-/* Wake */
 .wake {
   position:absolute; bottom:28px; left:0;
   height:4px;
@@ -239,7 +210,6 @@ body {
   border-radius:0 2px 2px 0;
 }
 
-/* PATH DOTS - the treasure map path */
 .path-track {
   position:absolute; bottom:30px; left:6%; right:6%;
   height:8px; z-index:3;
@@ -285,7 +255,6 @@ body {
 }
 @keyframes pulse-dot { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
 
-/* ═══════════ MILESTONE BANNER ═══════════ */
 .milestone-banner {
   background: linear-gradient(135deg, var(--ocean2), var(--ocean));
   border: 2px solid var(--gold);
@@ -326,7 +295,6 @@ body {
   font-size:0.8rem;
 }
 
-/* ═══════════ GAME CARD ═══════════ */
 .game-card {
   background: var(--parch);
   border: 3px solid var(--parch3);
@@ -343,7 +311,6 @@ body {
   pointer-events:none;
 }
 
-/* Stats Row */
 .stats-row {
   display:flex; justify-content:space-between; align-items:center;
   margin-bottom:10px; gap:8px; flex-wrap:wrap;
@@ -355,13 +322,6 @@ body {
   color: var(--parch2);
   padding:4px 10px; border-radius:20px;
   border:1px solid var(--ocean3);
-}
-.purity-badge {
-  font-family:'Cinzel',serif;
-  font-size:0.75rem;
-  padding:4px 10px; border-radius:20px;
-  border:1px solid;
-  transition: all 0.5s;
 }
 .hp-group { display:flex; align-items:center; gap:6px; }
 .hp-label { font-family:'Cinzel',serif; font-size:0.65rem; color:var(--ink2); white-space:nowrap; }
@@ -379,7 +339,6 @@ body {
 }
 .hp-num { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--red); font-weight:700; }
 
-/* Purity Track */
 .purity-row {
   display:flex; align-items:center; gap:6px;
   margin-bottom:10px; padding:8px 10px;
@@ -402,7 +361,6 @@ body {
 }
 .purity-num { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--green); font-weight:700; white-space:nowrap; }
 
-/* Obstacle Banner */
 .obstacle-banner {
   background: linear-gradient(90deg, rgba(139,26,26,0.1), rgba(139,26,26,0.05));
   border-left: 3px solid var(--red);
@@ -415,7 +373,6 @@ body {
 .obs-icon { font-size:1rem; }
 .obs-text strong { color:var(--red); }
 
-/* Question */
 .q-label {
   display:block;
   font-family:'Cinzel',serif;
@@ -429,8 +386,6 @@ body {
   margin-bottom:14px;
   font-style:italic;
 }
-
-/* Corrupt question style */
 .q-text.corrupt-q {
   background: rgba(139,26,26,0.05);
   border-left: 3px solid var(--red);
@@ -439,7 +394,6 @@ body {
   font-style:normal;
 }
 
-/* Random player highlight */
 .random-player-box {
   display:none;
   background: linear-gradient(135deg, rgba(201,146,42,0.15), rgba(201,146,42,0.05));
@@ -457,7 +411,6 @@ body {
   font-size:1rem;
 }
 
-/* Timer */
 .timer-ring-wrapper { position:relative; display:flex; justify-content:center; margin:10px 0; }
 .timer-ring { position:relative; width:52px; height:52px; }
 .timer-ring svg .bg { fill:none; stroke:rgba(0,0,0,0.1); stroke-width:4; }
@@ -475,7 +428,6 @@ body {
   color:var(--ink);
 }
 
-/* Live votes */
 .live-votes {
   text-align:center; font-size:0.8rem; color:var(--ink2);
   padding:6px 12px;
@@ -486,7 +438,6 @@ body {
 }
 .live-votes.visible { display:block; }
 
-/* Options Grid */
 .options-grid {
   display:grid; grid-template-columns:1fr 1fr;
   gap:8px; margin-bottom:12px;
@@ -533,14 +484,6 @@ body {
   margin-top:1px;
 }
 
-/* Effect labels on corrupt questions */
-.opt-effect {
-  display:block;
-  font-size:0.7rem; margin-top:4px; opacity:0.7;
-  font-style:italic;
-}
-
-/* Results */
 .results-section {
   display:none; margin-bottom:12px;
 }
@@ -562,7 +505,6 @@ body {
 }
 .result-fill-bar.correct-bar { background: var(--green); }
 
-/* Explanation */
 .explanation-box {
   display:none;
   background: rgba(44,24,16,0.05);
@@ -575,7 +517,6 @@ body {
 }
 .explanation-box.visible { display:block; }
 
-/* Next btn */
 .next-btn {
   display:none;
   width:100%;
@@ -601,7 +542,6 @@ body {
 }
 .next-btn.waiting-btn:hover { transform:none; }
 
-/* Score flash */
 .score-flash {
   position:fixed; top:50%; left:50%;
   transform:translate(-50%,-50%) scale(0);
@@ -622,50 +562,211 @@ body {
   100%{transform:translate(-50%,-70%) scale(0.8);opacity:0}
 }
 
-/* ═══════════ STORM OVERLAY ═══════════ */
-.storm-overlay {
-  position:fixed; inset:0; z-index:500;
-  background:rgba(0,0,0,0.85);
-  display:flex; align-items:center; justify-content:center;
-  display:none;
+/* ═══ STORM OVERLAY — PREMIUM REDESIGN ═══════════════ */
+@keyframes stormEntrance {
+  0%   { opacity:0; transform:scale(0.85) translateY(20px); }
+  60%  { opacity:1; transform:scale(1.03) translateY(-4px); }
+  100% { transform:scale(1) translateY(0); }
 }
-.storm-overlay.active { display:flex; }
-.storm-card {
-  background: linear-gradient(135deg, #1a0a0a, #2d1010);
-  border: 2px solid var(--red);
-  border-radius:8px;
-  padding:32px; text-align:center;
-  max-width:380px; width:90%;
-  box-shadow: 0 0 40px rgba(139,26,26,0.5);
+@keyframes lightningFlash {
+  0%,94%,100% { opacity:0; }
+  95%          { opacity:0.18; }
+  97%          { opacity:0.05; }
+  98%          { opacity:0.22; }
 }
-.storm-card h2 {
-  font-family:'Cinzel',serif;
-  font-size:2rem; color:var(--red2);
-  text-shadow:0 0 20px rgba(204,34,34,0.7);
-  margin-bottom:10px;
+@keyframes stormPulse {
+  0%,100% { box-shadow: 0 0 40px rgba(204,34,34,0.4), 0 0 80px rgba(139,26,26,0.2), inset 0 1px 0 rgba(255,80,80,0.1); }
+  50%     { box-shadow: 0 0 60px rgba(204,34,34,0.7), 0 0 120px rgba(139,26,26,0.35), inset 0 1px 0 rgba(255,100,100,0.2); }
 }
-.storm-card p { color:#ffcccc; font-size:0.95rem; line-height:1.5; margin-bottom:20px; }
-.storm-damage {
-  font-family:'Cinzel',serif;
-  font-size:1.3rem; color:var(--red2);
-  font-weight:700;
-  background:rgba(139,26,26,0.2);
-  border:1px solid var(--red);
-  border-radius:4px;
-  padding:8px 16px;
-  display:inline-block;
-  margin-bottom:16px;
+@keyframes damagePop {
+  0%   { transform:scale(0.5); opacity:0; }
+  70%  { transform:scale(1.15); opacity:1; }
+  100% { transform:scale(1); }
 }
-.storm-continue {
-  background:var(--red); color:var(--parch);
-  border:2px solid #5a0a0a; border-radius:4px;
-  padding:10px 24px;
-  font-family:'Cinzel',serif; font-weight:700;
-  cursor:pointer; font-size:0.9rem;
-  letter-spacing:1px;
+@keyframes waitDots {
+  0%,20%   { content:''; }
+  40%      { content:'.'; }
+  60%      { content:'..'; }
+  80%,100% { content:'...'; }
+}
+@keyframes shipRock {
+  0%,100% { transform:rotate(0deg) translateY(0); }
+  25%     { transform:rotate(-4deg) translateY(-3px); }
+  75%     { transform:rotate(4deg) translateY(-3px); }
 }
 
-/* ═══════════ ENDING SCREEN ═══════════ */
+.storm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: radial-gradient(ellipse at center, rgba(80,0,0,0.6) 0%, rgba(0,0,0,0.92) 70%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.storm-overlay::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,60,0,0.06) 0%, transparent 50%, rgba(255,0,0,0.04) 100%);
+  animation: lightningFlash 4s infinite;
+  pointer-events: none;
+}
+.storm-overlay.active {
+  display: flex !important;
+}
+
+.storm-card {
+  background: linear-gradient(160deg, #200808 0%, #2d1010 40%, #1a0505 100%);
+  border: 1px solid rgba(204,34,34,0.6);
+  border-radius: 12px;
+  padding: 36px 32px 28px;
+  text-align: center;
+  max-width: 420px; width: 100%;
+  position: relative;
+  animation: stormEntrance 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards,
+             stormPulse 3s ease-in-out 0.6s infinite;
+  overflow: hidden;
+}
+.storm-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,60,60,0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+.storm-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,100,100,0.6), transparent);
+}
+
+/* Icon vortex lớn phía trên */
+.storm-icon-wrap {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 10px;
+  animation: shipRock 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 16px rgba(255,60,60,0.8));
+}
+
+.storm-card h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.9rem; font-weight: 900;
+  color: #ff4444;
+  text-shadow: 0 0 30px rgba(255,60,60,0.9), 0 2px 4px rgba(0,0,0,0.8);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+
+.storm-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(204,34,34,0.8), transparent);
+  margin: 14px auto;
+}
+
+.storm-desc-text {
+  color: #ffdddd;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Badge thiệt hại nổi bật */
+.storm-damage-badge {
+  display: inline-flex;
+  align-items: center; gap: 8px;
+  background: linear-gradient(135deg, rgba(139,26,26,0.6), rgba(80,10,10,0.8));
+  border: 1px solid rgba(204,34,34,0.7);
+  border-radius: 50px;
+  padding: 10px 24px;
+  margin-bottom: 24px;
+  animation: damagePop 0.4s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.storm-damage-badge .dmg-icon { font-size: 1.1rem; }
+.storm-damage-badge .dmg-num {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem; font-weight: 900;
+  color: #ff6666;
+  text-shadow: 0 0 12px rgba(255,60,60,0.8);
+  letter-spacing: 1px;
+}
+.storm-damage-badge .dmg-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: rgba(255,150,150,0.8);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+
+/* Nút vượt bão của host */
+.storm-continue-btn {
+  display: inline-flex;
+  align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(135deg, #8b1a1a, #cc2222);
+  color: #fde8c8;
+  border: 1px solid rgba(255,100,100,0.4);
+  border-radius: 8px;
+  padding: 13px 32px;
+  font-family: 'Cinzel', serif; font-weight: 700;
+  font-size: 0.95rem; letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 4px;
+}
+.storm-continue-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.storm-continue-btn:hover {
+  background: linear-gradient(135deg, #aa2020, #ee3333);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(204,34,34,0.5);
+}
+.storm-continue-btn:active { transform: translateY(0); }
+
+/* Trạng thái chờ của player */
+.storm-wait-box {
+  display: flex;
+  align-items: center; justify-content: center; gap: 10px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,100,100,0.2);
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin-top: 4px;
+}
+.storm-wait-spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,100,100,0.3);
+  border-top-color: #ff6666;
+  border-radius: 50%;
+  animation: spin-slow 1.2s linear infinite;
+  flex-shrink: 0;
+}
+.storm-wait-text {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  color: rgba(255,200,200,0.7);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
 .ending-screen {
   background: var(--parch);
   border: 3px solid var(--parch3);
@@ -740,7 +841,6 @@ body {
 }
 .ending-btn.secondary:hover { background:var(--ocean3); }
 
-/* ═══════════ HOST CONTROL ═══════════ */
 #hostEndVoteBtn {
   font-family:'Cinzel',serif; font-weight:700;
   padding:8px 16px; font-size:0.8rem;
@@ -751,10 +851,8 @@ body {
   background:var(--red); color:var(--parch);
 }
 
-/* Player count badge */
 #playerCountBadge { display:none; }
 
-/* ═══════════ RESPONSIVE ═══════════ */
 @media(max-width:480px){
   .options-grid { grid-template-columns:1fr; }
   .ending-stats-grid { grid-template-columns:1fr 1fr; }
@@ -766,27 +864,40 @@ body {
 <body>
 
 <div class="score-flash" id="scoreFlash">⚓</div>
-<div class="storm-overlay" id="stormOverlay">
+<div id="stormOverlay" class="storm-overlay">
   <div class="storm-card">
-    <h2 id="stormTitle">🌊 BÃO TỐ!</h2>
-    <p id="stormDesc">Cơn bão ập đến!</p>
-    <div class="storm-damage" id="stormDamage">-20 HP</div>
-    <br>
-    <button class="storm-continue" onclick="dismissStorm()">⚓ Tiếp tục</button>
+    <span class="storm-icon-wrap">🌀</span>
+    <h2>CƠN BÃO TỚI!</h2>
+    <div class="storm-divider"></div>
+    <p id="stormDesc" class="storm-desc-text">Gió bắt đầu thổi mạnh...</p>
+
+    <div class="storm-damage-badge" id="stormDamageBadge">
+      <span class="dmg-icon">💥</span>
+      <div>
+        <div class="dmg-num" id="stormDamage">-20</div>
+        <div class="dmg-label">niềm tin</div>
+      </div>
+    </div>
+
+    <button id="stormContinueBtn" class="storm-continue-btn" onclick="hostContinueFromStorm()">
+      ⚓ &nbsp;VƯỢT BÃO RA KHƠI&nbsp; ⚓
+    </button>
+
+    <div id="playerWaitText" class="storm-wait-box" style="display:none">
+      <div class="storm-wait-spinner"></div>
+      <span class="storm-wait-text">Đang chờ Thuyền trưởng dẫn dắt con tàu qua cơn bão...</span>
+    </div>
   </div>
 </div>
 
-<!-- Start overlay -->
 <div class="start-overlay" id="startOverlay">
   <div class="start-card">
     <span class="ship-icon">🚢</span>
     <h2>Con Thuyền Chung</h2>
     <p>Hành trình từ 1930 đến 2026 — Cùng nhau điều hướng qua 20 mốc lịch sử!</p>
-    
     <div class="name-input-group" style="margin-bottom: 20px;">
-      <input type="text" id="playerNameInput" placeholder="Nhập tên thuyền viên của bạn..." maxlength="20" style="width: 100%; padding: 12px; border: 2px solid var(--parch3); border-radius: 4px; background: rgba(255,255,255,0.7); font-family: 'MedievalSharp', cursive; font-size: 1.1rem; text-align: center; color: var(--ink);">
+      <input type="text" id="playerNameInput" placeholder="Nhập tên thuyền viên của bạn..." maxlength="20" style="width: 100%; padding: 12px; border: 2px solid var(--parch3); border-radius: 4px; background: rgba(255,255,255,0.7); font-family: 'Cinzel', serif; font-size: 1.1rem; text-align: center; color: var(--ink);">
     </div>
-
     <div class="room-options">
       <button class="room-btn" onclick="showRoomCreation()">🏠 Tạo Phòng Mới</button>
       <button class="room-btn secondary" onclick="showRoomJoin()">🔗 Tham Gia Phòng</button>
@@ -807,10 +918,10 @@ body {
       <h3>Đang chờ trong phòng</h3>
       <div class="room-code">Mã phòng: <span id="roomCodeDisplay">ABCDEF</span></div>
       <div class="player-count">👥 Số lượng: <span id="playerCount">1</span></div>
-      <div id="playerList" style="margin: 15px 0; text-align: left; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 4px; max-height: 150px; overflow-y: auto;">
-        <div style="font-weight: bold; border-bottom: 1px solid var(--parch3); margin-bottom: 5px; font-size: 0.9rem;">Danh sách thuyền viên:</div>
-        <div id="playerListContent" style="font-size: 0.9rem;"></div>
-      </div>
+      <div id="playerList" style="margin: 15px 0; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 4px;">
+  <div style="font-weight: bold; border-bottom: 1px solid var(--parch3); margin-bottom: 8px; font-size: 0.9rem; text-align: left;">Danh sách thuyền viên:</div>
+  <div id="playerListContent" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+</div>
       <button class="start-btn" onclick="startMultiplayerGame()">⚓ Bắt Đầu Chơi</button>
       <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
         <button class="copy-btn" onclick="copyRoomCode()">📋 Sao chép mã</button>
@@ -826,7 +937,6 @@ body {
     <p>Hành trình 1930 – 2026 • Cùng nhau vượt sóng gió</p>
   </div>
 
-  <!-- Treasure Map -->
   <div class="map-section" id="mapSection">
     <div class="map-parchment-overlay"></div>
     <div class="moon"></div>
@@ -878,16 +988,13 @@ body {
     </div>
   </div>
 
-  <!-- Milestone Banner -->
   <div class="milestone-banner" id="milestoneBanner">
     <div class="milestone-year" id="milestoneYear">1930</div>
     <div class="milestone-title" id="milestoneTitle">Thành lập Đảng</div>
     <div class="storm-warning" id="stormWarningText"></div>
   </div>
 
-  <!-- Game Card -->
   <div class="game-card" id="gameCard">
-    <!-- Stats Row -->
     <div class="stats-row">
       <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
         <div class="stat-badge">⚓ Mốc <span id="roundNum">1</span>/20</div>
@@ -900,29 +1007,24 @@ body {
       </div>
     </div>
 
-    <!-- Purity Row -->
     <div class="purity-row">
       <span class="purity-label">🧼 ĐỘ TRONG SẠCH</span>
       <div class="purity-track"><div class="purity-fill" id="purityFill" style="width:100%"></div></div>
       <span class="purity-num" id="purityNum">100%</span>
     </div>
 
-    <!-- Obstacle Banner -->
     <div class="obstacle-banner" id="obstacleBanner">
       <span class="obs-icon">⚠️</span>
       <span class="obs-text">Phía trước: <strong id="obstacleText">Đang tải...</strong></span>
     </div>
 
-    <!-- Corrupt player highlight -->
     <div class="random-player-box" id="randomPlayerBox">
        <span class="random-player-name" id="randomPlayerName"></span>
     </div>
 
-    <!-- Question -->
     <span class="q-label" id="qLabel">📜 Câu hỏi hàng hải</span>
     <div class="q-text" id="qText">Đang tải câu hỏi...</div>
 
-    <!-- Timer -->
     <div class="timer-ring-wrapper">
       <div class="timer-ring">
         <svg width="52" height="52" viewBox="0 0 52 52">
@@ -945,327 +1047,102 @@ body {
 </div>
 
 <script>
-// ═══════════════════════════════════════════════
-// GAME DATA
-// ═══════════════════════════════════════════════
-
-// Corrupt questions (shuffled into theory questions)
+// ═══ GAME DATA (giữ nguyên từ bản gốc) ═══════════════════════
 const CORRUPT_QUESTIONS = [
-  {
-    q: "💰 Nhà thầu X đề nghị 'hoa hồng' 500 triệu để thắng thầu dự án quốc gia.",
-    type: "corrupt",
-    obstacle: "💰 Cám dỗ hối lộ",
-    opts: [
-      { text: "Nhận tiền, thông thầu", effect: { hp:-20, purity:-5, money:500 } },
-      { text: "Từ chối, báo cáo cấp trên", effect: { hp:+15, purity:+2, money:0 } },
-      { text: "Nhận một nửa, làm lòng vòng", effect: { hp:-10, purity:-3, money:250 } }
-    ],
-    correct: 1,
-    explain: "Từ chối và báo cáo là hành động đúng đắn, giữ vững đạo đức cách mạng."
-  },
-  {
-    q: "👨‍👧‍👦 Có cơ hội bổ nhiệm người thân vào vị trí quan trọng trong bộ máy nhà nước.",
-    type: "corrupt",
-    obstacle: "👨‍👧‍👦 Bổ nhiệm người thân",
-    opts: [
-      { text: "Bổ nhiệm dù không đủ năng lực", effect: { hp:-25, purity:-8, money:100 } },
-      { text: "Chọn người xứng đáng nhất", effect: { hp:+20, purity:+5, money:0 } },
-      { text: "Bổ nhiệm nhưng giám sát chặt", effect: { hp:-5, purity:-2, money:50 } }
-    ],
-    correct: 1,
-    explain: "Đúng người đúng việc — không để tình cảm cá nhân ảnh hưởng đến công việc chung."
-  },
-  {
-    q: "🏗️ Phát hiện nhà thầu dùng vật liệu kém chất lượng. Họ đề nghị chia tiền để im lặng.",
-    type: "corrupt",
-    obstacle: "🏗️ Cắt xén công trình",
-    opts: [
-      { text: "Nhận tiền, làm ngơ", effect: { hp:-30, purity:-10, money:300 } },
-      { text: "Tố cáo, yêu cầu làm lại", effect: { hp:+25, purity:+8, money:0 } },
-      { text: "Yêu cầu sửa nhưng vẫn nhận tiền", effect: { hp:-15, purity:-5, money:150 } }
-    ],
-    correct: 1,
-    explain: "Công trình kém chất lượng gây hại cho nhân dân — phải tố cáo và yêu cầu làm lại."
-  },
-  {
-    q: "📊 Phát hiện sơ hở trong hệ thống kế toán — có thể rút tiền công quỹ mà khó bị phát hiện.",
-    type: "corrupt",
-    obstacle: "📊 Biển thủ công quỹ",
-    opts: [
-      { text: "Lợi dụng, rút 1 tỷ", effect: { hp:-40, purity:-15, money:1000 } },
-      { text: "Báo cáo, đề xuất sửa lỗ hổng", effect: { hp:+30, purity:+10, money:0 } },
-      { text: "Làm ngơ, không báo", effect: { hp:-15, purity:-5, money:0 } }
-    ],
-    correct: 1,
-    explain: "Bảo vệ tài sản công là trách nhiệm của mỗi cán bộ — phải báo cáo kịp thời."
-  },
-  {
-    q: "🏢 Biết trước quy hoạch đất đai, có cơ hội mua đất giá rẻ rồi bán lại sau khi công bố.",
-    type: "corrupt",
-    obstacle: "🏢 Đất vàng - Thâu tóm",
-    opts: [
-      { text: "Đầu tư, kiếm lời nhanh", effect: { hp:-35, purity:-12, money:800 } },
-      { text: "Báo cáo, không tham gia", effect: { hp:+25, purity:+8, money:0 } },
-      { text: "Mua ít, không ai biết", effect: { hp:-15, purity:-5, money:300 } }
-    ],
-    correct: 1,
-    explain: "Lợi dụng thông tin nội bộ để trục lợi là tham nhũng — phải từ chối và báo cáo."
-  },
-  {
-    q: "🎓 Bạn thân nhờ dùng quan hệ xin việc cho con vào cơ quan nhà nước, bỏ qua thi tuyển.",
-    type: "corrupt",
-    obstacle: "🎓 Xin việc, vượt quy trình",
-    opts: [
-      { text: "Dùng quan hệ, bỏ qua thi tuyển", effect: { hp:-20, purity:-6, money:100 } },
-      { text: "Hướng dẫn thi tuyển công bằng", effect: { hp:+15, purity:+3, money:0 } },
-      { text: "Nhận tiền rồi lo", effect: { hp:-25, purity:-8, money:200 } }
-    ],
-    correct: 1,
-    explain: "Mọi người đều phải đi qua thi tuyển công bằng — không ai được dùng quan hệ để ngoại lệ."
-  },
-  {
-    q: "📰 Công ty tư nhân đề nghị 'tài trợ' để đăng bài quảng bá hình ảnh cá nhân lên báo đài.",
-    type: "corrupt",
-    obstacle: "📰 PR cá nhân bằng tiền",
-    opts: [
-      { text: "Nhận tiền, PR hình ảnh", effect: { hp:-15, purity:-4, money:150 } },
-      { text: "Từ chối vì xung đột lợi ích", effect: { hp:+10, purity:+2, money:0 } },
-      { text: "Nhận nhưng giấu, trả dần", effect: { hp:-10, purity:-3, money:150 } }
-    ],
-    correct: 1,
-    explain: "Cán bộ không được nhận bất kỳ lợi ích nào từ tổ chức có quyền lợi liên quan đến công việc."
-  },
-  {
-    q: "🚢 Đầu nậu đề nghị 'bôi trơn' 500 triệu để thông quan hàng lậu qua cảng kiểm soát.",
-    type: "corrupt",
-    obstacle: "🚢 Hải quan - Nhập lậu",
-    opts: [
-      { text: "Nhận tiền, làm ngơ", effect: { hp:-45, purity:-18, money:500 } },
-      { text: "Bắt giữ, báo cấp trên", effect: { hp:+35, purity:+12, money:0 } },
-      { text: "Cảnh cáo rồi thả", effect: { hp:-20, purity:-7, money:100 } }
-    ],
-    correct: 1,
-    explain: "Hàng lậu gây hại cho nền kinh tế và an toàn xã hội — phải kiên quyết ngăn chặn."
-  },
-  {
-    q: "🎫 Doanh nghiệp 'mượn' danh nghĩa tổ chức sự kiện văn hóa để rửa tiền.",
-    type: "corrupt",
-    obstacle: "🎫 Rửa tiền qua sự kiện",
-    opts: [
-      { text: "Tham gia, nhận % hoa hồng", effect: { hp:-20, purity:-7, money:200 } },
-      { text: "Từ chối, báo công an", effect: { hp:+20, purity:+5, money:0 } },
-      { text: "Làm ngơ vì sợ ảnh hưởng", effect: { hp:-10, purity:-3, money:0 } }
-    ],
-    correct: 1,
-    explain: "Rửa tiền là tội phạm nghiêm trọng — phải từ chối và tố giác ngay lập tức."
-  },
-  {
-    q: "🌏 Công ty nước ngoài đề nghị mua bí mật thương mại và thông tin quy hoạch quốc gia.",
-    type: "corrupt",
-    obstacle: "🌏 Gián điệp kinh tế",
-    opts: [
-      { text: "Bán thông tin, nhận 1 tỷ", effect: { hp:-60, purity:-25, money:1000 } },
-      { text: "Từ chối, bảo vệ bí mật quốc gia", effect: { hp:+40, purity:+15, money:0 } },
-      { text: "Báo an ninh, phối hợp bắt gián điệp", effect: { hp:+50, purity:+20, money:0 } }
-    ],
-    correct: 2,
-    explain: "Bảo vệ bí mật quốc gia là nhiệm vụ thiêng liêng — phải báo cơ quan an ninh ngay."
-  }
+  { q: "💰 Nhà thầu X đề nghị 'hoa hồng' 500 triệu để thắng thầu dự án quốc gia.", type:"corrupt", obstacle:"💰 Cám dỗ hối lộ", opts:[{text:"Nhận tiền, thông thầu",effect:{hp:-20,purity:-5,money:500}},{text:"Từ chối, báo cáo cấp trên",effect:{hp:+15,purity:+2,money:0}},{text:"Nhận một nửa, làm lòng vòng",effect:{hp:-10,purity:-3,money:250}}], correct:1, explain:"Từ chối và báo cáo là hành động đúng đắn, giữ vững đạo đức cách mạng." },
+  { q: "👨‍👧‍👦 Có cơ hội bổ nhiệm người thân vào vị trí quan trọng trong bộ máy nhà nước.", type:"corrupt", obstacle:"👨‍👧‍👦 Bổ nhiệm người thân", opts:[{text:"Bổ nhiệm dù không đủ năng lực",effect:{hp:-25,purity:-8,money:100}},{text:"Chọn người xứng đáng nhất",effect:{hp:+20,purity:+5,money:0}},{text:"Bổ nhiệm nhưng giám sát chặt",effect:{hp:-5,purity:-2,money:50}}], correct:1, explain:"Đúng người đúng việc — không để tình cảm cá nhân ảnh hưởng đến công việc chung." },
+  { q: "🏗️ Phát hiện nhà thầu dùng vật liệu kém chất lượng. Họ đề nghị chia tiền để im lặng.", type:"corrupt", obstacle:"🏗️ Cắt xén công trình", opts:[{text:"Nhận tiền, làm ngơ",effect:{hp:-30,purity:-10,money:300}},{text:"Tố cáo, yêu cầu làm lại",effect:{hp:+25,purity:+8,money:0}},{text:"Yêu cầu sửa nhưng vẫn nhận tiền",effect:{hp:-15,purity:-5,money:150}}], correct:1, explain:"Công trình kém chất lượng gây hại cho nhân dân — phải tố cáo và yêu cầu làm lại." },
+  { q: "📊 Phát hiện sơ hở trong hệ thống kế toán — có thể rút tiền công quỹ mà khó bị phát hiện.", type:"corrupt", obstacle:"📊 Biển thủ công quỹ", opts:[{text:"Lợi dụng, rút 1 tỷ",effect:{hp:-40,purity:-15,money:1000}},{text:"Báo cáo, đề xuất sửa lỗ hổng",effect:{hp:+30,purity:+10,money:0}},{text:"Làm ngơ, không báo",effect:{hp:-15,purity:-5,money:0}}], correct:1, explain:"Bảo vệ tài sản công là trách nhiệm của mỗi cán bộ — phải báo cáo kịp thời." },
+  { q: "🏢 Biết trước quy hoạch đất đai, có cơ hội mua đất giá rẻ rồi bán lại sau khi công bố.", type:"corrupt", obstacle:"🏢 Đất vàng - Thâu tóm", opts:[{text:"Đầu tư, kiếm lời nhanh",effect:{hp:-35,purity:-12,money:800}},{text:"Báo cáo, không tham gia",effect:{hp:+25,purity:+8,money:0}},{text:"Mua ít, không ai biết",effect:{hp:-15,purity:-5,money:300}}], correct:1, explain:"Lợi dụng thông tin nội bộ để trục lợi là tham nhũng — phải từ chối và báo cáo." },
+  { q: "🎓 Bạn thân nhờ dùng quan hệ xin việc cho con vào cơ quan nhà nước, bỏ qua thi tuyển.", type:"corrupt", obstacle:"🎓 Xin việc, vượt quy trình", opts:[{text:"Dùng quan hệ, bỏ qua thi tuyển",effect:{hp:-20,purity:-6,money:100}},{text:"Hướng dẫn thi tuyển công bằng",effect:{hp:+15,purity:+3,money:0}},{text:"Nhận tiền rồi lo",effect:{hp:-25,purity:-8,money:200}}], correct:1, explain:"Mọi người đều phải đi qua thi tuyển công bằng — không ai được dùng quan hệ để ngoại lệ." },
+  { q: "📰 Công ty tư nhân đề nghị 'tài trợ' để đăng bài quảng bá hình ảnh cá nhân lên báo đài.", type:"corrupt", obstacle:"📰 PR cá nhân bằng tiền", opts:[{text:"Nhận tiền, PR hình ảnh",effect:{hp:-15,purity:-4,money:150}},{text:"Từ chối vì xung đột lợi ích",effect:{hp:+10,purity:+2,money:0}},{text:"Nhận nhưng giấu, trả dần",effect:{hp:-10,purity:-3,money:150}}], correct:1, explain:"Cán bộ không được nhận bất kỳ lợi ích nào từ tổ chức có quyền lợi liên quan đến công việc." },
+  { q: "🚢 Đầu nậu đề nghị 'bôi trơn' 500 triệu để thông quan hàng lậu qua cảng kiểm soát.", type:"corrupt", obstacle:"🚢 Hải quan - Nhập lậu", opts:[{text:"Nhận tiền, làm ngơ",effect:{hp:-45,purity:-18,money:500}},{text:"Bắt giữ, báo cấp trên",effect:{hp:+35,purity:+12,money:0}},{text:"Cảnh cáo rồi thả",effect:{hp:-20,purity:-7,money:100}}], correct:1, explain:"Hàng lậu gây hại cho nền kinh tế và an toàn xã hội — phải kiên quyết ngăn chặn." },
+  { q: "🎫 Doanh nghiệp 'mượn' danh nghĩa tổ chức sự kiện văn hóa để rửa tiền.", type:"corrupt", obstacle:"🎫 Rửa tiền qua sự kiện", opts:[{text:"Tham gia, nhận % hoa hồng",effect:{hp:-20,purity:-7,money:200}},{text:"Từ chối, báo công an",effect:{hp:+20,purity:+5,money:0}},{text:"Làm ngơ vì sợ ảnh hưởng",effect:{hp:-10,purity:-3,money:0}}], correct:1, explain:"Rửa tiền là tội phạm nghiêm trọng — phải từ chối và tố giác ngay lập tức." },
+  { q: "🌏 Công ty nước ngoài đề nghị mua bí mật thương mại và thông tin quy hoạch quốc gia.", type:"corrupt", obstacle:"🌏 Gián điệp kinh tế", opts:[{text:"Bán thông tin, nhận 1 tỷ",effect:{hp:-60,purity:-25,money:1000}},{text:"Từ chối, bảo vệ bí mật quốc gia",effect:{hp:+40,purity:+15,money:0}},{text:"Báo an ninh, phối hợp bắt gián điệp",effect:{hp:+50,purity:+20,money:0}}], correct:2, explain:"Bảo vệ bí mật quốc gia là nhiệm vụ thiêng liêng — phải báo cơ quan an ninh ngay." }
 ];
 
-// Theory questions (from script.js)
 const THEORY_QUESTIONS = [
-  {
-    q: "Con thuyền muốn đi đúng hướng lâu dài cần dựa vào điều gì?",
-    opts: [{text:"Quyền lực áp đặt"},{text:"Nhân dân"},{text:"Một cá nhân giỏi"},{text:"May mắn"}],
-    correct: 1, explain: "Đảng gắn bó với nhân dân — đó là sức mạnh trường tồn.", obstacle: "🌊 Sóng to gió lớn"
-  },
-  {
-    q: "Khi thuyền chưa vững, điều quan trọng nhất là gì?",
-    opts: [{text:"Người lái phải vững"},{text:"Tốc độ nhanh"},{text:"Ít người biết"},{text:"Tránh tranh luận"}],
-    correct: 0, explain: "Ẩn dụ 'người cầm lái' — người lãnh đạo phải kiên định và vững vàng.", obstacle: "🌪️ Lốc xoáy đầu mùa"
-  },
-  {
-    q: "Con thuyền được hình thành từ yếu tố nào là đúng nhất?",
-    opts: [{text:"Một cá nhân lãnh đạo"},{text:"Sức mạnh quân sự"},{text:"Kết hợp lý luận + phong trào"},{text:"Tiền bạc"}],
-    correct: 2, explain: "Mác–Lênin + phong trào công nhân + phong trào yêu nước.", obstacle: "⚓ Khởi đầu nan"
-  },
-  {
-    q: "Khi nói 'Đảng là đạo đức', điều gì là cốt lõi?",
-    opts: [{text:"Quyền lực"},{text:"Lợi ích riêng"},{text:"Phục vụ nhân dân"},{text:"Thành tích"}],
-    correct: 2, explain: "Phục vụ nhân dân là cốt lõi của đạo đức cách mạng.", obstacle: "📜 Đạo đức biển khơi"
-  },
-  {
-    q: "Nếu thuyền viên bị cám dỗ bởi giàu sang thì cần?",
-    opts: [{text:"Chấp nhận"},{text:"Thỏa hiệp"},{text:"Giữ vững bản lĩnh"},{text:"Bỏ qua"}],
-    correct: 2, explain: "'Giàu sang không thể quyến rũ, nghèo khó không thể chuyển lay'.", obstacle: "💎 Đảo kim cương"
-  },
-  {
-    q: "Khi tổ chức muốn hoạt động đúng hướng, cần tuân theo?",
-    opts: [{text:"Ý kiến cá nhân"},{text:"Ngẫu nhiên"},{text:"Chủ nghĩa Mác – Lênin"},{text:"Số đông nhất thời"}],
-    correct: 2, explain: "Kim chỉ nam là chủ nghĩa Mác – Lênin và tư tưởng Hồ Chí Minh.", obstacle: "🧭 La bàn lý luận"
-  },
-  {
-    q: "Khi có nhiều ý kiến khác nhau, cách đúng là?",
-    opts: [{text:"Theo người mạnh nhất"},{text:"Không cần bàn"},{text:"Thảo luận rồi thống nhất"},{text:"Mỗi người làm một kiểu"}],
-    correct: 2, explain: "Tập trung dân chủ — thảo luận dân chủ, hành động thống nhất.", obstacle: "🗣️ Bão táp tranh luận"
-  },
-  {
-    q: "Khi thuyền trưởng muốn quyết định một mình, nên?",
-    opts: [{text:"Đồng ý ngay"},{text:"Phản đối hoàn toàn"},{text:"Lãnh đạo tập thể"},{text:"Bỏ mặc"}],
-    correct: 2, explain: "Lãnh đạo tập thể, cá nhân phụ trách — nguyên tắc tối cao của Đảng.", obstacle: "🧊 Tảng băng độc tài"
-  },
-  {
-    q: "Khi có sai lầm trong nội bộ, cần làm gì?",
-    opts: [{text:"Che giấu"},{text:"Đổ lỗi"},{text:"Tự phê bình và sửa"},{text:"Im lặng"}],
-    correct: 2, explain: "Tự phê bình và sửa chữa sai lầm là vũ khí sắc bén của Đảng.", obstacle: "🕳️ Thuyền bị rò rỉ"
-  },
-  {
-    q: "Kỷ luật trên thuyền cần như thế nào?",
-    opts: [{text:"Lỏng lẻo"},{text:"Chỉ phạt người yếu"},{text:"Nghiêm minh và tự giác"},{text:"Không cần"}],
-    correct: 2, explain: "Kỷ luật nghiêm minh và tự giác là nền tảng sức mạnh tổ chức.", obstacle: "⚔️ Thủy thủ nổi loạn"
-  },
-  {
-    q: "Mối quan hệ đúng giữa thuyền và người dân là?",
-    opts: [{text:"Cai trị"},{text:"Tách biệt"},{text:"Phục vụ"},{text:"Tránh tiếp xúc"}],
-    correct: 2, explain: "Đảng là 'đầy tớ của nhân dân' — phải phục vụ, không phải cai trị.", obstacle: "🚧 Bãi cạn quan liêu"
-  },
-  {
-    q: "Nếu thuyền không mang lại lợi ích cho dân thì?",
-    opts: [{text:"Không sao"},{text:"Vẫn chấp nhận"},{text:"Mất ý nghĩa"},{text:"Tăng tuyên truyền"}],
-    correct: 2, explain: "Mất lòng dân là mất tất cả — con thuyền mất ý nghĩa tồn tại.", obstacle: "🌊 Biển cạn lòng tin"
-  },
-  {
-    q: "Sức mạnh lớn nhất của thuyền đến từ?",
-    opts: [{text:"Vũ lực"},{text:"Tiền"},{text:"Lòng tin của dân"},{text:"Số lượng người"}],
-    correct: 2, explain: "Lòng tin của nhân dân là sức mạnh vô địch.", obstacle: "💨 Gió ngược chiều"
-  },
-  {
-    q: "Một thuyền viên muốn đặc quyền riêng, đó là biểu hiện của?",
-    opts: [{text:"Đoàn kết"},{text:"Chủ nghĩa cá nhân"},{text:"Kỷ luật"},{text:"Văn minh"}],
-    correct: 1, explain: "Chủ nghĩa cá nhân là kẻ thù số một của tinh thần tập thể.", obstacle: "🐙 Bạch tuộc ích kỷ"
-  },
-  {
-    q: "'Giặc nội xâm' trên thuyền là gì?",
-    opts: [{text:"Sóng biển"},{text:"Kẻ thù bên ngoài"},{text:"Tham ô, lãng phí, quan liêu"},{text:"Thời tiết"}],
-    correct: 2, explain: "Bác Hồ dạy: tham ô, lãng phí, quan liêu là giặc nội xâm nguy hiểm nhất.", obstacle: "🐀 Chuột gặm mạn thuyền"
-  },
-  {
-    q: "Để thuyền mạnh, cần làm gì với nội bộ?",
-    opts: [{text:"Giữ nguyên"},{text:"Tự chỉnh đốn"},{text:"Bỏ qua sai sót"},{text:"Che giấu"}],
-    correct: 1, explain: "Tự chỉnh đốn nội bộ là điều kiện tiên quyết để giữ vững sức chiến đấu.", obstacle: "🦠 Dịch bệnh nội bộ"
-  },
-  {
-    q: "Vai trò của cán bộ trên thuyền là?",
-    opts: [{text:"Không quan trọng"},{text:"Trang trí"},{text:"Gốc của mọi công việc"},{text:"Chỉ nghe lệnh"}],
-    correct: 2, explain: "Cán bộ là cái gốc của mọi công việc — muôn việc thành công hay thất bại đều do cán bộ.", obstacle: "🌊 Thủy triều cuồn cuộn"
-  },
-  {
-    q: "Khi sử dụng cán bộ, điều đúng là?",
-    opts: [{text:"Theo cảm tính"},{text:"Theo quan hệ"},{text:"Đúng người đúng việc"},{text:"Ngẫu nhiên"}],
-    correct: 2, explain: "Đúng người đúng việc — không để tình cảm hay quan hệ chi phối.", obstacle: "⚓ Chọn mặt gửi vàng"
-  },
-  {
-    q: "Sau khi đạt thành công, thuyền nên?",
-    opts: [{text:"Tự mãn"},{text:"Dừng lại"},{text:"Tiếp tục rèn luyện"},{text:"Bỏ nguyên tắc"}],
-    correct: 2, explain: "Thắng lợi không phải điểm dừng — phải tiếp tục rèn luyện và hoàn thiện.", obstacle: "🏝️ Rạn san hô tự mãn"
-  },
-  {
-    q: "Để thuyền tồn tại lâu dài, điều quan trọng nhất là?",
-    opts: [{text:"Quyền lực"},{text:"Tiền bạc"},{text:"Trong sạch, vững mạnh, gắn bó nhân dân"},{text:"Tốc độ"}],
-    correct: 2, explain: "Trong sạch, vững mạnh và gắn bó máu thịt với nhân dân là bài học sống còn.", obstacle: "🏁 Đích đến huy hoàng"
-  }
+  {q:"Con thuyền muốn đi đúng hướng lâu dài cần dựa vào điều gì?",opts:[{text:"Quyền lực áp đặt"},{text:"Nhân dân"},{text:"Một cá nhân giỏi"},{text:"May mắn"}],correct:1,explain:"Đảng gắn bó với nhân dân — đó là sức mạnh trường tồn.",obstacle:"🌊 Sóng to gió lớn"},
+  {q:"Khi thuyền chưa vững, điều quan trọng nhất là gì?",opts:[{text:"Người lái phải vững"},{text:"Tốc độ nhanh"},{text:"Ít người biết"},{text:"Tránh tranh luận"}],correct:0,explain:"Ẩn dụ 'người cầm lái' — người lãnh đạo phải kiên định và vững vàng.",obstacle:"🌪️ Lốc xoáy đầu mùa"},
+  {q:"Con thuyền được hình thành từ yếu tố nào là đúng nhất?",opts:[{text:"Một cá nhân lãnh đạo"},{text:"Sức mạnh quân sự"},{text:"Kết hợp lý luận + phong trào"},{text:"Tiền bạc"}],correct:2,explain:"Mác–Lênin + phong trào công nhân + phong trào yêu nước.",obstacle:"⚓ Khởi đầu nan"},
+  {q:"Khi nói 'Đảng là đạo đức', điều gì là cốt lõi?",opts:[{text:"Quyền lực"},{text:"Lợi ích riêng"},{text:"Phục vụ nhân dân"},{text:"Thành tích"}],correct:2,explain:"Phục vụ nhân dân là cốt lõi của đạo đức cách mạng.",obstacle:"📜 Đạo đức biển khơi"},
+  {q:"Nếu thuyền viên bị cám dỗ bởi giàu sang thì cần?",opts:[{text:"Chấp nhận"},{text:"Thỏa hiệp"},{text:"Giữ vững bản lĩnh"},{text:"Bỏ qua"}],correct:2,explain:"'Giàu sang không thể quyến rũ, nghèo khó không thể chuyển lay'.",obstacle:"💎 Đảo kim cương"},
+  {q:"Khi tổ chức muốn hoạt động đúng hướng, cần tuân theo?",opts:[{text:"Ý kiến cá nhân"},{text:"Ngẫu nhiên"},{text:"Chủ nghĩa Mác – Lênin"},{text:"Số đông nhất thời"}],correct:2,explain:"Kim chỉ nam là chủ nghĩa Mác – Lênin và tư tưởng Hồ Chí Minh.",obstacle:"🧭 La bàn lý luận"},
+  {q:"Khi có nhiều ý kiến khác nhau, cách đúng là?",opts:[{text:"Theo người mạnh nhất"},{text:"Không cần bàn"},{text:"Thảo luận rồi thống nhất"},{text:"Mỗi người làm một kiểu"}],correct:2,explain:"Tập trung dân chủ — thảo luận dân chủ, hành động thống nhất.",obstacle:"🗣️ Bão táp tranh luận"},
+  {q:"Khi thuyền trưởng muốn quyết định một mình, nên?",opts:[{text:"Đồng ý ngay"},{text:"Phản đối hoàn toàn"},{text:"Lãnh đạo tập thể"},{text:"Bỏ mặc"}],correct:2,explain:"Lãnh đạo tập thể, cá nhân phụ trách — nguyên tắc tối cao của Đảng.",obstacle:"🧊 Tảng băng độc tài"},
+  {q:"Khi có sai lầm trong nội bộ, cần làm gì?",opts:[{text:"Che giấu"},{text:"Đổ lỗi"},{text:"Tự phê bình và sửa"},{text:"Im lặng"}],correct:2,explain:"Tự phê bình và sửa chữa sai lầm là vũ khí sắc bén của Đảng.",obstacle:"🕳️ Thuyền bị rò rỉ"},
+  {q:"Kỷ luật trên thuyền cần như thế nào?",opts:[{text:"Lỏng lẻo"},{text:"Chỉ phạt người yếu"},{text:"Nghiêm minh và tự giác"},{text:"Không cần"}],correct:2,explain:"Kỷ luật nghiêm minh và tự giác là nền tảng sức mạnh tổ chức.",obstacle:"⚔️ Thủy thủ nổi loạn"},
+  {q:"Mối quan hệ đúng giữa thuyền và người dân là?",opts:[{text:"Cai trị"},{text:"Tách biệt"},{text:"Phục vụ"},{text:"Tránh tiếp xúc"}],correct:2,explain:"Đảng là 'đầy tớ của nhân dân' — phải phục vụ, không phải cai trị.",obstacle:"🚧 Bãi cạn quan liêu"},
+  {q:"Nếu thuyền không mang lại lợi ích cho dân thì?",opts:[{text:"Không sao"},{text:"Vẫn chấp nhận"},{text:"Mất ý nghĩa"},{text:"Tăng tuyên truyền"}],correct:2,explain:"Mất lòng dân là mất tất cả — con thuyền mất ý nghĩa tồn tại.",obstacle:"🌊 Biển cạn lòng tin"},
+  {q:"Sức mạnh lớn nhất của thuyền đến từ?",opts:[{text:"Vũ lực"},{text:"Tiền"},{text:"Lòng tin của dân"},{text:"Số lượng người"}],correct:2,explain:"Lòng tin của nhân dân là sức mạnh vô địch.",obstacle:"💨 Gió ngược chiều"},
+  {q:"Một thuyền viên muốn đặc quyền riêng, đó là biểu hiện của?",opts:[{text:"Đoàn kết"},{text:"Chủ nghĩa cá nhân"},{text:"Kỷ luật"},{text:"Văn minh"}],correct:1,explain:"Chủ nghĩa cá nhân là kẻ thù số một của tinh thần tập thể.",obstacle:"🐙 Bạch tuộc ích kỷ"},
+  {q:"'Giặc nội xâm' trên thuyền là gì?",opts:[{text:"Sóng biển"},{text:"Kẻ thù bên ngoài"},{text:"Tham ô, lãng phí, quan liêu"},{text:"Thời tiết"}],correct:2,explain:"Bác Hồ dạy: tham ô, lãng phí, quan liêu là giặc nội xâm nguy hiểm nhất.",obstacle:"🐀 Chuột gặm mạn thuyền"},
+  {q:"Để thuyền mạnh, cần làm gì với nội bộ?",opts:[{text:"Giữ nguyên"},{text:"Tự chỉnh đốn"},{text:"Bỏ qua sai sót"},{text:"Che giấu"}],correct:1,explain:"Tự chỉnh đốn nội bộ là điều kiện tiên quyết để giữ vững sức chiến đấu.",obstacle:"🦠 Dịch bệnh nội bộ"},
+  {q:"Vai trò của cán bộ trên thuyền là?",opts:[{text:"Không quan trọng"},{text:"Trang trí"},{text:"Gốc của mọi công việc"},{text:"Chỉ nghe lệnh"}],correct:2,explain:"Cán bộ là cái gốc của mọi công việc — muôn việc thành công hay thất bại đều do cán bộ.",obstacle:"🌊 Thủy triều cuồn cuộn"},
+  {q:"Khi sử dụng cán bộ, điều đúng là?",opts:[{text:"Theo cảm tính"},{text:"Theo quan hệ"},{text:"Đúng người đúng việc"},{text:"Ngẫu nhiên"}],correct:2,explain:"Đúng người đúng việc — không để tình cảm hay quan hệ chi phối.",obstacle:"⚓ Chọn mặt gửi vàng"},
+  {q:"Sau khi đạt thành công, thuyền nên?",opts:[{text:"Tự mãn"},{text:"Dừng lại"},{text:"Tiếp tục rèn luyện"},{text:"Bỏ nguyên tắc"}],correct:2,explain:"Thắng lợi không phải điểm dừng — phải tiếp tục rèn luyện và hoàn thiện.",obstacle:"🏝️ Rạn san hô tự mãn"},
+  {q:"Để thuyền tồn tại lâu dài, điều quan trọng nhất là?",opts:[{text:"Quyền lực"},{text:"Tiền bạc"},{text:"Trong sạch, vững mạnh, gắn bó nhân dân"},{text:"Tốc độ"}],correct:2,explain:"Trong sạch, vững mạnh và gắn bó máu thịt với nhân dân là bài học sống còn.",obstacle:"🏁 Đích đến huy hoàng"}
 ];
 
-// Milestone questions (at positions: 5,8,11,13,15,17,19)
 const MILESTONE_DATA = [
-  { year:1930, title:"Thành lập Đảng", storm:"🌊 Vượt sóng đầu mùa", stormHp:5, stormCond:"purity<80",
-    q:"Con thuyền cách mạng vừa ra khơi. Chọn hướng đi nào?",
-    opts:[{text:"Đi nhanh, vượt trước",effect:{hp:-10,purity:-5}},{text:"Đi chậm chắc, xây móng vững",effect:{hp:+15,purity:+10}},{text:"Chờ xem hướng gió",effect:{hp:0,purity:0}},{text:"Hợp tác với thế lực bên ngoài",effect:{hp:-25,purity:-15}}],
-    correct:1, explain:"Bác Hồ dạy: 'Phải xây dựng Đảng vững mạnh từ gốc — đi chắc còn hơn đi nhanh'", obstacle:"📍 Mốc 1930" },
-  { year:1945, title:"Cách mạng Tháng Tám", storm:"⚡ Thử thách chính quyền non trẻ", stormHp:10, stormCond:"purity<70",
-    q:"Giành chính quyền rồi, việc đầu tiên cần làm?",
-    opts:[{text:"Tập trung củng cố quyền lực",effect:{hp:-5,purity:-5}},{text:"Lo cho dân ăn no, mặc ấm",effect:{hp:+20,purity:+10}},{text:"Mở rộng quan hệ quốc tế",effect:{hp:0,purity:0}},{text:"Trừng trị tất cả kẻ thù cũ",effect:{hp:-10,purity:-5}}],
-    correct:1, explain:"'Nước độc lập mà dân không được hưởng hạnh phúc thì độc lập chẳng có nghĩa lý gì' — Hồ Chí Minh", obstacle:"📍 Mốc 1945" },
-  { year:1954, title:"Điện Biên Phủ", storm:"🌪️ Cơn lốc cám dỗ", stormHp:15, stormCond:"purity<60",
-    q:"Pháp muốn viện trợ đổi lấy căn cứ quân sự. Xử lý thế nào?",
-    opts:[{text:"Nhận viện trợ, phát triển nhanh",effect:{hp:-20,purity:-15}},{text:"Từ chối, tự lực cánh sinh",effect:{hp:+15,purity:+10}},{text:"Đàm phán thêm điều khoản",effect:{hp:-5,purity:-5}},{text:"Lấy rồi tính sau",effect:{hp:-15,purity:-10}}],
-    correct:1, explain:"Độc lập dân tộc là trên hết — không đánh đổi chủ quyền lấy bất cứ thứ gì.", obstacle:"📍 Mốc 1954" },
-  { year:1969, title:"Bác Hồ đi xa", storm:"💔 Mất người dẫn đường", stormHp:20, stormCond:"always",
-    q:"Di chúc của Bác nhấn mạnh điều gì trước tiên?",
-    opts:[{text:"Phát triển kinh tế",effect:{hp:0,purity:0}},{text:"Xây dựng Đảng trong sạch, vững mạnh",effect:{hp:+25,purity:+15}},{text:"Mở rộng chiến tranh",effect:{hp:-20,purity:-10}},{text:"Để lại quyền lực cho tập thể",effect:{hp:+10,purity:+5}}],
-    correct:1, explain:"Bác căn dặn: 'Đảng phải giữ gìn sự đoàn kết như giữ gìn con ngươi của mắt mình'", obstacle:"📍 Mốc 1969" },
-  { year:1975, title:"Thống nhất đất nước", storm:"🌊 Sóng xây dựng hòa bình", stormHp:25, stormCond:"purity<50",
-    q:"Sau chiến tranh, ưu tiên số một là gì?",
-    opts:[{text:"Khôi phục sản xuất, ổn định đời sống",effect:{hp:+20,purity:+10}},{text:"Củng cố bộ máy chính quyền",effect:{hp:+5,purity:0}},{text:"Chạy theo thành tích, số lượng",effect:{hp:-15,purity:-10}},{text:"Mở cửa toàn diện bằng mọi giá",effect:{hp:-25,purity:-20}}],
-    correct:0, explain:"'Dân đói, dân khổ thì Đảng có lỗi. Phải lo cho dân trước' — ưu tiên đời sống nhân dân.", obstacle:"📍 Mốc 1975" },
-  { year:1986, title:"Công cuộc Đổi mới", storm:"🌪️ Bão Đổi mới", stormHp:15, stormCond:"purityReset50",
-    q:"Mở cửa kinh tế nhưng có nguy cơ tham nhũng tràn lan. Chọn hướng nào?",
-    opts:[{text:"Mở cửa bằng mọi giá",effect:{hp:-20,purity:-15}},{text:"Vừa mở cửa, vừa siết chặt kỷ luật",effect:{hp:+15,purity:+10}},{text:"Đóng cửa, giữ an toàn",effect:{hp:-10,purity:0}},{text:"Cho phép tham nhũng để kích thích kinh tế",effect:{hp:-30,purity:-25}}],
-    correct:1, explain:"Đổi mới nhưng không đánh đổi đạo đức và kỷ cương — đây là bài học cốt lõi của Đổi mới.", obstacle:"📍 Mốc 1986" },
-  { year:2026, title:"Kỷ niệm 96 năm – Về đích", storm:"🏁 Kiểm tra cuối hành trình", stormHp:0, stormCond:"final",
-    q:"Nhìn lại hành trình 96 năm, bài học quan trọng nhất là?",
-    opts:[{text:"Phát triển kinh tế là trên hết",effect:{hp:0,purity:-5}},{text:"Lấy dân làm gốc, Đảng phải trong sạch",effect:{hp:+30,purity:+20}},{text:"Công nghệ là chìa khóa",effect:{hp:0,purity:0}},{text:"Quan hệ quốc tế quyết định",effect:{hp:-10,purity:-5}}],
-    correct:1, explain:"'Mất lòng dân là mất tất cả. Đảng phải trong sạch, vững mạnh và gắn bó với nhân dân.' — Hồ Chí Minh", obstacle:"📍 Mốc 2026" }
+  {year:1930,title:"Thành lập Đảng",storm:"🌊 Vượt sóng đầu mùa",stormHp:5,stormCond:"purity<80",q:"Con thuyền cách mạng vừa ra khơi. Chọn hướng đi nào?",opts:[{text:"Đi nhanh, vượt trước",effect:{hp:-10,purity:-5}},{text:"Đi chậm chắc, xây móng vững",effect:{hp:+15,purity:+10}},{text:"Chờ xem hướng gió",effect:{hp:0,purity:0}},{text:"Hợp tác với thế lực bên ngoài",effect:{hp:-25,purity:-15}}],correct:1,explain:"Bác Hồ dạy: 'Phải xây dựng Đảng vững mạnh từ gốc — đi chắc còn hơn đi nhanh'",obstacle:"📍 Mốc 1930"},
+  {year:1945,title:"Cách mạng Tháng Tám",storm:"⚡ Thử thách chính quyền non trẻ",stormHp:10,stormCond:"purity<70",q:"Giành chính quyền rồi, việc đầu tiên cần làm?",opts:[{text:"Tập trung củng cố quyền lực",effect:{hp:-5,purity:-5}},{text:"Lo cho dân ăn no, mặc ấm",effect:{hp:+20,purity:+10}},{text:"Mở rộng quan hệ quốc tế",effect:{hp:0,purity:0}},{text:"Trừng trị tất cả kẻ thù cũ",effect:{hp:-10,purity:-5}}],correct:1,explain:"'Nước độc lập mà dân không được hưởng hạnh phúc thì độc lập chẳng có nghĩa lý gì' — Hồ Chí Minh",obstacle:"📍 Mốc 1945"},
+  {year:1954,title:"Điện Biên Phủ",storm:"🌪️ Cơn lốc cám dỗ",stormHp:15,stormCond:"purity<60",q:"Pháp muốn viện trợ đổi lấy căn cứ quân sự. Xử lý thế nào?",opts:[{text:"Nhận viện trợ, phát triển nhanh",effect:{hp:-20,purity:-15}},{text:"Từ chối, tự lực cánh sinh",effect:{hp:+15,purity:+10}},{text:"Đàm phán thêm điều khoản",effect:{hp:-5,purity:-5}},{text:"Lấy rồi tính sau",effect:{hp:-15,purity:-10}}],correct:1,explain:"Độc lập dân tộc là trên hết — không đánh đổi chủ quyền lấy bất cứ thứ gì.",obstacle:"📍 Mốc 1954"},
+  {year:1969,title:"Bác Hồ đi xa",storm:"💔 Mất người dẫn đường",stormHp:20,stormCond:"always",q:"Di chúc của Bác nhấn mạnh điều gì trước tiên?",opts:[{text:"Phát triển kinh tế",effect:{hp:0,purity:0}},{text:"Xây dựng Đảng trong sạch, vững mạnh",effect:{hp:+25,purity:+15}},{text:"Mở rộng chiến tranh",effect:{hp:-20,purity:-10}},{text:"Để lại quyền lực cho tập thể",effect:{hp:+10,purity:+5}}],correct:1,explain:"Bác căn dặn: 'Đảng phải giữ gìn sự đoàn kết như giữ gìn con ngươi của mắt mình'",obstacle:"📍 Mốc 1969"},
+  {year:1975,title:"Thống nhất đất nước",storm:"🌊 Sóng xây dựng hòa bình",stormHp:25,stormCond:"purity<50",q:"Sau chiến tranh, ưu tiên số một là gì?",opts:[{text:"Khôi phục sản xuất, ổn định đời sống",effect:{hp:+20,purity:+10}},{text:"Củng cố bộ máy chính quyền",effect:{hp:+5,purity:0}},{text:"Chạy theo thành tích, số lượng",effect:{hp:-15,purity:-10}},{text:"Mở cửa toàn diện bằng mọi giá",effect:{hp:-25,purity:-20}}],correct:0,explain:"'Dân đói, dân khổ thì Đảng có lỗi. Phải lo cho dân trước' — ưu tiên đời sống nhân dân.",obstacle:"📍 Mốc 1975"},
+  {year:1986,title:"Công cuộc Đổi mới",storm:"🌪️ Bão Đổi mới",stormHp:15,stormCond:"purityReset50",q:"Mở cửa kinh tế nhưng có nguy cơ tham nhũng tràn lan. Chọn hướng nào?",opts:[{text:"Mở cửa bằng mọi giá",effect:{hp:-20,purity:-15}},{text:"Vừa mở cửa, vừa siết chặt kỷ luật",effect:{hp:+15,purity:+10}},{text:"Đóng cửa, giữ an toàn",effect:{hp:-10,purity:0}},{text:"Cho phép tham nhũng để kích thích kinh tế",effect:{hp:-30,purity:-25}}],correct:1,explain:"Đổi mới nhưng không đánh đổi đạo đức và kỷ cương — đây là bài học cốt lõi của Đổi mới.",obstacle:"📍 Mốc 1986"},
+  {year:2026,title:"Kỷ niệm 96 năm – Về đích",storm:"🏁 Kiểm tra cuối hành trình",stormHp:0,stormCond:"final",q:"Nhìn lại hành trình 96 năm, bài học quan trọng nhất là?",opts:[{text:"Phát triển kinh tế là trên hết",effect:{hp:0,purity:-5}},{text:"Lấy dân làm gốc, Đảng phải trong sạch",effect:{hp:+30,purity:+20}},{text:"Công nghệ là chìa khóa",effect:{hp:0,purity:0}},{text:"Quan hệ quốc tế quyết định",effect:{hp:-10,purity:-5}}],correct:1,explain:"'Mất lòng dân là mất tất cả. Đảng phải trong sạch, vững mạnh và gắn bó với nhân dân.' — Hồ Chí Minh",obstacle:"📍 Mốc 2026"}
 ];
 
-// Build the 20-question sequence
 let GAME_SEQ = [];
 
 function buildGameSequence() {
   const seq = [];
   let ti = 0;
-  
-  // Positions of milestones: 5,8,11,13,15,17,19
   const milestonePos = [5,8,11,13,15,17,19];
-  
   for(let i=0;i<20;i++){
     if(milestonePos.includes(i)){
       const mIdx = milestonePos.indexOf(i);
       seq.push({...MILESTONE_DATA[mIdx], isMilestone:true, milestoneIdx:mIdx});
     } else {
-      // Use theory questions in order
       seq.push({...THEORY_QUESTIONS[ti++ % THEORY_QUESTIONS.length]});
     }
   }
   return seq;
 }
 
-// Global state for game sequence sync
-function setGameSequence(seq) {
-  GAME_SEQ = seq;
-}
-
-// Initial sequence for single player (will be overwritten in multi)
+function setGameSequence(seq){ GAME_SEQ = seq; }
 GAME_SEQ = buildGameSequence();
 
-// ═══════════════════════════════════════════════
-// GAME STATE
-// ═══════════════════════════════════════════════
+// ═══ GAME STATE ═══════════════════════════════
 let currentQ = 0;
 let hp = 100;
 let purity = 100;
-let money = 0; // in hundred thousands VND
+let money = 0;
 let corruptCount = 0;
 let stormsSurvived = 0;
 let correctCount = 0;
 let wrongCount = 0;
+let corruptWrongCount = 0;  // Số lần sai câu tham nhũng
+let corruptTotalOffered = 0; // Tổng số lần bị cám dỗ
 let timer = null, timerVal = 20;
 let answered = false;
 let votes = {}, userChoice = -1;
-let myCorruptOffer = null; // Dữ liệu câu hỏi tham nhũng nếu người chơi bị tha hóa vòng này
+let myCorruptOffer = null;
+let lastCorruptionEffects = null;
 const totalTime = 20;
 let pendingStorm = null;
+let awaitingStormDismiss = false;
 
 // Multiplayer state
 let currentRoom = null;
 let isHost = false;
 let playerCount = 1;
-let currentPlayers = {}; // To store all players data including names
-let currentRoomData = null; // To store full room state for syncing names/phases
-let myPlayerName = ''; // Tên người chơi hiện tại
+let currentPlayers = {};
+let currentRoomData = null;
+let myPlayerName = '';
 
-// Stars
+// ═══ STARS ════════════════════════════════════
 function buildStars(){
   const c = document.getElementById('starsContainer');
   for(let i=0;i<30;i++){
@@ -1276,9 +1153,7 @@ function buildStars(){
   }
 }
 
-// ═══════════════════════════════════════════════
-// MAP / PATH
-// ═══════════════════════════════════════════════
+// ═══ MAP / PATH ═══════════════════════════════
 const MILESTONE_POS = [5,8,11,13,15,17,19];
 
 function buildDots(){
@@ -1313,32 +1188,17 @@ function updateShip(){
   if(cur) cur.classList.add('current-dot');
 }
 
-// ═══════════════════════════════════════════════
-// MILESTONE BANNER & STORM
-// ═══════════════════════════════════════════════
+// ═══ MILESTONE BANNER ═════════════════════════
 function showMilestoneBanner(qData){
   const banner = document.getElementById('milestoneBanner');
   document.getElementById('milestoneYear').textContent = qData.year;
   document.getElementById('milestoneTitle').textContent = qData.title;
-  
   const swt = document.getElementById('stormWarningText');
-  if(qData.stormCond === 'always'){
-    swt.textContent = `${qData.storm}: -${qData.stormHp} HP (luôn xảy ra)`;
-    swt.style.display='block';
-  } else if(qData.stormCond === 'purityReset50'){
-    swt.textContent = `${qData.storm}: -${qData.stormHp} HP + Reset Purity về 50% nếu thấp hơn`;
-    swt.style.display='block';
-  } else if(qData.stormCond === 'final'){
-    swt.textContent = `🏁 Kiểm tra cuối: HP > 40 mới thắng hoàn toàn!`;
-    swt.style.display='block';
-  } else if(qData.stormCond && qData.stormCond.startsWith('purity<')){
-    const thresh = parseInt(qData.stormCond.replace('purity<',''));
-    swt.textContent = `${qData.storm}: -${qData.stormHp} HP nếu Purity < ${thresh}%`;
-    swt.style.display='block';
-  } else {
-    swt.style.display='none';
-  }
-  
+  if(qData.stormCond==='always'){ swt.textContent=`${qData.storm}: -${qData.stormHp} HP (luôn xảy ra)`; swt.style.display='block'; }
+  else if(qData.stormCond==='purityReset50'){ swt.textContent=`${qData.storm}: -${qData.stormHp} HP + Reset Purity về 50% nếu thấp hơn`; swt.style.display='block'; }
+  else if(qData.stormCond==='final'){ swt.textContent=`🏁 Kiểm tra cuối: HP > 40 mới thắng hoàn toàn!`; swt.style.display='block'; }
+  else if(qData.stormCond && qData.stormCond.startsWith('purity<')){ const thresh=parseInt(qData.stormCond.replace('purity<','')); swt.textContent=`${qData.storm}: -${qData.stormHp} HP nếu Purity < ${thresh}%`; swt.style.display='block'; }
+  else { swt.style.display='none'; }
   banner.classList.add('active');
 }
 
@@ -1348,46 +1208,90 @@ function hideMilestoneBanner(){
 
 function applyStormEffect(qData){
   let damage = 0;
-  let stormDesc = '';
-  
+  let desc = ''; // Đổi tên từ stormDesc thành desc để khớp với lệnh update Firebase
+
+  // Kiểm tra an toàn để tránh qData.storm bị undefined
+  const stormTitle = qData.storm || "Cơn bão bất ngờ";
+
   if(qData.stormCond === 'always'){
-    damage = qData.stormHp;
-    stormDesc = `${qData.storm} — Cơn bão ập đến không tránh khỏi!`;
-  } else if(qData.stormCond === 'purityReset50'){
-    damage = qData.stormHp;
+    damage = qData.stormHp || 0; 
+    desc = `${stormTitle} — Cơn bão ập đến không tránh khỏi!`;
+  } 
+  else if(qData.stormCond === 'purityReset50'){
+    damage = qData.stormHp || 0;
     if(purity < 50){ purity = 50; }
-    stormDesc = `${qData.storm} — Đổi mới thử thách toàn bộ nội bộ! Purity reset về 50%`;
-  } else if(qData.stormCond && qData.stormCond.startsWith('purity<')){
+    desc = `${stormTitle} — Đổi mới thử thách toàn bộ nội bộ! Purity reset về 50%`;
+  } 
+  else if(qData.stormCond && qData.stormCond.startsWith('purity<')){
     const thresh = parseInt(qData.stormCond.replace('purity<',''));
-    if(purity < thresh){
-      damage = qData.stormHp;
-      stormDesc = `${qData.storm} — Purity ${purity}% < ${thresh}%: thuyền chưa đủ vững!`;
+    if(purity < thresh){ 
+      damage = qData.stormHp || 0; 
+      desc = `${stormTitle} — Purity ${purity}% < ${thresh}%: thuyền chưa đủ vững!`; 
     }
   }
-  
-  if(damage > 0){
-    return { damage, stormDesc };
+
+  // CỰC KỲ QUAN TRỌNG: Chỉ trả về object nếu có sát thương và desc không rỗng
+  if(damage > 0 && desc !== '') {
+    return {
+      damage: damage,
+      desc: desc // Trả về 'desc' để Firebase nhận đúng
+    };
   }
+  
   return null;
 }
 
-let awaitingStormDismiss = false;
-function showStormOverlay(damage, desc){
-  document.getElementById('stormTitle').textContent = '🌊 BÃO TỐ!';
-  document.getElementById('stormDesc').textContent = desc;
-  document.getElementById('stormDamage').textContent = `-${damage} HP`;
-  document.getElementById('stormOverlay').classList.add('active');
-  hp = Math.max(0, hp - damage);
-  awaitingStormDismiss = true;
+// ═══════════════════════════════════════════════════════
+// [FIX 1] STORM — Chỉ host tính và push xuống Firebase
+// ═══════════════════════════════════════════════════════
+// 1. Sửa hàm hiển thị bão để dừng Timer
+function showStormOverlay(desc, damage) {
+  const overlay = document.getElementById("stormOverlay");
+
+  document.getElementById("stormDesc").innerText = desc || "Cơn bão ập đến!";
+  document.getElementById("stormDamage").innerText = `-${damage}`;
+
+  if (!isHost && currentRoom) {
+    const btn = document.getElementById("stormContinueBtn");
+    if (btn) btn.style.display = 'none';
+    const text = document.getElementById("playerWaitText");
+    if (text) text.style.display = 'flex';
+  } else {
+    const btn = document.getElementById("stormContinueBtn");
+    if (btn) btn.style.display = 'flex';
+    const text = document.getElementById("playerWaitText");
+    if (text) text.style.display = 'none';
+  }
+
+  overlay.classList.add("active");
+
+  console.log("Storm overlay SHOW"); // debug
 }
 
-function dismissStorm(){
-  document.getElementById('stormOverlay').classList.remove('active');
-  awaitingStormDismiss = false;
-  updateHPBar();
-  if(pendingStorm){
-    pendingStorm = null;
-  }
+function hideStormOverlay() {
+  document.getElementById("stormOverlay").classList.remove("active");
+}
+
+// 2. Hàm dành riêng cho Host để nhấn tiếp tục
+function hostContinueFromStorm() {
+  if (!isHost) return;
+
+  // Cập nhật trạng thái lên Firebase
+  firebaseManager.db.ref(`rooms/${currentRoom}`).update({
+    isStorming: false
+  }).then(() => {
+    // Sau khi bão tan, Host gọi lệnh sang câu hỏi tiếp theo
+    nextQuestion(); 
+  });
+}
+
+// 3. Cập nhật hàm dismissStorm hiện tại của bạn
+function dismissStorm() {
+    document.getElementById('stormOverlay').classList.remove('active');
+    // Chỉ tiếp tục câu hỏi nếu không phải đang chờ đồng bộ multiplayer (hoặc là host điều khiển)
+    if (!isMultiplayer || isHost) {
+        nextQuestion(); 
+    }
 }
 
 function updateHPBar(){
@@ -1397,26 +1301,19 @@ function updateHPBar(){
   document.getElementById('purityNum').textContent = Math.round(purity)+'%';
 }
 
-// ═══════════════════════════════════════════════
-// LOAD QUESTION
-// ═══════════════════════════════════════════════
+// ═══ LOAD QUESTION ════════════════════════════
 let lastLoadedQ = -1;
 
 function loadQuestion(){
-  // 🔥 CHẶN LOAD TRÙNG (FIX TIMER ĐỨNG)
   if(currentQ === lastLoadedQ) return;
   lastLoadedQ = currentQ;
 
-  console.log("LOAD QUESTION:", currentQ);
-
-  // CLEAR UI FIRST
-  answered = false; 
-  votes = {}; 
+  answered = false;
+  votes = {};
   userChoice = -1;
-  myCorruptOffer = null; 
+  myCorruptOffer = null;
   lastCorruptionEffects = null;
-  
-  // Clear elements
+
   document.getElementById('resultsSection').innerHTML = '';
   document.getElementById('resultsSection').classList.remove('visible');
   document.getElementById('explanationBox').innerHTML = '';
@@ -1425,98 +1322,96 @@ function loadQuestion(){
   document.getElementById('liveVotes').classList.remove('visible');
   document.getElementById('randomPlayerBox').classList.remove('visible');
   document.getElementById('obstacleBanner').classList.remove('hidden');
-  
+
   if(GAME_SEQ.length === 0) return;
-  
   let qd = GAME_SEQ[currentQ];
   if(!qd) return;
 
-  // Special rounds
   const corruptPos = [12, 14, 16, 18];
   const isGlobalCorruptRound = corruptPos.includes(currentQ);
-  
-  let chosenName = (currentRoomData && currentRoomData.chosenPlayerName)
-    ? currentRoomData.chosenPlayerName
-    : 'Thuyền viên';
-
-  let chosenId = (currentRoomData && currentRoomData.chosenPlayerId)
-    ? currentRoomData.chosenPlayerId
-    : '';
 
   const myData = JSON.parse(sessionStorage.getItem('hcm_room') || '{}');
   const myId = myData.playerId || '';
-  const isMeChosen = (chosenId === myId);
 
-  // ==== HANDLE DISPLAY ====
-  if(isGlobalCorruptRound) {
-    if(isMeChosen) {
-      const cqIdx = Math.abs((currentQ * 7) % CORRUPT_QUESTIONS.length);
-      myCorruptOffer = { ...CORRUPT_QUESTIONS[cqIdx], isCorrupt: true };
-      qd = myCorruptOffer;
-
-      document.getElementById('qLabel').textContent = '🚨 TÌNH HUỐNG THAM NHŨNG';
-      document.getElementById('randomPlayerBox').innerHTML =
-        `🎲 <strong>BẠN</strong> đang bị cám dỗ!`;
-      document.getElementById('randomPlayerBox').classList.add('visible');
-
-    } else {
-      document.getElementById('qLabel').textContent = '📜 Câu hỏi hàng hải';
-      document.getElementById('randomPlayerBox').innerHTML =
-        `<span class="random-player-name">${chosenName}</span>`;
-      document.getElementById('randomPlayerBox').classList.add('visible');
-    }
+  if(isGlobalCorruptRound){
+  if(!isHost){
+    let seedStr = myId + (currentRoomData && currentRoomData.corruptSeed ? currentRoomData.corruptSeed : String(currentQ));
+    let hash = 0;
+    for(let i=0; i<seedStr.length; i++) hash = (hash * 31 + seedStr.charCodeAt(i)) >>> 0;
+    const cqIdx = Math.abs(hash % CORRUPT_QUESTIONS.length);
+    
+    myCorruptOffer = {...CORRUPT_QUESTIONS[cqIdx], isCorrupt:true, corruptIdx:cqIdx};
+    qd = myCorruptOffer;
+    document.getElementById('qLabel').textContent = '🚨 TÌNH HUỐNG THAM NHŨNG';
+    document.getElementById('randomPlayerBox').innerHTML = `🎲 <strong>BẠN</strong> đang bị cám dỗ! (Người khác không biết)`;
+    document.getElementById('randomPlayerBox').classList.add('visible');
   } else {
-    document.getElementById('qLabel').textContent =
-      qd.isMilestone ? `📍 Câu hỏi mốc ${qd.year}` : '📜 Câu hỏi hàng hải';
+    document.getElementById('qLabel').textContent = '📜 Câu hỏi hàng hải';
     document.getElementById('randomPlayerBox').classList.remove('visible');
   }
+} else {
+  document.getElementById('qLabel').textContent = qd.isMilestone ? `📍 Câu hỏi mốc ${qd.year}` : '📜 Câu hỏi hàng hải';
+  document.getElementById('randomPlayerBox').classList.remove('visible');
+}
 
-  // ==== BASIC INFO ====
   document.getElementById('roundNum').textContent = currentQ + 1;
 
-  // ==== MILESTONE ====
+  // [FIX 1] Milestone: host tính storm và push lên Firebase
   if(qd.isMilestone){
-    showMilestoneBanner(qd);
-    const storm = applyStormEffect(qd);
-    if(storm) setTimeout(() => showStormOverlay(storm.damage, storm.desc), 300);
+    if(typeof showMilestoneBanner === 'function') showMilestoneBanner(qd);
     stormsSurvived++;
+    
+    if(currentRoom && isHost){
+      const storm = applyStormEffect(qd);
+      if(storm){
+        const newHp = Math.max(0, hp - (storm.damage || 0));
+        
+        // Luôn đảm bảo desc và damage có giá trị, không để undefined
+        const safeStormData = { 
+          damage: storm.damage || 0, 
+          desc: storm.desc || "Sóng to gió lớn bất ngờ!", 
+          timestamp: Date.now() 
+        };
+
+        firebaseManager.db.ref(`rooms/${currentRoom}`).update({
+          hp: newHp,
+          pendingStorm: safeStormData,
+          isStorming: true
+        }).catch(e => console.error("Lỗi cập nhật Firebase:", e));
+
+        setTimeout(() => showStormOverlay(safeStormData.desc, safeStormData.damage), 300);
+      }
+    } else if(!currentRoom){
+      const storm = applyStormEffect(qd);
+      if(storm) setTimeout(() => showStormOverlay(storm.damage || 0, storm.desc || "Cơn bão đi ngang qua"), 300);
+    }
   } else {
-    hideMilestoneBanner();
+    if(typeof hideMilestoneBanner === 'function') hideMilestoneBanner();
   }
 
-  // ==== QUESTION TEXT ====
   const qTextEl = document.getElementById('qText');
   qTextEl.textContent = qd.q;
   qTextEl.className = qd.isCorrupt ? 'q-text corrupt-q' : 'q-text';
-
   document.getElementById('obstacleText').textContent = qd.obstacle || '';
   document.getElementById('shipContainer').classList.remove('hit');
 
-  // ==== OPTIONS ====
   const grid = document.getElementById('optionsGrid');
   grid.innerHTML = '';
   const letters = ['A','B','C','D'];
-  
   qd.opts.forEach((o, i) => {
     const btn = document.createElement('button');
     btn.className = 'opt-btn';
-    btn.innerHTML = `
-      <span class="opt-letter">${letters[i]}</span>
-      <span>${o.text}</span>
-    `;
+    btn.innerHTML = `<span class="opt-letter">${letters[i]}</span><span>${o.text}</span>`;
     btn.onclick = () => vote(i, btn);
     grid.appendChild(btn);
   });
 
-  // ==== UI STATE ====
   document.getElementById('liveVotes').className = 'live-votes visible';
-  document.getElementById('liveVotes').textContent = '🗳️ Hãy bình chọn đáp án!';
-  
-  if(currentRoom && isHost)
-    document.getElementById('hostEndVoteBtn').style.display = 'block';
-  else
-    document.getElementById('hostEndVoteBtn').style.display = 'none';
-  
+document.getElementById('liveVotes').textContent = isHost ? '🗳️ 0/' + Object.keys(currentPlayers).length + ' người đã bình chọn' : '🗳️ Hãy bình chọn đáp án!';
+
+  if(currentRoom && isHost) document.getElementById('hostEndVoteBtn').style.display = 'block';
+  else document.getElementById('hostEndVoteBtn').style.display = 'none';
+
   const nb = document.getElementById('nextBtn');
   nb.textContent = 'Câu tiếp theo ⚓';
   nb.onclick = () => nextQuestion();
@@ -1524,35 +1419,51 @@ function loadQuestion(){
   nb.style.cursor = 'pointer';
   nb.classList.remove('waiting-btn');
 
-  // 🔥 QUAN TRỌNG NHẤT
   startTimer();
 }
 
+// ═══════════════════════════════════════════════════════
+// [FIX 2] CHỌN NGƯỜI THAM NHŨNG — Hash từ UUID ngẫu nhiên
+// ═══════════════════════════════════════════════════════
 function getRandomPlayer(seed){
-  const players = Object.entries(currentPlayers || {}).map(([id, data]) => ({
-    id: id,
-    name: data.name
-  })).sort((a,b) => (a.id || '').localeCompare(b.id || ''));
-  
-  if(players.length > 0) {
-    const idx = (seed !== undefined) ? (Math.abs(seed) % players.length) : Math.floor(Math.random()*players.length);
-    return players[idx];
+  const players = Object.entries(currentPlayers || {})
+    .map(([id, data]) => ({ id, name: data.name }))
+    .filter(p => p.id !== firebaseManager.playerId) // Loại host ra
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  if(players.length === 0) return null;
+
+  // Nếu seed là UUID string → hash để chọn index ổn định cho mọi client
+  if(typeof seed === 'string' && seed.length > 10){
+    let hash = 0;
+    for(let i = 0; i < seed.length; i++){
+      hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+    }
+    return players[hash % players.length];
   }
-  return null;
+
+  // Fallback (single player / không có seed)
+  const idx = (seed !== undefined) ? (Math.abs(seed) % players.length) : Math.floor(Math.random() * players.length);
+  return players[idx];
 }
 
-// ═══════════════════════════════════════════════
-// VOTE
-// ═══════════════════════════════════════════════
+// ═══ VOTE ══════════════════════════════════════
 function vote(idx, btn){
   if(answered) return;
-  document.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('selected'));
+  document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   userChoice = idx;
-  document.getElementById('liveVotes').textContent = '🗳️ Bạn đã bình chọn — Đang chờ hết giờ...';
-  
+document.getElementById('liveVotes').textContent = '🗳️ Bạn đã bình chọn — Đang chờ hết giờ...';
+if(currentRoom) {
+  try {
+    firebaseManager.db.ref(`rooms/${currentRoom}/votes/${currentQ}`).on('value', snap => {
+      const count = snap.val() ? Object.keys(snap.val()).length : 0;
+      const total = Object.keys(currentPlayers).length;
+      if(isHost) document.getElementById('liveVotes').textContent = `🗳️ ${count}/${total} người đã bình chọn`;
+    });
+  } catch(e){}
+}
   if(currentRoom){
-    // Firebase vote - Send detailed vote info
     const voteData = {
       optionIdx: idx,
       isCorrupt: myCorruptOffer ? true : false,
@@ -1563,112 +1474,125 @@ function vote(idx, btn){
 }
 
 function startTimer(){
-  clearInterval(timer); timerVal = totalTime; 
+  clearInterval(timer); timerVal = totalTime;
   const circle = document.getElementById('timerCircle');
   const numEl = document.getElementById('timerNum');
   const circ = 2*Math.PI*21;
   circle.style.strokeDasharray = circ;
   circle.style.strokeDashoffset = 0;
   circle.style.stroke = '#8b1a1a';
-  
   timer = setInterval(() => {
     timerVal--;
     numEl.textContent = timerVal;
     const offset = circ*(1 - timerVal/totalTime);
     circle.style.strokeDashoffset = offset;
     if(timerVal<=5) circle.style.stroke = '#cc2222';
-    if(timerVal<=0){ 
-      clearInterval(timer); 
-      if(!currentRoom || isHost) showResults();
-    }
+    if(timerVal<=0){ clearInterval(timer); if(!currentRoom || isHost) showResults(); }
   }, 1000);
 }
 
-// ═══════════════════════════════════════════════
-// SHOW RESULTS
-// ═══════════════════════════════════════════════
-async function showResults(){
-  if(answered) return;
+// ═══════════════════════════════════════════════════════
+// [FIX 3] SHOW RESULTS — Xử lý disconnect + corruption gộp
+// ═══════════════════════════════════════════════════════
+async function showResults() {
+  if (currentRoom) {
+    try { firebaseManager.db.ref(`rooms/${currentRoom}/votes/${currentQ}`).off(); } catch (e) { }
+  }
+  
+  if (answered) return;
   answered = true;
   clearInterval(timer);
-  document.getElementById('hostEndVoteBtn').style.display = 'none';
   
+  const hostEndBtn = document.getElementById('hostEndVoteBtn');
+  if (hostEndBtn) hostEndBtn.style.display = 'none';
+
+  // Lưu lại offer cám dỗ trước khi xử lý (tránh bị reset nhầm)
+  const savedCorruptOffer = myCorruptOffer;
   const qd = GAME_SEQ[currentQ];
-  
-  // Simulate votes for single player or calculate
-  if(!currentRoom){
+  if (!qd) return;
+
+  if (!currentRoom) {
+    // CHẾ ĐỘ CHƠI ĐƠN
     votes = {};
-    if(userChoice !== -1) votes[userChoice] = 1;
-    if(!qd.isCorrupt){ // only simulate for theory/milestone
-      for(let i=0;i<5;i++){
-        const r = Math.floor(Math.random()*qd.opts.length);
-        votes[r] = (votes[r]||0)+1;
+    if (userChoice !== -1) votes[userChoice] = 1;
+    if (!qd.isCorrupt) {
+      for (let i = 0; i < 5; i++) {
+        const r = Math.floor(Math.random() * qd.opts.length);
+        votes[r] = (votes[r] || 0) + 1;
       }
-      votes[qd.correct] = (votes[qd.correct]||0) + Math.floor(Math.random()*2);
+      votes[qd.correct] = (votes[qd.correct] || 0) + Math.floor(Math.random() * 2);
     }
     renderResultsUI();
   } else {
-    if(isHost){
-      // Host: Fetch all votes from Firebase
+    // CHẾ ĐỘ CHƠI MẠNG
+    if (isHost) {
       try {
         const votesSnap = await firebaseManager.db.ref(`rooms/${currentRoom}/votes/${currentQ}`).once('value');
         const votesData = votesSnap.val() || {};
-        
-        // Count votes for majority direction (only non-corrupt votes)
-        // AND collect all individual effects
+
         votes = {};
         let corruptionEffects = { hp: 0, purity: 0, money: 0 };
         
-        Object.values(votesData).forEach(v => {
-          if(!v.isCorrupt) {
+        const corruptPos = [12, 14, 16, 18];
+        const isCorruptRound = corruptPos.includes(currentQ);
+
+        // 1. Phân loại Vote: Bình thường vs Cám dỗ
+        Object.entries(votesData).forEach(([playerId, v]) => {
+          if (!v.isCorrupt) {
             const idx = Number(v.optionIdx);
-            if(!isNaN(idx)) votes[idx] = (votes[idx]||0) + 1;
+            if (!isNaN(idx)) votes[idx] = (votes[idx] || 0) + 1;
           } else {
-            // Individual corruption effect
+            // Xử lý hiệu ứng từ người bị cám dỗ
             const cQ = CORRUPT_QUESTIONS[v.corruptIdx];
-            if(cQ && cQ.opts[v.optionIdx]) {
+            if (cQ && cQ.opts && cQ.opts[v.optionIdx]) {
               const e = cQ.opts[v.optionIdx].effect || {};
-              if(e.hp) corruptionEffects.hp += e.hp;
-              if(e.purity) corruptionEffects.purity += e.purity;
-              if(e.money) corruptionEffects.money += e.money;
+              if (e.hp) corruptionEffects.hp += e.hp;
+              if (e.purity) corruptionEffects.purity += e.purity;
+              if (e.money) corruptionEffects.money += e.money;
             }
           }
         });
 
-        // Determine majority direction from non-corrupt votes
-        const sortedVotes = Object.entries(votes).sort((a,b)=>b[1]-a[1]);
-        const maxVotes = sortedVotes.length>0 ? sortedVotes[0][1] : 0;
-        const leaders = sortedVotes.filter(v=>v[1]===maxVotes).map(v=>parseInt(v[0]));
+        // 2. Tính toán đáp án số đông (Majority)
+        const sortedVotes = Object.entries(votes).sort((a, b) => b[1] - a[1]);
+        const maxVotes = sortedVotes.length > 0 ? sortedVotes[0][1] : 0;
+        const leaders = sortedVotes.filter(v => v[1] === maxVotes).map(v => parseInt(v[0]));
+        
         let majorityAns = -1;
-        if(leaders.length>0 && maxVotes>0){
-          if(leaders.includes(qd.correct)) majorityAns = qd.correct;
+        if (leaders.length > 0 && maxVotes > 0) {
+          if (leaders.includes(qd.correct)) majorityAns = qd.correct;
           else majorityAns = leaders[0];
         }
 
-        // Apply majority effects + corruption effects
+        // 4. Tính toán HP/Purity mới (CỰC KỲ QUAN TRỌNG - FIX TREO WEB)
         let newHp = hp;
         let newPurity = purity;
-        
-        if(qd.isCorrupt || qd.isMilestone){
-          if(majorityAns !== -1){
+
+        // Chỉ tính hiệu ứng majority nếu ĐÂY KHÔNG PHẢI vòng cám dỗ (hoặc qd thực sự có hiệu ứng)
+        if (qd.isCorrupt || qd.isMilestone) {
+          if (majorityAns !== -1 && qd.opts && qd.opts[majorityAns]) {
             const e = qd.opts[majorityAns].effect || {};
-            if(e.hp) newHp += e.hp;
-            if(e.purity) newPurity += e.purity;
+            if (e.hp) newHp += e.hp;
+            if (e.purity) newPurity += e.purity;
           }
         } else {
-          if(majorityAns !== -1 && majorityAns !== qd.correct) newHp -= 15;
-          else if(majorityAns === -1) newHp -= 15;
+          // Câu hỏi thường: Sai hoặc không vote thì trừ HP
+          if (majorityAns === -1 || majorityAns !== qd.correct) {
+            newHp -= 15;
+          }
         }
 
-        // Add corruption effects from individuals
+        // Cộng dồn hiệu ứng cám dỗ từ cá nhân vào tổng thể tàu
         newHp += corruptionEffects.hp;
         newPurity += corruptionEffects.purity;
+        
+        // Giới hạn chỉ số 0-100 để tránh lỗi UI
         newHp = Math.max(0, Math.min(100, newHp));
         newPurity = Math.max(0, Math.min(100, newPurity));
-        
+
         lastCorruptionEffects = corruptionEffects;
 
-        // Update Firebase with results
+        // 5. Cập nhật lên Firebase
         await firebaseManager.db.ref(`rooms/${currentRoom}`).update({
           gamePhase: 'results',
           finalVotes: votes,
@@ -1676,241 +1600,237 @@ async function showResults(){
           hp: newHp,
           purity: newPurity
         });
-      } catch(e){ console.error('Error ending vote:', e); }
+
+      } catch (e) {
+        console.error('Error ending vote:', e);
+      }
     }
+    // Sau khi Host tính xong, các máy con (bao gồm Host) cùng render UI
     renderResultsUI();
   }
 }
 
 function renderResultsUI(){
-  // qd_local is what the player answered (might be corruption)
-  // qd_global is what the boat is doing (the theory question)
-  const qd_local = myCorruptOffer || GAME_SEQ[currentQ];
   const qd_global = GAME_SEQ[currentQ];
+  const qd_local = myCorruptOffer || qd_global; // Người bị cám dỗ dùng offer riêng, người thường dùng câu hỏi chung
   
   if(!qd_local || !qd_global) return;
-  
-  // Ensure votes is an object for calculation
+
+  // 1. Chuẩn hóa dữ liệu Vote (An toàn hơn)
   let votesObj = {};
-  if(Array.isArray(votes)){
-    votes.forEach((v,i)=>{ if(v!==undefined) votesObj[i]=Number(v); });
-  } else {
-    votesObj = votes || {};
+  if(Array.isArray(votes)){ 
+    votes.forEach((v,i) => { if(v !== undefined) votesObj[i] = Number(v); }); 
+  } else { 
+    votesObj = votes || {}; 
   }
 
-  const realTotal = Object.values(votesObj).reduce((a,b)=>a+b,0);
-  
-  // Majority calculation for the GLOBAL question
-  const sortedVotes = Object.entries(votesObj).sort((a,b)=>b[1]-a[1]);
-  const maxVotes = sortedVotes.length>0 ? sortedVotes[0][1] : 0;
-  const leaders = sortedVotes.filter(v=>v[1]===maxVotes).map(v=>parseInt(v[0]));
-  
+  const realTotal = Object.values(votesObj).reduce((a,b) => a + b, 0);
+  const sortedVotes = Object.entries(votesObj).sort((a,b) => b[1] - a[1]);
+  const maxVotes = sortedVotes.length > 0 ? sortedVotes[0][1] : 0;
+  const leaders = sortedVotes.filter(v => v[1] === maxVotes).map(v => parseInt(v[0]));
+
   let majorityAns = -1;
-  if(leaders.length>0 && maxVotes>0){
+  if(leaders.length > 0 && maxVotes > 0){
     if(leaders.includes(qd_global.correct)) majorityAns = qd_global.correct;
     else majorityAns = leaders[0];
   }
   
-  // For single player: use userChoice as majority if not corrupted
-  if(!currentRoom) majorityAns = (userChoice !== -1 && !myCorruptOffer) ? userChoice : -1;
-  
-  const correct = majorityAns === qd_global.correct;
-  
-  // Apply effects (Single player only)
+  // Chơi đơn: Fix logic lấy lựa chọn
+  if(!currentRoom) {
+    majorityAns = (userChoice !== -1 && !myCorruptOffer) ? userChoice : -1;
+  }
+
+  const correct = (majorityAns === qd_global.correct);
+
+  // 2. Cập nhật chỉ số (HP, Purity, Money)
+  // Lưu ý: Chỉ cập nhật nếu chơi đơn. Chơi mạng Host đã tính và đẩy lên Firebase rồi.
   if(!currentRoom){
-    if(myCorruptOffer && userChoice !== -1){
+    if(myCorruptOffer && userChoice !== -1 && myCorruptOffer.opts[userChoice]){
       const e = myCorruptOffer.opts[userChoice].effect || {};
-      hp = Math.max(0, Math.min(100, hp + (e.hp||0)));
-      purity = Math.max(0, Math.min(100, purity + (e.purity||0)));
-      money += (e.money||0);
+      hp = Math.max(0, Math.min(100, hp + (e.hp || 0)));
+      purity = Math.max(0, Math.min(100, purity + (e.purity || 0)));
+      money += (e.money || 0);
       corruptCount++;
-      if(userChoice === qd_local.correct) correctCount++; else wrongCount++;
+      corruptTotalOffered++;
+      if(userChoice === qd_local.correct) correctCount++;
+      else { wrongCount++; corruptWrongCount++; }
     } else if(qd_global.isMilestone){
-      if(majorityAns !== -1){
-        const chosenOpt = qd_global.opts[majorityAns];
-        if(chosenOpt && chosenOpt.effect){
-          const e = chosenOpt.effect;
-          hp = Math.max(0, Math.min(100, hp + (e.hp||0)));
-          purity = Math.max(0, Math.min(100, purity + (e.purity||0)));
-          if(majorityAns === qd_global.correct) correctCount++; else wrongCount++;
-        }
-      } else {
-        wrongCount++;
-      }
+      if(majorityAns !== -1 && qd_global.opts[majorityAns]){
+        const e = qd_global.opts[majorityAns].effect || {};
+        hp = Math.max(0, Math.min(100, hp + (e.hp || 0)));
+        purity = Math.max(0, Math.min(100, purity + (e.purity || 0)));
+        if(majorityAns === qd_global.correct) correctCount++; else wrongCount++;
+      } else { wrongCount++; }
     } else {
-      if(majorityAns !== -1 && !correct){ hp = Math.max(0, hp-15); wrongCount++; }
+      if(majorityAns !== -1 && !correct){ hp = Math.max(0, hp - 15); wrongCount++; }
       else if(correct){ correctCount++; }
       if(majorityAns === -1) wrongCount++;
     }
   } else {
-    // Multiplayer counters
+    // Chơi mạng: Cập nhật count cho cá nhân
     if(myCorruptOffer){
-      if(userChoice !== -1){
-        const e = myCorruptOffer.opts[userChoice].effect || {};
-        if(e.money) money += e.money;
-        if(userChoice === qd_local.correct) correctCount++; else wrongCount++;
-      }
+      corruptTotalOffered++;
+      if(userChoice !== -1 && userChoice === qd_local.correct) correctCount++;
+      else { wrongCount++; corruptWrongCount++; }
     } else {
-      if(majorityAns !== -1){
-        if(majorityAns === qd_global.correct) correctCount++; else wrongCount++;
-      } else {
-        wrongCount++;
-      }
+      if(majorityAns !== -1 && majorityAns === qd_global.correct) correctCount++; else wrongCount++;
     }
   }
-  
-  // Mark options (UI should show what the player answered)
+
+  // 3. Highlight nút bấm (Fix lỗi index đáp án cám dỗ)
   const btns = document.querySelectorAll('.opt-btn');
-  btns.forEach((b,i) => {
+  btns.forEach((b, i) => {
     b.disabled = true;
-    b.classList.remove('selected'); // REMOVE BLUE HIGHLIGHT
-    if(i===qd_local.correct) b.classList.add('correct');
-    // If I answered this and it was wrong
+    b.classList.remove('selected');
+    if(i === qd_local.correct) b.classList.add('correct');
     if(userChoice === i && i !== qd_local.correct) b.classList.add('wrong');
   });
-  
-  // Flash + ship
-  if(majorityAns === -1 && !myCorruptOffer){
-    flashScore('🌊 LÊNH ĐÊNH...');
-  } else if(correct || (myCorruptOffer && userChoice === qd_local.correct)){
-    flashScore('🌟 VƯỢT QUA!');
+
+  // 4. Hiển thị hiệu ứng hình ảnh
+  let isWinner = false;
+  if(myCorruptOffer) isWinner = (userChoice === qd_local.correct);
+  else isWinner = (majorityAns !== -1 && correct);
+
+  if(majorityAns === -1 && !myCorruptOffer){ 
+    flashScore('🌊 LÊNH ĐÊNH...'); 
+  } else if(isWinner){ 
+    flashScore('🌟 VƯỢT QUA!'); 
   } else {
     flashScore('💥 VA CHẠM!');
-    document.getElementById('shipContainer').classList.add('hit');
-    setTimeout(() => { const el=document.getElementById('shipContainer'); if(el) el.classList.remove('hit'); }, 1500);
+    const ship = document.getElementById('shipContainer');
+    if(ship) {
+      ship.classList.add('hit');
+      setTimeout(() => ship.classList.remove('hit'), 1500);
+    }
   }
-  
+
   updateHPBar();
-  
-  // Results bars (Show GLOBAL boat results)
+
+  // 5. Vẽ bảng kết quả bình chọn (Dùng qd_global để mọi người thấy kết quả chung)
   const rs = document.getElementById('resultsSection');
   rs.className = 'results-section visible';
   const letters = ['A','B','C','D'];
   rs.innerHTML = '<div style="font-family:Cinzel,serif;font-size:0.75rem;color:var(--ink2);letter-spacing:1px;margin-bottom:8px">📊 KẾT QUẢ BÌNH CHỌN CHUNG</div>';
-  
-  qd_global.opts.forEach((o,i) => {
-    const v = votesObj[i]||0;
-    const pct = realTotal>0 ? Math.round((v/realTotal)*100) : 0;
-    const isC = i===qd_global.correct;
-    rs.innerHTML += `<div class="result-bar-wrap">
-      <div class="result-label-row">
-        <span class="result-label-name">${letters[i]}: ${o.text}</span>
-        <span class="result-label-pct">${pct}%</span>
-      </div>
-      <div class="result-track">
-        <div class="result-fill-bar${isC?' correct-bar':''}" style="width:0%" data-w="${pct}%"></div>
-      </div>
-    </div>`;
-  });
-  
+
+  if(qd_global.opts) {
+    qd_global.opts.forEach((o, i) => {
+      const v = votesObj[i] || 0;
+      const pct = realTotal > 0 ? Math.round((v / realTotal) * 100) : 0;
+      const isC = i === qd_global.correct;
+      rs.innerHTML += `
+        <div class="result-bar-wrap">
+          <div class="result-label-row">
+            <span>${letters[i]}: ${o.text}</span>
+            <span>${pct}%</span>
+          </div>
+          <div class="result-track">
+            <div class="result-fill-bar${isC ? ' correct-bar' : ''}" style="width:0%" data-w="${pct}%"></div>
+          </div>
+        </div>`;
+    });
+  }
+
   setTimeout(() => {
     rs.querySelectorAll('.result-fill-bar').forEach(bar => { bar.style.width = bar.dataset.w; });
   }, 100);
-  
-  // Explanation
+
+  // 6. Hộp giải thích và hiệu ứng
   const eb = document.getElementById('explanationBox');
   eb.className = 'explanation-box visible';
-  
-  let statusMsg = '';
-  if(myCorruptOffer){
-    const myCorrect = userChoice === qd_local.correct;
-    statusMsg = myCorrect ? `✅ Bạn đã vượt qua cám dỗ cá nhân!` : `❌ Bạn đã sa ngã trước cám dỗ!`;
-  } else {
-    if(majorityAns===-1) statusMsg='🌊 Không ai bình chọn — thuyền lênh đênh!';
-    else if(correct) statusMsg = `🌟 Đã khéo léo vượt qua <strong>${qd_global.obstacle||'thử thách'}</strong>!`;
-    else statusMsg = `💥 Thuyền đã va vào <strong>${qd_global.obstacle||'thử thách'}</strong>!`;
-  }
-  
-  // Show stat changes
-  let effectMsg = '';
-  const parts=[];
-  
-  if(!currentRoom){
-    // Single player: use majority answer effects
-    if(myCorruptOffer && userChoice !== -1){
-      const e = myCorruptOffer.opts[userChoice].effect||{};
-      if(e.hp>0) parts.push(`<span style="color:var(--green)">❤️+${e.hp} HP</span>`);
-      else if(e.hp<0) parts.push(`<span style="color:var(--red)">❤️${e.hp} HP</span>`);
-      if(e.purity>0) parts.push(`<span style="color:var(--green)">🧼+${e.purity}%</span>`);
-      else if(e.purity<0) parts.push(`<span style="color:var(--red)">🧼${e.purity}%</span>`);
-      if(e.money>0) parts.push(`<span style="color:var(--red)">💰+${e.money} triệu</span>`);
-    } else if(qd_global.isMilestone && majorityAns !== -1){
-      const e = qd_global.opts[majorityAns].effect||{};
-      if(e.hp>0) parts.push(`<span style="color:var(--green)">❤️+${e.hp} HP</span>`);
-      else if(e.hp<0) parts.push(`<span style="color:var(--red)">❤️${e.hp} HP</span>`);
-      if(e.purity>0) parts.push(`<span style="color:var(--green)">🧼+${e.purity}%</span>`);
-      else if(e.purity<0) parts.push(`<span style="color:var(--red)">🧼${e.purity}%</span>`);
-    }
-  } else {
-    // Multiplayer effects
-    if(majorityAns !== -1){
-      const e = qd_global.opts[majorityAns].effect || {};
-      if(e.hp>0) parts.push(`<span style="color:var(--green)">❤️+${e.hp} HP</span>`);
-      else if(e.hp<0) parts.push(`<span style="color:var(--red)">❤️${e.hp} HP</span>`);
-      if(e.purity>0) parts.push(`<span style="color:var(--green)">🧼+${e.purity}%</span>`);
-      else if(e.purity<0) parts.push(`<span style="color:var(--red)">🧼${e.purity}%</span>`);
-    }
-    if(lastCorruptionEffects){
-      const le = lastCorruptionEffects;
-      if(le.hp<0) parts.push(`<span style="color:var(--red)">⚠️ Tha hóa: ❤️${le.hp} HP</span>`);
-      if(le.purity<0) parts.push(`<span style="color:var(--red)">⚠️ Tha hóa: 🧼${le.purity}%</span>`);
-    }
-  }
-  
-  if(parts.length) effectMsg = `<div style="margin-top:6px;font-size:0.75rem">${parts.join(' • ')}</div>`;
-  
-  eb.innerHTML = `<div>${statusMsg}</div>${effectMsg}<div style="margin-top:8px"><strong>Giải thích:</strong> ${qd_local.explain}</div>`;
-  
-  if(!currentRoom || isHost){
-    document.getElementById('nextBtn').className = 'next-btn visible';
-  } else {
-    const nb = document.getElementById('nextBtn');
-    nb.textContent='⏳ Đang chờ Thuyền trưởng...';
-    nb.onclick=null; nb.className='next-btn visible waiting-btn';
-    nb.style.opacity='0.7'; nb.style.cursor='default';
-  }
-  document.getElementById('liveVotes').className='live-votes';
-  updateShip();
-  
-  // Check game over
-  if(hp<=0){ setTimeout(endGame, 1200); }
-  if(purity<=0){ setTimeout(()=>endGamePurity(), 1200); }
-}
 
-// ═══════════════════════════════════════════════
-// NEXT QUESTION
-// ═══════════════════════════════════════════════
+  let statusMsg = '';
+  if(myCorruptOffer){ 
+    statusMsg = (userChoice === qd_local.correct) ? `✅ Bạn đã vượt qua cám dỗ cá nhân!` : `❌ Bạn đã sa ngã trước cám dỗ!`; 
+  } else if(majorityAns === -1) {
+    statusMsg = '🌊 Không ai bình chọn — thuyền lênh đênh!';
+  } else if(correct) {
+    statusMsg = `🌟 Đã khéo léo vượt qua <strong>${qd_global.obstacle || 'thử thách'}</strong>!`;
+  } else {
+    statusMsg = `💥 Thuyền đã va vào <strong>${qd_global.obstacle || 'thử thách'}</strong>!`;
+  }
+
+  let effectMsg = '';
+  const parts = [];
+  
+  // Hiển thị hiệu ứng (An toàn)
+  if(currentRoom && lastCorruptionEffects){
+    const le = lastCorruptionEffects;
+    if(le.hp < 0) parts.push(`<span style="color:var(--red)">⚠️ Tha hóa: ❤️${le.hp}</span>`);
+    if(le.purity < 0) parts.push(`<span style="color:var(--red)">⚠️ Tha hóa: 🧼${le.purity}%</span>`);
+    if(le.money > 0) parts.push(`<span style="color:var(--gold)">💰+${le.money}M</span>`);
+  } else if(!currentRoom && userChoice !== -1) {
+    // Logic cho chơi đơn...
+  }
+
+  if(parts.length) effectMsg = `<div style="margin-top:6px;font-size:0.75rem">${parts.join(' • ')}</div>`;
+
+  eb.innerHTML = `<div>${statusMsg}</div>${effectMsg}<div style="margin-top:8px"><strong>Giải thích:</strong> ${qd_local.explain || ''}</div>`;
+
+  // 7. Nút tiếp theo
+  const nb = document.getElementById('nextBtn');
+  if(!currentRoom || isHost){
+    nb.className = 'next-btn visible';
+    nb.textContent = 'Câu tiếp theo ⚓';
+    nb.onclick = () => nextQuestion();
+    nb.style.opacity = '1';
+    nb.style.cursor = 'pointer';
+  } else {
+    nb.textContent = '⏳ Đang chờ Thuyền trưởng...';
+    nb.onclick = null;
+    nb.className = 'next-btn visible waiting-btn';
+    nb.style.opacity = '0.7';
+    nb.style.cursor = 'default';
+  }
+
+  document.getElementById('liveVotes').className = 'live-votes';
+  updateShip();
+
+  // Kiểm tra kết thúc game
+  if(hp <= 0) setTimeout(endGame, 1200);
+  else if(purity <= 0) setTimeout(() => endGamePurity(), 1200);
+}
+// ═══════════════════════════════════════════════════════
+// [FIX 2] NEXT QUESTION — Dùng UUID ngẫu nhiên thật để chọn người tham nhũng
+// ═══════════════════════════════════════════════════════
 function nextQuestion(){
   if(currentRoom && !isHost) return;
-  
   const nextQ = currentQ+1;
-  if(nextQ>=20 || hp<=0 || purity<=0){ endGame(); return; }
-  
+  if(nextQ>=20 || hp<=0 || purity<=0){
+    // Push trạng thái kết thúc lên Firebase để tất cả người chơi đều biết
+    if(currentRoom){
+      try { firebaseManager.db.ref(`rooms/${currentRoom}`).update({ status: 'ended', gamePhase: 'ended' }); } catch(e){}
+    }
+    endGame();
+    return;
+  }
+
   if(currentRoom){
-    try {
-      const updateData = {
-        currentQuestion:nextQ, gamePhase:'voting', finalVotes:null, chosenPlayerName:null
-      };
-      // If next question is a global corruption question, pick a player
-      const corruptPos = [12,14,16,18];
-      if(corruptPos.includes(nextQ)){
-        const cp = getRandomPlayer(nextQ);
-        if(cp){
-          updateData.chosenPlayerId = cp.id;
-          updateData.chosenPlayerName = cp.name;
-        }
-      }
-      firebaseManager.db.ref(`rooms/${currentRoom}`).update(updateData);
-    } catch(e){}
+    const updateData = {
+      currentQuestion: nextQ,
+      gamePhase: 'voting',
+      finalVotes: null,
+      chosenPlayerName: null,
+      chosenPlayerId: null,
+      corruptSeed: null
+    };
+
+    const corruptPos = [12, 14, 16, 18];
+    if(corruptPos.includes(nextQ)){
+      const randomSeed = (typeof crypto !== 'undefined' && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : Math.random().toString(36).substring(2) + Date.now().toString(36);
+
+      updateData.corruptSeed = randomSeed;
+    }
+
+    try { firebaseManager.db.ref(`rooms/${currentRoom}`).update(updateData); } catch(e){}
   } else {
     currentQ = nextQ;
     loadQuestion();
   }
 }
 
-// ═══════════════════════════════════════════════
-// ENDING
-// ═══════════════════════════════════════════════
+// ═══ ENDING ═══════════════════════════════════
 function getEndingData(hp, purity, money){
   const quotes = {
     perfect: '"Lấy dân làm gốc, Đảng ta là đạo đức, là văn minh." — Hồ Chí Minh',
@@ -1919,81 +1839,292 @@ function getEndingData(hp, purity, money){
     crisis: '"Tham ô, lãng phí, quan liêu là giặc nội xâm." — Hồ Chí Minh',
     fail: '"Mất lòng dân là mất tất cả." — Hồ Chí Minh'
   };
-  
-  if(hp>=80 && purity>=80 && money<=10){
-    return { icon:'🌟', title:'Vững Mạnh Toàn Diện', sub:'Con thuyền đến đích trong sạch, dân tin tưởng!', quote:quotes.perfect, color:'var(--green)' };
-  } else if(hp>=80 && purity<80){
-    return { icon:'⚓', title:'Ổn Định, Nhưng Cảnh Báo', sub:'Dân tin nhưng nội bộ có dấu hiệu đáng lo ngại.', quote:quotes.good, color:'var(--ocean3)' };
-  } else if(hp>=50 && purity>=70){
-    return { icon:'⚓', title:'Ổn Định', sub:'Con thuyền đến đích, cần tiếp tục chỉnh đốn.', quote:quotes.good, color:'var(--ocean3)' };
-  } else if(hp>=50 && purity<70){
-    return { icon:'🌊', title:'Chao Đảo', sub:'Mất dần niềm tin nhân dân vì nội bộ thiếu trong sạch.', quote:quotes.warning, color:'var(--gold)' };
-  } else if(hp>=20 && purity>=50){
-    return { icon:'🌊', title:'Chao Đảo', sub:'Nhiều sai lầm nghiêm trọng về nguyên tắc.', quote:quotes.warning, color:'var(--gold)' };
-  } else if(hp>=20 && purity<50){
-    return { icon:'⛈️', title:'Suy Yếu Nghiêm Trọng', sub:'Nội bộ tham nhũng nặng — nguy cơ mất lòng dân toàn diện.', quote:quotes.crisis, color:'var(--red)' };
-  } else if(hp>=1){
-    return { icon:'⛈️', title:'Suy Yếu — Gần Chìm', sub:'Thuyền còn chút hơi thở — phải cải cách triệt để.', quote:quotes.crisis, color:'var(--red)' };
-  } else {
-    return { icon:'💀', title:'Chìm Thuyền', sub:'Mất hoàn toàn lòng tin nhân dân!', quote:quotes.fail, color:'var(--red)' };
+  if(hp>=80 && purity>=80 && money<=10) return {icon:'🌟',title:'Vững Mạnh Toàn Diện',sub:'Con thuyền đến đích trong sạch, dân tin tưởng!',quote:quotes.perfect,color:'var(--green)'};
+  else if(hp>=80 && purity<80) return {icon:'⚓',title:'Ổn Định, Nhưng Cảnh Báo',sub:'Dân tin nhưng nội bộ có dấu hiệu đáng lo ngại.',quote:quotes.good,color:'var(--ocean3)'};
+  else if(hp>=50 && purity>=70) return {icon:'⚓',title:'Ổn Định',sub:'Con thuyền đến đích, cần tiếp tục chỉnh đốn.',quote:quotes.good,color:'var(--ocean3)'};
+  else if(hp>=50 && purity<70) return {icon:'🌊',title:'Chao Đảo',sub:'Mất dần niềm tin nhân dân vì nội bộ thiếu trong sạch.',quote:quotes.warning,color:'var(--gold)'};
+  else if(hp>=20 && purity>=50) return {icon:'🌊',title:'Chao Đảo',sub:'Nhiều sai lầm nghiêm trọng về nguyên tắc.',quote:quotes.warning,color:'var(--gold)'};
+  else if(hp>=20 && purity<50) return {icon:'⛈️',title:'Suy Yếu Nghiêm Trọng',sub:'Nội bộ tham nhũng nặng — nguy cơ mất lòng dân toàn diện.',quote:quotes.crisis,color:'var(--red)'};
+  else if(hp>=1) return {icon:'⛈️',title:'Suy Yếu — Gần Chìm',sub:'Thuyền còn chút hơi thở — phải cải cách triệt để.',quote:quotes.crisis,color:'var(--red)'};
+  else return {icon:'💀',title:'Chìm Thuyền',sub:'Mất hoàn toàn lòng tin nhân dân!',quote:quotes.fail,color:'var(--red)'};
+}
+
+// ═══ SCORE CALCULATION ════════════════════════
+function calculateScore() {
+  return Math.max(0,
+    hp * 2 +
+    Math.round(purity * 1.5) +
+    correctCount * 10 -
+    corruptCount * 15 -
+    Math.floor(money / 10)
+  );
+}
+
+// ═══ SAVE LEADERBOARD ═════════════════════════
+async function saveToLeaderboard() {
+  const score = calculateScore();
+  const entry = {
+    name: myPlayerName || 'Ẩn danh',
+    score,
+    hp,
+    purity: Math.round(purity),
+    correct: correctCount,
+    total: currentQ + 1,
+    corruptCount,
+    money,
+    roomId: currentRoom || 'single',
+    timestamp: Date.now(),
+    date: new Date().toISOString().slice(0, 10)
+  };
+
+  try {
+    const ref = firebaseManager.db.ref(`leaderboard/${firebaseManager.playerId}`);
+    const existing = await ref.once('value');
+    if (!existing.val() || existing.val().score < score) {
+      await ref.set(entry);
+    }
+  } catch(e) {
+    console.error('Leaderboard save failed:', e);
   }
 }
 
-function endGamePurity(){
-  hp = 0;
-  endGame();
+// ═══ LOAD LEADERBOARD ═════════════════════════
+async function loadLeaderboard(filter = 'room') {
+  try {
+    const snap = await firebaseManager.db.ref('leaderboard').once('value');
+    let entries = [];
+    snap.forEach(child => entries.push({ ...child.val(), _key: child.key }));
+
+    if (filter === 'today') {
+      const today = new Date().toISOString().slice(0, 10);
+      entries = entries.filter(e => e.date === today);
+    } else if (filter === 'room') {
+      entries = entries.filter(e => e.roomId === (currentRoom || 'single'));
+    }
+
+    return entries.sort((a, b) => b.score - a.score).slice(0, 3);
+  } catch(e) {
+    return [];
+  }
 }
 
-function endGame(){
+// ═══ SHOW LEADERBOARD MODAL ═══════════════════
+async function showLeaderboardModal(filter = 'room') {
+  const myScore = calculateScore();
+  const entries = await loadLeaderboard(filter);
+
+  const filterBtns = [
+    { key: 'all',   label: '🏆 Tất cả' },
+    { key: 'today', label: '📅 Hôm nay' },
+    { key: 'room',  label: '🏠 Phòng này' }
+  ].map(f => `
+    <button onclick="refreshLeaderboard('${f.key}')"
+      style="padding:6px 14px;border-radius:20px;border:1px solid var(--parch3);
+             background:${filter === f.key ? 'var(--red)' : 'transparent'};
+             color:${filter === f.key ? 'var(--parch)' : 'var(--ink2)'};
+             cursor:pointer;font-family:Cinzel,serif;font-size:0.75rem;letter-spacing:1px">
+      ${f.label}
+    </button>`).join('');
+
+  const rows = entries.length === 0
+    ? `<tr><td colspan="4" style="text-align:center;padding:20px;color:var(--ink2)">Chưa có dữ liệu</td></tr>`
+    : entries.map((e, i) => {
+        const medal = ['🥇', '🥈', '🥉'][i] || `${i + 1}.`;
+        const isMe = e.name === myPlayerName;
+        return `<tr style="${isMe ? 'background:rgba(201,146,42,0.12);font-weight:bold' : ''}">
+          <td style="padding:8px 10px;font-family:Cinzel,serif;font-size:0.9rem">${medal}</td>
+          <td style="padding:8px 10px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+            ${isMe ? '⭐ ' : ''}${e.name}
+          </td>
+          <td style="padding:8px 10px;font-family:Cinzel,serif;color:var(--gold);font-weight:700">${e.score}</td>
+          <td style="padding:8px 10px;font-size:0.75rem;color:var(--ink2)">
+            ❤️${e.hp} 🧼${e.purity}% ✅${e.correct}/${e.total}
+          </td>
+        </tr>`;
+      }).join('');
+
+  // Xóa modal cũ nếu có
+  const old = document.getElementById('lbOverlay');
+  if (old) old.remove();
+
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="lbOverlay"
+      style="position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:700;
+             display:flex;align-items:center;justify-content:center;padding:16px"
+      onclick="if(event.target===this)this.remove()">
+      <div style="background:var(--parch);border:3px solid var(--parch3);border-radius:6px;
+                  padding:24px 20px;max-width:500px;width:100%;
+                  max-height:85vh;overflow-y:auto;position:relative">
+
+        <div style="position:absolute;top:10px;right:14px">
+          <button onclick="document.getElementById('lbOverlay').remove()"
+            style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--ink2)">✕</button>
+        </div>
+
+        <h2 style="font-family:Cinzel,serif;text-align:center;font-size:1.3rem;
+                   letter-spacing:2px;margin-bottom:4px;color:var(--ink)">
+          🏆 BẢNG XẾP HẠNG
+        </h2>
+        <p style="text-align:center;font-size:0.8rem;color:var(--ink2);margin-bottom:16px">
+          Con Thuyền Chung · 1930 – 2026
+        </p>
+
+        <div style="display:flex;gap:6px;justify-content:center;margin-bottom:16px;flex-wrap:wrap">
+          ${filterBtns}
+        </div>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+            <thead>
+              <tr style="border-bottom:2px solid var(--parch3)">
+                <th style="padding:6px 10px;text-align:left;font-family:Cinzel,serif;
+                           font-size:0.7rem;letter-spacing:1px;color:var(--ink2)">#</th>
+                <th style="padding:6px 10px;text-align:left;font-family:Cinzel,serif;
+                           font-size:0.7rem;letter-spacing:1px;color:var(--ink2)">THUYỀN VIÊN</th>
+                <th style="padding:6px 10px;text-align:left;font-family:Cinzel,serif;
+                           font-size:0.7rem;letter-spacing:1px;color:var(--ink2)">ĐIỂM</th>
+                <th style="padding:6px 10px;text-align:left;font-family:Cinzel,serif;
+                           font-size:0.7rem;letter-spacing:1px;color:var(--ink2)">CHỈ SỐ</th>
+              </tr>
+            </thead>
+            <tbody id="lbTableBody">${rows}</tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:16px;padding:10px 14px;
+                    background:rgba(201,146,42,0.1);border:1px solid var(--parch3);
+                    border-radius:4px;text-align:center">
+          <span style="font-size:0.8rem;color:var(--ink2)">Điểm của bạn lần này: </span>
+          <strong style="font-family:Cinzel,serif;color:var(--gold);font-size:1.1rem">${myScore}</strong>
+          <span style="font-size:0.75rem;color:var(--ink2);margin-left:8px">
+            (❤️${hp} 🧼${Math.round(purity)}% ✅${correctCount}/${currentQ + 1})
+          </span>
+        </div>
+
+        <button onclick="document.getElementById('lbOverlay').remove()"
+          style="width:100%;margin-top:12px;padding:11px;
+                 background:var(--red);color:var(--parch);
+                 border:2px solid #5a0a0a;border-radius:4px;
+                 cursor:pointer;font-family:Cinzel,serif;
+                 font-size:0.9rem;font-weight:700;letter-spacing:1px">
+          ⚓ Đóng
+        </button>
+      </div>
+    </div>`);
+}
+
+// Helper để refresh filter trong modal
+async function refreshLeaderboard(filter) {
+  const myScore = calculateScore();
+  const entries = await loadLeaderboard(filter);
+
+  // Cập nhật filter buttons
+  const filterLabels = { all: '🏆 Tất cả', today: '📅 Hôm nay', room: '🏠 Phòng này' };
+  const overlay = document.getElementById('lbOverlay');
+  if (!overlay) return;
+
+  // Re-render toàn bộ modal với filter mới
+  showLeaderboardModal(filter);
+}
+
+// ═══ END GAME ═════════════════════════════════
+function endGamePurity() { hp = 0; endGame(); }
+
+async function endGame() {
   clearInterval(timer);
+
+  // Lưu leaderboard trước khi render UI
+  await saveToLeaderboard();
+
   const ending = getEndingData(hp, purity, money);
   const moneyStr = money > 0 ? `${money} triệu` : '0';
-  
+  const score = calculateScore();
+  // Tỷ lệ tham nhũng = số lần sai câu tham nhũng / tổng số lần bị cám dỗ
+  const corruptPct = corruptTotalOffered > 0 ? Math.round((corruptWrongCount / corruptTotalOffered) * 100) : 0;
+
   const card = document.getElementById('gameCard');
   card.innerHTML = `
     <div class="ending-screen">
-      <div style="font-size:0.9rem;color:var(--ink3);margin-bottom:10px;font-weight:bold;letter-spacing:1px">⚓ THUYỀN VIÊN: ${myPlayerName.toUpperCase()}</div>
+      <div style="font-size:0.9rem;color:var(--ink3);margin-bottom:10px;
+                  font-weight:bold;letter-spacing:1px">
+        ⚓ THUYỀN VIÊN: ${myPlayerName.toUpperCase()}
+      </div>
+
       <span class="ending-icon">${ending.icon}</span>
       <div class="ending-title" style="color:${ending.color}">${ending.title}</div>
       <div class="ending-subtitle">${ending.sub}</div>
-      
+
+      <div style="margin:12px auto;display:inline-block;
+                  background:rgba(201,146,42,0.15);
+                  border:1px solid var(--gold);border-radius:4px;
+                  padding:8px 24px;text-align:center">
+        <div style="font-size:0.7rem;color:var(--ink2);font-family:Cinzel,serif;
+                    letter-spacing:2px;margin-bottom:2px">TỔNG ĐIỂM</div>
+        <div style="font-family:Cinzel,serif;font-size:2rem;
+                    font-weight:900;color:var(--gold)">${score}</div>
+      </div>
+
       <div class="ending-stats-grid">
         <div class="ending-stat">
           <div class="ending-stat-label">❤️ Niềm tin</div>
           <div class="ending-stat-value">${hp}/100</div>
-          <div class="ending-stat-sub">${hp>=80?'✅ Cao':hp>=50?'🟡 Trung bình':'🔴 Thấp'}</div>
+          <div class="ending-stat-sub">${hp >= 80 ? '✅ Cao' : hp >= 50 ? '🟡 Trung bình' : '🔴 Thấp'}</div>
         </div>
         <div class="ending-stat">
           <div class="ending-stat-label">🧼 Trong sạch</div>
           <div class="ending-stat-value">${Math.round(purity)}%</div>
-          <div class="ending-stat-sub">${purity>=70?'✅ Ổn':purity>=50?'⚠️ Cảnh báo':'🔴 Nguy hiểm'}</div>
+          <div class="ending-stat-sub">${purity >= 70 ? '✅ Ổn' : purity >= 50 ? '⚠️ Cảnh báo' : '🔴 Nguy hiểm'}</div>
         </div>
         <div class="ending-stat">
           <div class="ending-stat-label">💰 Tham nhũng</div>
-          <div class="ending-stat-value">${moneyStr}</div>
-          <div class="ending-stat-sub">${money<=10?'🟢 Trong sạch':money<=50?'🟡 Đáng lo':'🔴 Nghiêm trọng'}</div>
+          <div class="ending-stat-value">${corruptPct}%</div>
+          <div class="ending-stat-sub">${corruptPct <= 10 ? '🟢 Trong sạch' : corruptPct <= 40 ? '🟡 Đáng lo' : '🔴 Nghiêm trọng'}</div>
         </div>
       </div>
-      
+
       <div class="ending-details">
         <h3>📊 Hành trình 1930 – 2026</h3>
-        ✅ Câu đúng: ${correctCount}/${currentQ+1}<br>
-        ❌ Câu sai: ${wrongCount}/${currentQ+1}<br>
+        ✅ Câu đúng: ${correctCount}/${currentQ + 1}<br>
+        ❌ Câu sai: ${wrongCount}/${currentQ + 1}<br>
         💰 Số lần tham nhũng: ${corruptCount}<br>
         🌊 Số mốc đã qua: ${stormsSurvived}/7<br>
-        ⚓ Mốc đã đến: ${currentQ+1}/20
+        ⚓ Mốc đã đến: ${currentQ + 1}/20
       </div>
-      
+
       <div class="ending-quote">
         <p>${ending.quote}</p>
       </div>
-      
+
+      ${corruptPct > 0 ? `
+      <div style="margin-bottom:16px;padding:14px 16px;
+                  background:linear-gradient(135deg, rgba(139,26,26,0.08), rgba(139,26,26,0.03));
+                  border:1px solid rgba(139,26,26,0.3);border-radius:6px">
+        <div style="font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:2px;
+                    color:var(--red);text-transform:uppercase;margin-bottom:8px">
+          📊 Tỷ Lệ Tham Nhũng
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="flex:1;height:12px;background:rgba(0,0,0,0.08);border-radius:6px;overflow:hidden;
+                      border:1px solid rgba(0,0,0,0.1)">
+            <div style="height:100%;width:${corruptPct}%;border-radius:6px;
+                        background:linear-gradient(90deg, #cc2222, #8b1a1a);
+                        transition:width 1s ease"></div>
+          </div>
+          <span style="font-family:Cinzel,serif;font-size:1.2rem;font-weight:900;
+                       color:var(--red)">${corruptPct}%</span>
+        </div>
+        <div style="margin-top:6px;font-size:0.78rem;color:var(--ink2);font-style:italic">
+          ${corruptPct <= 20 ? '🛡️ Bạn gần như trong sạch — ít sai lầm!' 
+            : corruptPct <= 50 ? '⚠️ Có dấu hiệu sai lầm — cần rèn luyện thêm.' 
+            : '🚨 Mức tham nhũng nguy hiểm — cần tự phê bình nghiêm túc!'}
+        </div>
+      </div>` : ''}
+
       <div class="ending-btns">
         <button class="ending-btn" onclick="restartGame()">⚓ Hành Trình Mới</button>
       </div>
-    </div>
-  `;
-  
+    </div>`;
+
   hideMilestoneBanner();
   updateShip();
 }
@@ -2007,12 +2138,12 @@ function flashScore(text){
 
 function restartGame(){
   sessionStorage.removeItem('hcm_room');
+  sessionStorage.removeItem('lastStormTs');
+  sessionStorage.removeItem('lastDisconnectTs');
   location.reload();
 }
 
-// ═══════════════════════════════════════════════
-// START GAME
-// ═══════════════════════════════════════════════
+// ═══ START GAME ═══════════════════════════════
 function startSinglePlayer(){
   const playerName = document.getElementById('playerNameInput').value.trim() || 'Người chơi';
   myPlayerName = playerName;
@@ -2020,34 +2151,22 @@ function startSinglePlayer(){
   const overlay = document.getElementById('startOverlay');
   overlay.style.opacity = '0';
   setTimeout(() => overlay.style.display='none', 600);
-  buildStars();
-  buildDots();
-  updateShip();
-  loadQuestion();
+  buildStars(); buildDots(); updateShip(); loadQuestion();
 }
 
 function startMultiplayerGame(){
   if(isHost){
-    try {
-      firebaseManager.db.ref(`rooms/${currentRoom}`).update({
-        status:'playing', gamePhase:'voting', currentQuestion:currentQ, hp:hp, purity:purity
-      });
-    } catch(e){}
+    try { firebaseManager.db.ref(`rooms/${currentRoom}`).update({status:'playing',gamePhase:'voting',currentQuestion:currentQ,hp:hp,purity:purity}); } catch(e){}
   }
   const overlay = document.getElementById('startOverlay');
   overlay.style.opacity = '0';
   setTimeout(()=>overlay.style.display='none', 600);
-  buildStars();
-  buildDots();
-  updateShip();
-  
+  buildStars(); buildDots(); updateShip();
   if(answered) renderResultsUI();
   else loadQuestion();
 }
 
-// ═══════════════════════════════════════════════
-// ROOM MANAGEMENT (Firebase stubs — same as before)
-// ═══════════════════════════════════════════════
+// ═══ ROOM MANAGEMENT ══════════════════════════
 function showRoomCreation(){ document.querySelector('.room-options').classList.add('hidden'); document.getElementById('createRoomForm').classList.remove('hidden'); }
 function showRoomJoin(){ document.querySelector('.room-options').classList.add('hidden'); document.getElementById('joinRoomForm').classList.remove('hidden'); }
 function showMainMenu(){ document.getElementById('createRoomForm').classList.add('hidden'); document.getElementById('joinRoomForm').classList.add('hidden'); document.getElementById('roomInfo').classList.add('hidden'); document.querySelector('.room-options').classList.remove('hidden'); }
@@ -2059,18 +2178,10 @@ async function createRoom(){
   try {
     const roomId = await firebaseManager.createRoom(playerName);
     currentRoom = roomId; isHost = true;
-    
-    // Generate and save sequence for the room
     const seq = buildGameSequence();
     setGameSequence(seq);
     await firebaseManager.db.ref(`rooms/${roomId}`).update({ sequence: seq });
-
-    sessionStorage.setItem('hcm_room', JSON.stringify({
-      roomId, 
-      isHost:true, 
-      playerName:playerName,
-      playerId: firebaseManager.playerId
-    }));
+    sessionStorage.setItem('hcm_room', JSON.stringify({ roomId, isHost:true, playerName, playerId: firebaseManager.playerId }));
     document.getElementById('createRoomForm').classList.add('hidden');
     document.getElementById('roomInfo').classList.remove('hidden');
     document.getElementById('roomCodeDisplay').textContent = roomId;
@@ -2087,12 +2198,7 @@ async function joinRoom(){
   try {
     await firebaseManager.joinRoom(roomCode, playerName);
     currentRoom = roomCode; isHost = false;
-    sessionStorage.setItem('hcm_room', JSON.stringify({
-      roomId:roomCode, 
-      isHost:false, 
-      playerName:playerName,
-      playerId: firebaseManager.playerId
-    }));
+    sessionStorage.setItem('hcm_room', JSON.stringify({ roomId:roomCode, isHost:false, playerName, playerId: firebaseManager.playerId }));
     document.getElementById('joinRoomForm').classList.add('hidden');
     document.getElementById('roomInfo').classList.remove('hidden');
     document.getElementById('roomCodeDisplay').textContent = roomCode;
@@ -2107,31 +2213,35 @@ function setupRoomListeners(){
   try {
     firebaseManager.db.ref(`rooms/${currentRoom}/players`).on('value', snap=>{
       const players = snap.val() || {};
-      currentPlayers = players; // Store player data globally
+      currentPlayers = players;
       const count = Object.keys(players).length;
       playerCount = count;
       document.getElementById('playerCount').textContent = count;
       const gc = document.getElementById('gamePlayerCount');
       if(gc) gc.textContent = count;
-      
-      // Update player list display
       const listEl = document.getElementById('playerListContent');
-      if(listEl) {
+      if(listEl){
         listEl.innerHTML = '';
-        Object.values(players).forEach(p => {
-          const div = document.createElement('div');
-          div.textContent = `🚢 ${p.name || 'Thuyền viên'}`;
-          div.style.padding = '2px 0';
-          listEl.appendChild(div);
-        });
+        const names = Object.values(players);
+names.forEach((p, i) => {
+  if (i > 0 && i % 6 === 0) {
+    const br = document.createElement('div');
+    br.style.cssText = 'width: 100%; height: 0;';
+    listEl.appendChild(br);
+  }
+  const chip = document.createElement('span');
+  chip.textContent = `🚢 ${p.name || 'Thuyền viên'}`;
+  chip.style.cssText = 'background: rgba(26,58,92,0.15); border: 1px solid var(--ocean3); border-radius: 20px; padding: 3px 10px; font-size: 0.82rem; white-space: nowrap; color: var(--ink);';
+  listEl.appendChild(chip);
+});
       }
     });
+
     firebaseManager.db.ref(`rooms/${currentRoom}`).on('value', snap=>{
       const rd = snap.val(); if(!rd) return;
-      currentRoomData = rd; // Store room data globally
-      
-      // Sync sequence if not set
-      if(rd.sequence && (!GAME_SEQ || GAME_SEQ.length === 0 || isHost === false)){
+      currentRoomData = rd;
+
+      if(rd.sequence && (!GAME_SEQ || GAME_SEQ.length === 0 || !isHost)){
         setGameSequence(rd.sequence);
       }
 
@@ -2143,23 +2253,63 @@ function setupRoomListeners(){
       if(rd.hp!==undefined){ hp=rd.hp; }
       if(rd.purity!==undefined){ purity=rd.purity; }
       updateHPBar();
+
+      // [FIX 1] Non-host nhận storm từ Firebase và hiển thị overlay
+      if (rd.isStorming) {
+    // 1. Dừng timer ở tất cả máy người chơi khi gặp bão
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    // 2. Hiển thị overlay bão (truyền thêm thông tin damage và desc từ Firebase)
+    // Cần đảm bảo Host đã update rd.pendingStorm lên Firebase trước đó
+    if (rd.pendingStorm) {
+      showStormOverlay(rd.pendingStorm.desc, rd.pendingStorm.damage);
+    }
+  } else {
+    // Nếu Host đã nhấn "Tiếp tục" (isStorming = false), đóng overlay ở tất cả mọi người
+    const overlay = document.getElementById('stormOverlay');
+    if (overlay && overlay.classList.contains('active')) {
+      overlay.classList.remove('active');
+    }
+  }
+
+      // [FIX 3] Hiển thị thông báo disconnect penalty
+      if(rd.disconnectPenalty && !isHost){
+        const lastShown = sessionStorage.getItem('lastDisconnectTs');
+        const ts = String(rd.disconnectPenalty.timestamp);
+        if(lastShown !== ts){
+          sessionStorage.setItem('lastDisconnectTs', ts);
+          const lv = document.getElementById('liveVotes');
+          if(lv){ lv.textContent = `⚠️ ${rd.disconnectPenalty.message}`; lv.classList.add('visible'); }
+        }
+      }
+
       if(!isHost && rd.gamePhase==='results' && !answered && rd.currentQuestion===currentQ){
         if(rd.finalVotes){ votes={}; Object.entries(rd.finalVotes).forEach(([k,v])=>{ const idx=Number(k); if(!isNaN(idx)) votes[idx]=Number(v); }); }
         if(rd.corruptionEffects){ lastCorruptionEffects = rd.corruptionEffects; }
         showResults();
       }
+
+      // Tất cả người chơi (kể cả non-host) đều kết thúc game khi họ nhận được trạng thái 'ended'
+      if(!isHost && rd.status === 'ended' && rd.gamePhase === 'ended'){
+        const gc = document.getElementById('gameCard');
+        // Kiểm tra nếu màn hình kết thúc chưa hiển thị
+        if(gc && !gc.querySelector('.ending-screen')){
+          endGame();
+        }
+      }
     });
   } catch(e){ console.log('Firebase not available'); }
 }
-
-let lastCorruptionEffects = null; // To store corruption effects for display in results screen
 </script>
 
 <!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
-
 <script src="firebase-config.js"></script>
+
 <script>
 window.addEventListener('load', async ()=>{
   const savedRoom = sessionStorage.getItem('hcm_room');
@@ -2175,82 +2325,11 @@ window.addEventListener('load', async ()=>{
         document.getElementById('roomCodeDisplay').textContent = currentRoom;
         setupRoomListeners();
         const ri = snap.val();
-        if(ri.status==='playing'){ 
-          if(ri.currentQuestion!==undefined) currentQ=ri.currentQuestion; 
-          if(ri.hp!==undefined) hp=ri.hp; 
-          if(ri.purity!==undefined) purity=ri.purity; 
-          // Tìm đoạn này trong code của bạn:
-if(ri.gamePhase === 'results') {
-    // THAY THẾ TOÀN BỘ NỘI DUNG BÊN TRONG BẰNG CODE DƯỚI ĐÂY:
-
-    const gameCard = document.getElementById('gameCard');
-    
-    // 1. Định nghĩa danh sách các kết cục (Web)
-    const endings = [
-        {
-            id: 'thuy-thu',
-            icon: '⚓',
-            title: 'Hải Trình Trung Kiên',
-            content: 'Bạn đã cùng đồng đội vượt qua 20 mốc lịch sử. Niềm tin và sự trong sạch là la bàn giúp bạn cập bến an toàn.'
-        },
-        {
-            id: 'thuyen-truong',
-            icon: '🧭',
-            title: 'Vị Thuyền Trưởng Tài Ba',
-            content: 'Dưới sự dẫn dắt của bạn, con thuyền không chỉ là phương tiện mà là biểu tượng của ý chí quật cường qua các thời đại.'
-        },
-        {
-            id: 'ke-an-danh',
-            icon: '🕯️',
-            title: 'Người Gác Đêm Thầm Lặng',
-            content: 'Những lựa chọn đúng đắn của bạn trong bóng tối đã giữ cho ngọn lửa niềm tin không bao giờ tắt trên boong tàu.'
-        }
-    ];
-
-    // 2. Logic Ngẫu nhiên & Bảo mật: Chỉ tính toán 1 lần và lưu lại
-    let myPersonalEndingId = sessionStorage.getItem('final_ending_id');
-    
-    if (!myPersonalEndingId) {
-        // Dùng tên hoặc ID để tạo tính ngẫu nhiên nhưng cố định cho người đó
-        const seed = myPlayerName.length + (new Date().getSeconds() % 10);
-        const randomIndex = seed % endings.length;
-        myPersonalEndingId = endings[randomIndex].id;
-        sessionStorage.setItem('final_ending_id', myPersonalEndingId);
-    }
-
-    // 3. Tìm dữ liệu kết thúc tương ứng
-    const myEnding = endings.find(e => e.id === myPersonalEndingId);
-
-    // 4. Cập nhật giao diện (Xóa trắng gameCard và vẽ lại duy nhất 1 kết quả)
-    gameCard.innerHTML = `
-        <div class="ending-screen">
-            <span class="ending-icon">${myEnding.icon}</span>
-            <h2 class="ending-title">${myEnding.title}</h2>
-            <div class="ending-subtitle">Hành trình 1930 - 2026 hoàn tất</div>
-            
-            <div class="ending-details">
-                <h3>Kịch bản dành riêng cho bạn:</h3>
-                <p>${myEnding.content}</p>
-                <p style="margin-top:10px; border-top:1px solid #ccc; pt-2">
-                    <strong>Thống kê cuối:</strong> Niềm tin ${ri.hp || 0} | Trong sạch ${ri.purity || 0}%
-                </p>
-            </div>
-
-            <div class="ending-quote">
-                "Lịch sử không chỉ là những con số, mà là những lựa chọn."
-                <div class="author">— Bản sắc Con Thuyền Chung</div>
-            </div>
-
-            <div class="ending-btns">
-                <button class="ending-btn" onclick="location.reload()">Chơi ván mới</button>
-            </div>
-        </div>
-    `;
-    
-    // Ẩn banner mốc thời gian khi hiện kết quả
-    document.getElementById('milestoneBanner').classList.remove('active');
-}
-          startMultiplayerGame(); 
+        if(ri.status==='playing'){
+          if(ri.currentQuestion!==undefined) currentQ=ri.currentQuestion;
+          if(ri.hp!==undefined) hp=ri.hp;
+          if(ri.purity!==undefined) purity=ri.purity;
+          startMultiplayerGame();
         }
       } else { sessionStorage.removeItem('hcm_room'); }
     } catch(e){ sessionStorage.removeItem('hcm_room'); }

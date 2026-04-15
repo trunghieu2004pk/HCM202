@@ -615,3 +615,52 @@ body{
   display:inline-block;
 }
 @keyframes torchFlicker{0%{transform:scale(1) rotate(-3deg)}100%{transform:scale(1.1) rotate(3deg)}}
+
+#stormContinueBtn {
+  background: linear-gradient(145deg, var(--gold), var(--ink));
+  color: var(--parch);
+  border: 2px solid var(--gold2);
+  padding: 15px 30px;
+  font-family: 'Cinzel', serif; /* Font chữ phong cách cổ điển */
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(232, 184, 75, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto;
+  display: none; /* Mặc định ẩn */
+}
+
+#stormContinueBtn:hover {
+  background: linear-gradient(145deg, var(--gold2), var(--gold));
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(201, 146, 42, 0.4);
+  color: #fff;
+}
+
+#stormContinueBtn:active {
+  transform: translateY(1px);
+}
+
+/* Hiệu ứng tia sáng lướt qua nút */
+#stormContinueBtn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+#stormContinueBtn:hover::after {
+  left: 100%;
+}
